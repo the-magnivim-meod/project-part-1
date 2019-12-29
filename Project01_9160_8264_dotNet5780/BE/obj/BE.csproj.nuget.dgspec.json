@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yezob\\courses\\c#\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj": {}
+    "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yezob\\courses\\c#\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj": {
+    "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yezob\\courses\\c#\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj",
+        "projectUniqueName": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj",
         "projectName": "BE",
-        "projectPath": "C:\\Users\\yezob\\courses\\c#\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj",
+        "projectPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj",
         "packagesPath": "C:\\Users\\yezob\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yezob\\courses\\c#\\Project01_9160_8264_dotNet5780\\BE\\obj\\",
+        "outputPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yezob\\AppData\\Roaming\\NuGet\\NuGet.Config",
