@@ -8,8 +8,8 @@ namespace BE
     {
         int HostingUnitKey;
         int GuestRequestKey;
-        int OrderKey;
-        OrderStatus Status;
+        public int OrderKey;
+        public OrderStatus Status;
         DateTime CreateDate;
         DateTime OrderDate;
         public override string ToString()

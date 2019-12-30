@@ -1,0 +1,3 @@
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\DS\obj\Debug\netstandard2.0\DS.csprojAssemblyReference.cache
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\DS\obj\Debug\netstandard2.0\DS.AssemblyInfoInputs.cache
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\DS\obj\Debug\netstandard2.0\DS.AssemblyInfo.cs
