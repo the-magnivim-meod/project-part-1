@@ -110,7 +110,15 @@ namespace BL
 
         public void UpdateOrder(int orderNumber, OrderStatus status)
         {
-            throw new NotImplementedException();
+            try
+            {
+                //... update the order
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            Console.WriteLine("mail sent\n");
         }
     }
 }

@@ -176,5 +176,14 @@ namespace DAL
             }
             old_order.Status = status;
         }
+
+        /// <summary>
+        /// get the order by its key
+        /// </summary>
+        /// <param name="">order key</param>
+        public Order GetOrderByKey(int key)
+        {
+            return DataSource.Orders.Find(order => order.GuestRequestKey == key).Clone();
+        }
     }
 }
