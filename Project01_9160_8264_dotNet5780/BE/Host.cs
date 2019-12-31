@@ -6,14 +6,14 @@ namespace BE
 {
     public class Host
     {
-        int HostKey;
-        string PrivateName;
-        string FamilyName;
-        int PhoneNumber;
-        string MailAddress;
-        BankBranch BankBranchDetails;
-        int BankAccountNumber;
-        Y_N CollectionClearance;
+        public int HostKey;
+        public string PrivateName;
+        public string FamilyName;
+        public int PhoneNumber;
+        public string MailAddress;
+        public BankBranch BankBranchDetails;
+        public int BankAccountNumber;
+        public Y_N CollectionClearance;
         public override string ToString()
         {
             string output = "HostKey:" + HostKey + "/n";

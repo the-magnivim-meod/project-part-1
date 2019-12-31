@@ -60,9 +60,23 @@ namespace DAL
         {
             HostingUnit target = new HostingUnit();
             target.HostingUnitKey = original.HostingUnitKey;
-            target.Owner= original.Owner;
+            target.Owner= original.Owner.Clone();
             target.HostingUnitName = original.HostingUnitName;
             target.Diary = original.Diary;
+            return target;
+        }
+
+        public static Host Clone(this Host original)
+        {
+            Host target = new Host();
+            target.HostKey = original.HostKey;
+            target.MailAddress = original.MailAddress;
+            target.PhoneNumber = original.PhoneNumber;
+            target.PrivateName = original.PrivateName;
+            target.FamilyName = original.FamilyName;
+            target.BankAccountNumber = original.BankAccountNumber;
+            target.BankBranchDetails = original.BankBranchDetails;
+            target.CollectionClearance = original.CollectionClearance;
             return target;
         }
     }

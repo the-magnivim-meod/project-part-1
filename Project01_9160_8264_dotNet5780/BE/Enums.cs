@@ -53,7 +53,7 @@ namespace BE
     /// used to save a boolian in yes/no
     /// instead of true/false
     /// </summary>
-    enum Y_N
+    public enum Y_N
     {
         No,
         Yes
