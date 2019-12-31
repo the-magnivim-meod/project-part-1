@@ -6,10 +6,10 @@ namespace BE
 {
     public class HostingUnit
     {
-        int HostingUnitKey;
-        Host Owner;
-        string HostingUnitName;
-        bool[,] Diary = new bool[12, 31];
+        public int HostingUnitKey;
+        public Host Owner;
+        public string HostingUnitName;
+        public bool[,] Diary = new bool[12, 31];
         public override string ToString()
         {
             string output = $"HostingUnitKey {HostingUnitKey} /n";

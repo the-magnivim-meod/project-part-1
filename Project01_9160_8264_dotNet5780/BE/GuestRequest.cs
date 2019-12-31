@@ -6,22 +6,22 @@ namespace BE
 {
     public class GuestRequest
     {
-        int GuestRequestKey;
-        string PrivateName;
-        string FamilyName;
-        string MailAddress;
-        OrderStatus Status;
-        DateTime RegistrationDate;
-        DateTime EntryDate;
-        DateTime ReleaseDate;
-        AreaOfTheCountry Area;
-        HostingUnitType Type;
-        int Adults;
-        int Children;
-        AmountOfIntrenst Pool;
-        AmountOfIntrenst CloseByGroceryStore;
-        AmountOfIntrenst Garden;
-        AmountOfIntrenst ChildrensAttractions;
+        public int GuestRequestKey;
+        public string PrivateName;
+        public string FamilyName;
+        public string MailAddress;
+        public OrderStatus Status;
+        public DateTime RegistrationDate;
+        public DateTime EntryDate;
+        public DateTime ReleaseDate;
+        public AreaOfTheCountry Area;
+        public HostingUnitType Type;
+        public int Adults;
+        public int Children;
+        public AmountOfIntrenst Pool;
+        public AmountOfIntrenst CloseByGroceryStore;
+        public AmountOfIntrenst Garden;
+        public AmountOfIntrenst ChildrensAttractions;
 
         
         public override string ToString()

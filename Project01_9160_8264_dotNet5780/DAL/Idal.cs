@@ -11,18 +11,18 @@ namespace DAL
 
         void AddHostingUnit(HostingUnit hostingUnit);
         void DeleteHostingUnit(int hotingUnitNumber);
-        void UpdateHostingUnit(int hostingUnitNumber);
+        //void UpdateHostingUnit(int hostingUnitNumber);
 
         void AddOrder(Order order);
-        void UpdateOrder(int orderNumber);
+        void UpdateOrder(int orderNumber, OrderStatus status);
 
 
-        List<HostingUnit> GetAllHostingUnits();
+        IEnumerable<HostingUnit> GetAllHostingUnits();
 
-        List<GuestRequest> GetAllGuestReuests();
+        IEnumerable<GuestRequest> GetAllGuestReuests();
 
 
-        List<Order> GetAllOrders();
+        IEnumerable<Order> GetAllOrders();
 
         List<BankBranch> GetAllBankBranches();
     }

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DAL;
-
+using BE;
 namespace DS
 {
-    public class DataSource
+    public static class DataSource
     {
+        public static List<HostingUnit> HostingUnits;
+        public static List<GuestRequest> GuestRequests;
+        public static List<Order> Orders;
+
     }
 }
