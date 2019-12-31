@@ -10,8 +10,8 @@ namespace DAL
         void UpdateGuestRequest(int guestRequestNumber, OrderStatus status);
 
         void AddHostingUnit(HostingUnit hostingUnit);
-        void DeleteHostingUnit(int hotingUnitNumber);
-        //void UpdateHostingUnit(int hostingUnitNumber);
+        void DeleteHostingUnit(int hotingUnitNumber);        
+        void UpdateHostingUnit(HostingUnit hostingUnit);
 
         void AddOrder(Order order);
         void UpdateOrder(int orderNumber, OrderStatus status);

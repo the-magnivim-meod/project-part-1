@@ -53,6 +53,8 @@ namespace DAL
             DataSource.GuestRequests.Add(guestRequest.Clone());
         }
 
+        //public void CreateNewGuestRequest()
+
         /// <summary>
         /// adds a new hostingUnit to the storage 
         /// </summary>
@@ -89,6 +91,10 @@ namespace DAL
         }
 
 
+        /// <summary>
+        /// didnt do that yet
+        /// </summary>
+        /// <returns></returns>
         public List<BankBranch> GetAllBankBranches()
         {
             return null;
@@ -130,17 +136,16 @@ namespace DAL
         /// <summary>
         /// update the status of a guest request
         /// </summary>
-        /// <param name="guestRequestNumber">the request to updaate</param>
+        /// <param name="guestRequestNumber">the request to update</param>
         /// <param name="status">the new status</param>
         public void UpdateGuestRequest(int guestRequestNumber, OrderStatus status)
         {
-            foreach (GuestRequest item in DataSource.GuestRequests)
+            GuestRequest oldGuestRequest = DataSource.GuestRequests.Find(req => req.GuestRequestKey == guestRequestNumber);
+            if (oldGuestRequest == null)
             {
-                if (item.GuestRequestKey == guestRequestNumber)
-                {
-                    item.Status = status;
-                }
+                throw new Exception("non existing guestRequest key");
             }
+            oldGuestRequest.Status = status;
         }
         
         /// <summary>
@@ -164,7 +169,12 @@ namespace DAL
         /// <param name="status"></param>
         public void UpdateOrder(int orderNumber, OrderStatus status)
         {
-            int count = DataSource.Orders.RemoveAll(order => order.OrderKey == orderNumber);
+            Order old_order = DataSource.Orders.Find(order => order.OrderKey == orderNumber);
+            if (old_order == null)
+            {
+                throw new Exception("non existing order key");
+            }
+            old_order.Status = status;
         }
     }
 }
