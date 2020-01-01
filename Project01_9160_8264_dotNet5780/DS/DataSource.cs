@@ -20,7 +20,7 @@ namespace DS
                 BranchCity = "Yerushalaim",
                 BankAccountNumber = 1223
             }
-        }
+        };
     }
 }
 

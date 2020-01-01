@@ -79,5 +79,17 @@ namespace DAL
             target.CollectionClearance = original.CollectionClearance;
             return target;
         }
+
+        public static BankBranch Clone(this BankBranch original)
+        {
+            BankBranch target = new BankBranch();
+            target.BankName = original.BankName;
+            target.BankAccountNumber = original.BankAccountNumber;
+            target.BankNumber = original.BankNumber;
+            target.BranchAddress = original.BranchAddress;
+            target.BranchCity = original.BranchCity;
+            target.BranchNumber = original.BranchNumber;
+            return target;
+        }
     }
 }

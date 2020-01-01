@@ -86,9 +86,10 @@ namespace DAL
         /// didnt do that yet
         /// </summary>
         /// <returns></returns>
-        public List<BankBranch> GetAllBankBranches()
+        public IEnumerable<BankBranch> GetAllBankBranches()
         {
-            return null;
+            return from branch in DataSource.BankBranches
+                   select branch.Clone();
         }
 
         /// <summary>
@@ -176,5 +177,7 @@ namespace DAL
         {
             return DataSource.Orders.Find(order => order.GuestRequestKey == key).Clone();
         }
+        
+
     }
 }
