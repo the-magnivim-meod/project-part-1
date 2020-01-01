@@ -81,11 +81,6 @@ namespace DAL
             }
         }
 
-
-        /// <summary>
-        /// didnt do that yet
-        /// </summary>
-        /// <returns></returns>
         public IEnumerable<BankBranch> GetAllBankBranches()
         {
             return from branch in DataSource.BankBranches

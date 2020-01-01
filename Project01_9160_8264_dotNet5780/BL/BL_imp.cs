@@ -11,25 +11,36 @@ namespace BL
         Idal Idal = FactoryDal.GetDal();
         public void AddGuestRequest(GuestRequest guestRequest)
         {
-            throw new NotImplementedException();
+            if (!(guestRequest.EntryDate < guestRequest.ReleaseDate))
+            {
+                Idal.AddGuestRequest(guestRequest);
+            }
         }
 
         public void AddHostingUnit(HostingUnit hostingUnit)
         {
-            throw new NotImplementedException();
+            Idal.AddHostingUnit(hostingUnit);
         }
 
         public void AddOrder(Order order)
         {
-            throw new NotImplementedException();
+                Idal.AddOrder(order);
         }
 
         public void DeleteHostingUnit(int hotingUnitNumber)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Idal.DeleteHostingUnit(hotingUnitNumber);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public List<BankBranch> GetAllBankBranches()
+        public IEnumerable<BankBranch> GetAllBankBranches()
         {
             throw new NotImplementedException();
         }
@@ -101,12 +112,28 @@ namespace BL
 
         public void UpdateGuestRequest(int guestRequestNumber, OrderStatus status)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Idal.UpdateGuestRequest(guestRequestNumber, status);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Idal.UpdateHostingUnit(hostingUnit);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public void UpdateOrder(int orderNumber, OrderStatus status)
@@ -121,5 +148,6 @@ namespace BL
             }
             Console.WriteLine("mail sent\n");
         }
+
     }
 }
