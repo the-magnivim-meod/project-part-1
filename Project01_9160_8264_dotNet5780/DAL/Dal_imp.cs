@@ -46,10 +46,7 @@ namespace DAL
         /// <param name="guestRequest">the new request to add</param>
         public void AddGuestRequest(GuestRequest guestRequest)
         {
-            if(CheckGuestRequestDuplicates(guestRequest.GuestRequestKey))
-            {
-                throw new Exception("duplicate guestRequest key");
-            }
+            guestRequest.GuestRequestKey = Configuration.GuestRequestCounter;
             DataSource.GuestRequests.Add(guestRequest.Clone());
         }
 
@@ -61,10 +58,7 @@ namespace DAL
         /// <param name="hostingUnit"></param>
         public void AddHostingUnit(HostingUnit hostingUnit)
         {
-            if (CheckHostingUnitDuplicates(hostingUnit.HostingUnitKey))
-            {
-                throw new Exception("duplicate hostingUnit key");
-            }
+            hostingUnit.HostingUnitKey = Configuration.HostingUnitCounter;
             DataSource.HostingUnits.Add(hostingUnit.Clone());
         }
 
@@ -74,10 +68,7 @@ namespace DAL
         /// <param name="hostingUnit"></param>
         public void AddOrder(Order order)
         {
-            if (CheckHostingUnitDuplicates(order.OrderKey))
-            {
-                throw new Exception("duplicate Order key");
-            }
+            order.OrderKey = Configuration.OrderCounter;
             DataSource.Orders.Add(order.Clone());
         }
 
@@ -86,7 +77,7 @@ namespace DAL
             int numberDeleted = DataSource.HostingUnits.RemoveAll(unit => unit.HostingUnitKey == hotingUnitNumber);
             if (numberDeleted == 0)//which means nothing was deleted
             {
-                throw new Exception("non existing hostingUnit key");
+                throw new NotExistingKey();
             }
         }
 
@@ -143,7 +134,7 @@ namespace DAL
             GuestRequest oldGuestRequest = DataSource.GuestRequests.Find(req => req.GuestRequestKey == guestRequestNumber);
             if (oldGuestRequest == null)
             {
-                throw new Exception("non existing guestRequest key");
+                throw new NotExistingKey();
             }
             oldGuestRequest.Status = status;
         }
@@ -157,7 +148,7 @@ namespace DAL
             int numberDeleted = DataSource.HostingUnits.RemoveAll(unit => unit.HostingUnitKey == hostingUnit.HostingUnitKey);
             if (numberDeleted == 0)//which means nothing was deleted
             {
-                throw new Exception("non existing hostingUnit key");
+                throw new NotExistingKey();
             }
             DataSource.HostingUnits.Add(hostingUnit.Clone());
         }
@@ -172,7 +163,7 @@ namespace DAL
             Order old_order = DataSource.Orders.Find(order => order.OrderKey == orderNumber);
             if (old_order == null)
             {
-                throw new Exception("non existing order key");
+                throw new NotExistingKey();
             }
             old_order.Status = status;
         }

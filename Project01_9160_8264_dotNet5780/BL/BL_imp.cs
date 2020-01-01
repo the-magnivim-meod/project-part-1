@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using DAL;
 namespace BL
 {
     class BL_imp : IBL
     {
+        Idal Idal = FactoryDal.GetDal();
         public void AddGuestRequest(GuestRequest guestRequest)
         {
             throw new NotImplementedException();
@@ -112,7 +113,7 @@ namespace BL
         {
             try
             {
-                //... update the order
+                Idal.UpdateOrder(orderNumber, status);
             }
             catch (Exception)
             {

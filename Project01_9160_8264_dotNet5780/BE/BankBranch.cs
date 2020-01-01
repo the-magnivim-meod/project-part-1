@@ -6,12 +6,12 @@ namespace BE
 {
     public class BankBranch
     {
-        int BankNumber;
-        string BankName;
-        int BranchNumber;
-        string BranchAddress;//optional add class address
-        string BranchCity;//optional add enum city
-        int BankAccountNumber;
+        public int BankNumber;
+        public string BankName;
+        public int BranchNumber;
+        public string BranchAddress;//optional add class address
+        public string BranchCity;//optional add enum city
+        public int BankAccountNumber;
 
         
         public override string ToString()

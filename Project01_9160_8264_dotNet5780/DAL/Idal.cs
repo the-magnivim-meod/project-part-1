@@ -4,7 +4,7 @@ using System.Text;
 using BE;
 namespace DAL
 {
-    interface Idal
+    internal interface Idal
     {
         void AddGuestRequest(GuestRequest guestRequest);
         void UpdateGuestRequest(int guestRequestNumber, OrderStatus status);

@@ -6,7 +6,7 @@ namespace BE
 {
     public class HostingUnit
     {
-        public readonly int HostingUnitKey;
+        public int HostingUnitKey;
         public Host Owner;
         public string HostingUnitName;
         public bool[,] Diary = new bool[12, 31];
