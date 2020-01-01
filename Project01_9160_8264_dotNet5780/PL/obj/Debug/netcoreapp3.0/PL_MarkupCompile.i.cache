@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_0
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PL\App.xaml
-11151548125
+3-2142584937
 
-3-376211974
+51070825804
 196-175059063
-MainWindow.xaml;
+GuestWindow.xaml;HostWindow.xaml;MainWindow.xaml;
 
 True
 

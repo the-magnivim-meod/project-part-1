@@ -6,7 +6,7 @@ using BE;
 
 namespace BL
 {
-    interface IBL
+    public interface IBL
     {
         /// <summary>
         /// add a guestRequest to the DataSource

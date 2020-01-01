@@ -33,10 +33,10 @@ namespace BL
             {
                 Idal.DeleteHostingUnit(hotingUnitNumber);
             }
-            catch (Exception)
+            catch (Exception cought)
             {
 
-                throw;
+                throw cought;
             }
         }
 
@@ -116,10 +116,10 @@ namespace BL
             {
                 Idal.UpdateGuestRequest(guestRequestNumber, status);
             }
-            catch (Exception)
+            catch (Exception cought)
             {
 
-                throw;
+                throw cought;
             }
         }
 
@@ -129,10 +129,10 @@ namespace BL
             {
                 Idal.UpdateHostingUnit(hostingUnit);
             }
-            catch (Exception)
+            catch (Exception cought)
             {
 
-                throw;
+                throw cought;
             }
         }
 
@@ -142,9 +142,9 @@ namespace BL
             {
                 Idal.UpdateOrder(orderNumber, status);
             }
-            catch (Exception)
+            catch (Exception cought)
             {
-                throw;
+                throw cought;
             }
             Console.WriteLine("mail sent\n");
         }
