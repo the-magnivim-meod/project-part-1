@@ -10,6 +10,8 @@ namespace BE
         public Host Owner;
         public string HostingUnitName;
         public bool[,] Diary = new bool[12, 31]; 
+        public HostingUnitType type;
+
         public override string ToString()
         {
             string output = $"HostingUnitKey {HostingUnitKey} /n";

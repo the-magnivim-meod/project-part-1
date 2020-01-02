@@ -22,7 +22,7 @@ namespace BE
     /// </summary>
     public enum AreaOfTheCountry
     {
-        North,
+        North = 1,
         Haifa,
         TelAviv,
         Center,
@@ -33,7 +33,7 @@ namespace BE
 
     public enum HostingUnitType
     {
-        Zimmer,
+        Zimmer = 1,
         Hotel,
         OutdoorCamp
     }
@@ -57,5 +57,11 @@ namespace BE
     {
         No,
         Yes
+    }
+
+    public enum GuestRequestStatus
+    {
+        YetToBeAttendedTo,
+        ConnectedToOrder
     }
 }

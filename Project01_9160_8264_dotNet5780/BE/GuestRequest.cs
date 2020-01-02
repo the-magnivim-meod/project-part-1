@@ -10,7 +10,7 @@ namespace BE
         public string PrivateName;
         public string FamilyName;
         public string MailAddress;
-        public OrderStatus Status;
+        public GuestRequestStatus Status;
         public DateTime RegistrationDate;
         public DateTime EntryDate;
         public DateTime ReleaseDate;

@@ -8,7 +8,7 @@ namespace BL
 {
     class BL_imp : IBL
     {
-        Idal Idal = FactoryDal.GetDal();
+        IDal Idal = FactoryDal.GetDal();
         public void AddGuestRequest(GuestRequest guestRequest)
         {
             if (!(guestRequest.EntryDate < guestRequest.ReleaseDate))
@@ -110,7 +110,7 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public void UpdateGuestRequest(int guestRequestNumber, OrderStatus status)
+        public void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status)
         {
             try
             {

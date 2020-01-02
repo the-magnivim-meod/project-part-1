@@ -4,7 +4,7 @@ using System.Text;
 using BE;
 namespace DAL
 {
-    public interface Idal
+    public interface IDal
     {
         /// <summary>
         /// add a guestRequest to the DataSource
@@ -17,7 +17,7 @@ namespace DAL
         /// </summary>
         /// <param name="guestRequestNumber">the request to update</param>
         /// <param name="status">the new stauts</param>
-        void UpdateGuestRequest(int guestRequestNumber, OrderStatus status);
+        void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status);
 
         /// <summary>
         /// add a hostingUnit to the DataSource

@@ -6,13 +6,13 @@ namespace DAL
 {
     public abstract class FactoryDal
     {
-        protected static Idal instance = null;
+        protected static IDal instance = null;
 
         /// <summary>
         /// returns the single instance of the Factory Dal
         /// </summary>
         /// <returns></returns>
-        public static Idal GetDal()
+        public static IDal GetDal()
         {
             if (instance == null)
             {

@@ -19,7 +19,7 @@ namespace BL
         /// </summary>
         /// <param name="guestRequestNumber">the request to update</param>
         /// <param name="status">the new stauts</param>
-        void UpdateGuestRequest(int guestRequestNumber, OrderStatus status);
+        void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status);
 
         /// <summary>
         /// add a hostingUnit to the DataSource

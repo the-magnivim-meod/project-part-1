@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace DAL
 {
-    class Dal_imp : Idal
+    class Dal_imp : IDal
     {
         /// <summary>
         /// check if the key already exists
@@ -125,7 +125,7 @@ namespace DAL
         /// </summary>
         /// <param name="guestRequestNumber">the request to update</param>
         /// <param name="status">the new status</param>
-        public void UpdateGuestRequest(int guestRequestNumber, OrderStatus status)
+        public void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status)
         {
             GuestRequest oldGuestRequest = DataSource.GuestRequests.Find(req => req.GuestRequestKey == guestRequestNumber);
             if (oldGuestRequest == null)
