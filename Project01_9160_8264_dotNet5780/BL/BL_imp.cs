@@ -8,35 +8,67 @@ namespace BL
 {
     class BL_imp : IBL
     {
-        IDal Idal = FactoryDal.GetDal();
+        static IDal Idal = FactoryDal.GetDal();
         public void AddGuestRequest(GuestRequest guestRequest)
         {
             if (!(guestRequest.EntryDate < guestRequest.ReleaseDate))
             {
-                Idal.AddGuestRequest(guestRequest);
+                throw new InvalidInputException();
             }
+            Idal.AddGuestRequest(guestRequest);
         }
 
         public void AddHostingUnit(HostingUnit hostingUnit)
         {
+
+            Y_N NO = Y_N.No;
+            if (Y_N.No == hostingUnit.Owner.CollectionClearance)
+            {
+                throw new DAL.LackOfSigningPermission();
+            }
             Idal.AddHostingUnit(hostingUnit);
         }
 
         public void AddOrder(Order order)
         {
-                Idal.AddOrder(order);
+            BE.GuestRequest req = Idal.GetGuestRequest(order.GuestRequestKey);
+            BE.HostingUnit unit = Idal.GetHostingUnit(order.HostingUnitKey);
+            int Day1 = req.EntryDate.Day;
+            int Month1 = req.EntryDate.Month;
+            double NamberOfDays = (req.ReleaseDate - req.EntryDate).TotalDays;
+            for (int i = 0; i < NamberOfDays; i++)
+            {
+                if (unit.Diary[Month1, Day1])
+                {
+                    throw new TheUnitIsOccupied();
+                }
+                Day1++;
+                if (Day1 == 31)
+                {
+                    Month1++;
+                }
+
+
+            }
+            Idal.AddOrder(order);
         }
+
+
 
         public void DeleteHostingUnit(int hotingUnitNumber)
         {
+            if (hotingUnitNumber == 0)
+            {
+                throw new DAL.NotExistingKey();
+            }
             try
             {
                 Idal.DeleteHostingUnit(hotingUnitNumber);
             }
-            catch (Exception cought)
+            catch (Exception NotExistingKey)
             {
 
-                throw cought;
+                throw;
             }
         }
 
@@ -75,24 +107,38 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public List<IGrouping<AreaOfTheCountry, Host>> GroupHostByNumberOfUnits()
+        public IEnumerable<IGrouping<int, Host>> GroupHostByNumberOfUnits()
         {
-            throw new NotImplementedException();
+            IEnumerable<IGrouping<int, HostingUnit>> hostingUnitsByHosts = from unit in Idal.GetAllHostingUnits()
+                                                              group unit by unit.Owner.HostKey;
+            IEnumerable<IGrouping<int, Host>> result = from unitsByHost in  hostingUnitsByHosts
+                                                       group unitsByHost.
+
+
+
+
+
         }
 
-        public List<IGrouping<AreaOfTheCountry, GuestRequest>> GroupRequestByArea()
+        public IEnumerable<IGrouping<AreaOfTheCountry, GuestRequest>> GroupRequestByArea()
         {
-            throw new NotImplementedException();
+            IEnumerable<IGrouping<AreaOfTheCountry, GuestRequest>> result = from req in Idal.GetAllGuestReuests()
+                                                                           group req by req.Area;
+            return result;
         }
 
-        public List<IGrouping<AreaOfTheCountry, GuestRequest>> GroupRequestByNumberOfGuests()
+        public IEnumerable<IGrouping<int, GuestRequest>> GroupRequestByNumberOfGuests()
         {
-            throw new NotImplementedException();
+            IEnumerable<IGrouping<int, GuestRequest>> result = from req in Idal.GetAllGuestReuests()
+                                                                           group req by req.Adults + req.Children;
+            return result;
         }
 
-        public List<IGrouping<AreaOfTheCountry, HostingUnit>> GroupUnitsByArea()
+        public IEnumerable<IGrouping<AreaOfTheCountry, HostingUnit>> GroupUnitsByArea()
         {
-            throw new NotImplementedException();
+            IEnumerable<IGrouping<AreaOfTheCountry, HostingUnit>> result = from unit in Idal.GetAllHostingUnits()
+                                                                           group unit by unit.Area;
+            return result;
         }
 
         public int NumOfDaysPast(DateTime first, DateTime second)
@@ -136,15 +182,21 @@ namespace BL
             }
         }
 
-        public void UpdateOrder(int orderNumber, OrderStatus status)
+
+
+        public void UpdateOrder(int orderNumber, GuestRequestStatus status)
         {
+            if (status == GuestRequestStatus.ConnectedToOrder)
+            {
+                throw new TheDealWasClosed();
+            }
             try
             {
-                Idal.UpdateOrder(orderNumber, status);
+                Idal.UpdateGuestRequest(orderNumber, status);
             }
-            catch (Exception cought)
+            catch (Exception)
             {
-                throw cought;
+                throw;
             }
             Console.WriteLine("mail sent\n");
         }

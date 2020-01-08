@@ -1,6 +1,7 @@
 ﻿using System;
 using BE;
 using BL;
+using System.Linq;
 namespace PL
 {
     class Program
@@ -75,7 +76,7 @@ namespace PL
             new HostingUnit()
             {
                 HostingUnitName = "HaMalonHamagniv",
-                type = HostingUnitType.Hotel,
+                Type = HostingUnitType.Hotel,
                 Owner = new Host()
                 {
                     BankAccountNumber = 1234,
@@ -83,7 +84,7 @@ namespace PL
                     PrivateName = "Amos",
                     FamilyName = "artzi",
                     BankBranchDetails = new BankBranch(),
-                    PhoneNumber = "053-4723-327",
+                    PhoneNumber = "053-472-3327",
                     HostKey = 1,
                     MailAddress = "amosss@yahoo.il"
                 }              
@@ -93,7 +94,7 @@ namespace PL
             new HostingUnit()
             {
                 HostingUnitName = "ZimmerSha've",
-                type = HostingUnitType.Hotel,
+                Type = HostingUnitType.Hotel,
                 Owner = new Host()
                 {
                     BankAccountNumber = 3839,
@@ -101,7 +102,7 @@ namespace PL
                     PrivateName = "Hadas",
                     FamilyName = "Yoff",
                     BankBranchDetails = new BankBranch(),
-                    PhoneNumber = "059-7809-363",
+                    PhoneNumber = "059-780-9363",
                     HostKey = 2,
                     MailAddress = "zimmerShave@Yoff.com"
                 }
@@ -123,7 +124,7 @@ namespace PL
                         PrintAllHostingUnit();
                         break;
                     case 'c':
-                        AddOrder(1,1);
+                        AddOrder();
                         break;
                     case 'd':
                         PrintAllOrders();
@@ -137,9 +138,40 @@ namespace PL
             }
         }
 
-        private static void AddOrder(int guestRequestNumber, int hostingUnitNumber)
+        private static void AddOrder()
         {
-            //not sure what to do
+            int guestID, UnitID;
+            PrintAllGuestRequests();
+            
+            try
+            {
+                Console.WriteLine("enter the id of the guestRequest ou wish to add:\n");
+                guestID = int.Parse(Console.ReadLine());
+                Console.WriteLine("enter the ID of the HostingUnit you wish to connect to the request:\n");
+                UnitID = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("you didnt enter a good input\n");
+                return;
+            }
+
+            var unit = from HostingUnit hostingUnit in myIbl.GetAllHostingUnits()
+                       select hostingUnit.HostingUnitKey == UnitID;
+
+            var guest = from GuestRequest guestRequest in myIbl.GetAllGuestReuests()
+                        select guestRequest.GuestRequestKey == guestID;
+
+            if (unit == null || guest == null)
+            {
+                Console.WriteLine("not existing id\n");
+                return;
+            }
+            Order newOrder = new Order()
+            {
+                HostingUnitKey = unitID;
+            }
+
         }
 
         static void PrintOptions()

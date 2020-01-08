@@ -4,7 +4,11 @@ using System.Text;
 
 namespace DAL
 {
-    class NotExistingKey : Exception
+    public class NotExistingKey : Exception
     {
+        public NotExistingKey()
+        {
+
+        }
     }
 }

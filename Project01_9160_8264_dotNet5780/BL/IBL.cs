@@ -120,24 +120,24 @@ namespace BL
         /// group the requests by the area requested
         /// </summary>
         /// <returns>a list of groups</returns>
-        List<IGrouping<AreaOfTheCountry, GuestRequest>> GroupRequestByArea();
+        IEnumerable<IGrouping<AreaOfTheCountry, GuestRequest>> GroupRequestByArea();
 
         /// <summary>
         /// group the requests by the number of guests
         /// </summary>
         /// <returns>a list of groups</returns>
-        List<IGrouping<AreaOfTheCountry, GuestRequest>> GroupRequestByNumberOfGuests();
+        IEnumerable<IGrouping<int, GuestRequest>> GroupRequestByNumberOfGuests();
 
         /// <summary>
         /// group the Hosts by the amount of units on there possesion
         /// </summary>
         /// <returns>a list of groups</returns>
-        List<IGrouping<AreaOfTheCountry, Host>> GroupHostByNumberOfUnits();
+        IEnumerable<IGrouping<int, Host>> GroupHostByNumberOfUnits();
 
         /// <summary>
         /// group the hosting units by the area they are in
         /// </summary>
         /// <returns>a list of groups</returns>
-        List<IGrouping<AreaOfTheCountry, HostingUnit>> GroupUnitsByArea();
+        IEnumerable<IGrouping<AreaOfTheCountry, HostingUnit>> GroupUnitsByArea();
     }
 }

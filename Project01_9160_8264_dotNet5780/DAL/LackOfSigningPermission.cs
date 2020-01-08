@@ -4,9 +4,9 @@ using System.Text;
 
 namespace DAL
 {
-    public class DuplicateKey : Exception
+    public class LackOfSigningPermission : Exception
     {
-        public DuplicateKey()
+        public LackOfSigningPermission()
         {
 
         }

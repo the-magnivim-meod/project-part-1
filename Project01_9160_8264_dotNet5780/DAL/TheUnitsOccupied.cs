@@ -4,11 +4,8 @@ using System.Text;
 
 namespace DAL
 {
-    public class DuplicateKey : Exception
+    public class TheUnitIsOccupied : Exception
     {
-        public DuplicateKey()
-        {
-
-        }
+        public TheUnitIsOccupied() { }
     }
 }

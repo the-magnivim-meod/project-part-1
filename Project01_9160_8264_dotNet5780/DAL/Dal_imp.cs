@@ -172,7 +172,24 @@ namespace DAL
         {
             return DataSource.Orders.Find(order => order.GuestRequestKey == key).Clone();
         }
-        
 
+
+        public GuestRequest GetGuestRequest(int id)
+        {
+            GuestRequest Request = DataSource.GuestRequests.First(req => req.GuestRequestKey == id);
+            return Request == null ? throw new NotExistingKey() : Request.Clone();
+        }
+
+        public HostingUnit GetHostingUnit(int id)
+        {
+            HostingUnit temp = DataSource.HostingUnits.First(req => req.HostingUnitKey == id);
+            return temp == null ? throw new NotExistingKey() : temp.Clone();
+        }
+        
+        public Order GetOrder(int id)
+        {
+            Order temp = DataSource.Orders.First(req => req.OrderKey == id);
+            return temp == null ? throw new NotExistingKey() : temp.Clone();
+        }
     }
 }

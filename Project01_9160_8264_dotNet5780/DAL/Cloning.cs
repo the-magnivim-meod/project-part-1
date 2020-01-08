@@ -63,6 +63,8 @@ namespace DAL
             target.Owner= original.Owner.Clone();
             target.HostingUnitName = original.HostingUnitName;
             target.Diary = original.Diary;
+            target.Type = original.Type;
+            target.Area = original.Area;
             return target;
         }
 

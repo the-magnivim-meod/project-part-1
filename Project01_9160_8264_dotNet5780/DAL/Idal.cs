@@ -67,5 +67,26 @@ namespace DAL
         /// </summary>
         /// <returns></returns>
         IEnumerable<BankBranch> GetAllBankBranches();
+
+        /// <summary>
+        /// get a spedcific order by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Order GetOrder(int id);
+
+        /// <summary>
+        /// get a specific unit by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        HostingUnit GetHostingUnit(int id);
+
+        /// <summary>
+        /// get a specific guestRequest by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        GuestRequest GetGuestRequest(int id);
     }
 }

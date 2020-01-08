@@ -9,7 +9,7 @@ namespace BE
         public int HostKey;
         public string PrivateName;
         public string FamilyName;
-        public int PhoneNumber;
+        public string PhoneNumber;
         public string MailAddress;
         public BankBranch BankBranchDetails;
         public int BankAccountNumber;

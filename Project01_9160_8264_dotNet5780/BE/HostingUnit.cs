@@ -10,7 +10,8 @@ namespace BE
         public Host Owner;
         public string HostingUnitName;
         public bool[,] Diary = new bool[12, 31]; 
-        public HostingUnitType type;
+        public HostingUnitType Type;
+        public AreaOfTheCountry Area;
 
         public override string ToString()
         {
@@ -28,6 +29,8 @@ namespace BE
                 }
                 output += "\n";
             }
+            output += $"type:{Type}";
+            output += $"area:{Area}";
             return output;
         }
 
