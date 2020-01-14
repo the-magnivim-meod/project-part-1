@@ -16,8 +16,8 @@ namespace BE
         
         public override string ToString()
         {
-            string output = $"the {BankName} bank, number{BankNumber}\n";
-            output = $"branch: number-{BranchNumber}, city-{BranchCity}, address-{BranchAddress}\n";
+            string output = $"the {BankName} bank, number:{BankNumber}\n";
+            output = $"branch: number-{BranchNumber}, city-" + BranchCity + ", address-" + BranchAddress + "\n";
             return output;
         }
     }

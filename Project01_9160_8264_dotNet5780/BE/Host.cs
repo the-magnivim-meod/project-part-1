@@ -16,14 +16,13 @@ namespace BE
         public Y_N CollectionClearance;
         public override string ToString()
         {
-            string output = "HostKey:" + HostKey + "/n";
-            output += "_________________________________";
-            output += "PrivateName: " + PrivateName + "FamilyName" + FamilyName + "/n";
-            output += "phoneNumber: " + PhoneNumber + "/n";
-            output += "MailAddress: " + MailAddress + "/n";
+            string output = "HostKey:" + HostKey + "\n";
+            output += "Name: " + PrivateName + " " + FamilyName + "\n";
+            output += "phoneNumber: " + PhoneNumber + "\n";
+            output += "MailAddress: " + MailAddress + "\n";
             output += $"{BankBranchDetails}";
-            output += $"account number: {BankAccountNumber}/n";
-            output += $"CollectionClearance {CollectionClearance} /n";
+            output += $"account number: {BankAccountNumber}\n";
+            output += $"CollectionClearance {CollectionClearance} \n";
             return output;
         }
     }

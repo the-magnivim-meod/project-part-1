@@ -14,13 +14,12 @@ namespace BE
         public DateTime OrderDate;
         public override string ToString()
         {
-            string output = $"HostingUnitKey {HostingUnitKey} /n";
-            output += "_________________________________";
-            output += $"GuestRequestKey {GuestRequestKey} /n";
-            output += $"OrderKey {OrderKey} /n";
-            output += $"status {Status} /n";
-            output += $"CreateDate {CreateDate} /n";
-            output += $"OrderDate {OrderDate} /n";
+            string output = $"HostingUnitKey: {HostingUnitKey} \n";
+            output += $"GuestRequestKey: {GuestRequestKey} \n";
+            output += $"OrderKey: {OrderKey} \n";
+            output += $"status: {Status} \n";
+            output += $"CreateDate: {CreateDate} \n";
+            output += $"OrderDate: {OrderDate}\n";
             return output;
         }
     }

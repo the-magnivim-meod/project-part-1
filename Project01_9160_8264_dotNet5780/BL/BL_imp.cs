@@ -36,10 +36,10 @@ namespace BL
         #region hostingUnit Methods
         public void AddHostingUnit(HostingUnit hostingUnit)
         {
-            if (hostingUnit.Owner.CollectionClearance == Y_N.No)
+            /*if (hostingUnit.Owner.CollectionClearance == Y_N.No)
             {
                 throw new DAL.LackOfSigningPermission();
-            }
+            }*/
             Idal.AddHostingUnit(hostingUnit);
         }
 
@@ -78,24 +78,22 @@ namespace BL
         {
             BE.GuestRequest req = Idal.GetGuestRequest(order.GuestRequestKey);
             BE.HostingUnit unit = Idal.GetHostingUnit(order.HostingUnitKey);
-            int Day1 = req.EntryDate.Day;
-            int Month1 = req.EntryDate.Month;
-            double NamberOfDays = (req.ReleaseDate - req.EntryDate).TotalDays;
-            for (int i = 0; i < NamberOfDays; i++)
+           
+            for (DateTime currentDate = req.EntryDate; currentDate < req.ReleaseDate; currentDate = currentDate.AddDays(1))
             {
-                if (unit.Diary[Month1, Day1])
+                if (unit.Diary[currentDate.Month - 1, currentDate.Day - 1])
                 {
                     throw new TheUnitIsOccupied();
-                }
-                Day1++;
-                if (Day1 == 31)
-                {
-                    Month1++;
-                }
-
-
+                }              
             }
+
             Idal.AddOrder(order);
+
+            for (DateTime currentDate = req.EntryDate; currentDate < req.ReleaseDate; currentDate = currentDate.AddDays(1))
+            {
+                unit.Diary[currentDate.Month - 1, currentDate.Day - 1] = true;
+            }
+            UpdateHostingUnit(unit);
         }
 
         public void UpdateOrder(int orderNumber, OrderStatus status)
@@ -120,37 +118,54 @@ namespace BL
         #region Get all Methods
         public IEnumerable<BankBranch> GetAllBankBranches()
         {
-            throw new NotImplementedException();
+            return Idal.GetAllBankBranches();
         }
 
         public IEnumerable<GuestRequest> GetAllGuestReuests()
         {
-            throw new NotImplementedException();
+            return Idal.GetAllGuestReuests();
         }
 
         public IEnumerable<HostingUnit> GetAllHostingUnits()
         {
-            throw new NotImplementedException();
+            return Idal.GetAllHostingUnits();
         }
 
         public IEnumerable<Order> GetAllOrders()
         {
-            throw new NotImplementedException();
+            return Idal.GetAllOrders();
         }
         #endregion
 
         #region Miscellaneous Methods
-        public List<Order> GetAllOrders(Predicate<Order> match)
+        public IEnumerable<Order> GetAllOrders(Predicate<Order> match)
         {
-            throw new NotImplementedException();
+            return from order in GetAllOrders()
+                   where match(order)
+                   select order;
         }
 
-        public List<Order> GetOrders(int numDays)
+        public IEnumerable<Order> GetOrders(int numDays)
         {
-            throw new NotImplementedException();
+            return from order in GetAllOrders()
+                   where CheckForTimeElapsedGetOrder(order,numDays)
+                   select order;
+           
+        } 
+
+        /// <summary>
+        /// if the deal was order was yet to be attended to we need to check if the time since the creation date is larger then numDays
+        /// else we need to check if numDays is larger then the time that passed since the MailWasSent
+        /// </summary>
+        /// <param name="order"></param>
+        /// <param name="numDays"></param>
+        /// <returns></returns>
+        private bool CheckForTimeElapsedGetOrder(Order order, int numDays)
+        {
+            return (order.Status == OrderStatus.YetToBeAttendedTo ? (DateTime.Today - order.CreateDate).TotalDays >= numDays : (DateTime.Today - order.CreateDate).TotalDays >= numDays);
         }
 
-        public List<HostingUnit> GetAllEmptyUnits(DateTime date, int numberDays)
+        public IEnumerable<HostingUnit> GetAllEmptyUnits(DateTime date, int numberDays)
         {
             throw new NotImplementedException();
         }

@@ -87,7 +87,7 @@ namespace BL
         /// <param name="date"></param>
         /// <param name="numberDays"></param>
         /// <returns></returns>
-        List<HostingUnit> GetAllEmptyUnits(DateTime date, int numberDays);
+        IEnumerable<HostingUnit> GetAllEmptyUnits(DateTime date, int numberDays);
 
         /// <summary>
         /// returns the amount of days that past from the first date to the second one
@@ -104,14 +104,14 @@ namespace BL
         /// </summary>
         /// <param name="numDays"></param>
         /// <returns></returns>
-        List<Order> GetOrders(int numDays);
+        IEnumerable<Order> GetOrders(int numDays);
 
         /// <summary>
         /// returns all orders that uphold the term given in match
         /// </summary>
         /// <param name="match"></param>
         /// <returns></returns>
-        List<Order> GetAllOrders(Predicate<Order> match);
+        IEnumerable<Order> GetAllOrders(Predicate<Order> match);
 
         /// <summary>
         /// returns the amount of orders the host got

@@ -15,22 +15,22 @@ namespace BE
 
         public override string ToString()
         {
-            string output = $"HostingUnitKey {HostingUnitKey} /n";
-            output += "_________________________________";
-            output += $"Owner {Owner} /n";
-            output += $"HostingUnitName {HostingUnitName} /n";
+            string output = $"HostingUnitKey {HostingUnitKey}\n";
+            output += $"Owner {Owner}\n";
+            output += $"HostingUnitName {HostingUnitName}\n";
+            output += $"type:{Type}\n";
+            output += $"area:{Area}\n";
 
             for (int i = 0; i < 12; i++)
             {
                 output += $"month:{i}\n";
                 for (int j = 0; j < 31; j++)
                 {
-                    output += $"day:{j} occupied:{Diary[i,j]}";
+                    output += $"[day:{j} occupied:{Diary[i,j]}], ";
                 }
-                output += "\n";
+                output += "\n\n";
             }
-            output += $"type:{Type}";
-            output += $"area:{Area}";
+
             return output;
         }
 

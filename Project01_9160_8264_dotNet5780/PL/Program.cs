@@ -220,7 +220,7 @@ namespace PL
             {
                 myIbl.AddOrder(newOrder);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Console.WriteLine("the hosting unit is occupied in these dates\n");
                 return;
@@ -232,13 +232,14 @@ namespace PL
 
         static void PrintOptions()
         {
-            Console.WriteLine("Choose an option:\n");
-            Console.WriteLine("__________________\n");
+            Console.WriteLine("__________________________________\n");
+            Console.WriteLine("Choose an option:\n");         
             Console.WriteLine("a: print all guest request\n");
             Console.WriteLine("b: print all the hosting units\n");
             Console.WriteLine("c: add an order\n");
             Console.WriteLine("d: print all orders\n");
             Console.WriteLine("q: quit\n");
+            Console.WriteLine("__________________________________\n");
         }
 
         #region PrintAll functions
