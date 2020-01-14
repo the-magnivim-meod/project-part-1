@@ -87,7 +87,7 @@ namespace PL
                     PhoneNumber = "053-472-3327",
                     HostKey = 1,
                     MailAddress = "amosss@yahoo.il"
-                }              
+                }
             });
 
             myIbl.AddHostingUnit(
@@ -129,23 +129,61 @@ namespace PL
                     case 'd':
                         PrintAllOrders();
                         break;
+                    case 'e':
+                        SendMail();
+                        break;
+                    case 'f':
+                        ChangeOrderStatus();
+                        break;
                     case 'q':
                         break;
                     default:
-                        //throw exception
+                        Console.WriteLine("invalid output");
                         break;
                 }
             }
+        }
+
+        private static void SendMail()
+        {
+            int key;
+            try
+            {
+                Console.WriteLine("Please enter the key of the Order you wish to send:\n");
+                key = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("invalid input\n");
+                return;
+            }
+
+            var Myorder = (from or in myIbl.GetAllOrders()
+                        where or.HostingUnitKey == key
+                        select or).First();
+
+            if (Myorder == null)
+            {
+                Console.WriteLine("not existing order\n");
+                return;
+            }
+
+            myIbl.UpdateOrder(key, OrderStatus.MailWasSent);
+        }
+
+        private static void ChangeOrderStatus()
+        {
+            throw new NotImplementedException();
         }
 
         private static void AddOrder()
         {
             int guestID, UnitID;
             PrintAllGuestRequests();
-            
+
             try
             {
-                Console.WriteLine("enter the id of the guestRequest ou wish to add:\n");
+                Console.WriteLine("enter the id of the guestRequest you wish to add:\n");
                 guestID = int.Parse(Console.ReadLine());
                 Console.WriteLine("enter the ID of the HostingUnit you wish to connect to the request:\n");
                 UnitID = int.Parse(Console.ReadLine());
@@ -156,11 +194,15 @@ namespace PL
                 return;
             }
 
-            var unit = from HostingUnit hostingUnit in myIbl.GetAllHostingUnits()
-                       select hostingUnit.HostingUnitKey == UnitID;
 
-            var guest = from GuestRequest guestRequest in myIbl.GetAllGuestReuests()
-                        select guestRequest.GuestRequestKey == guestID;
+            var unit = (from HostingUnit hostingUnit in myIbl.GetAllHostingUnits()
+                       where hostingUnit.HostingUnitKey == UnitID
+                       select hostingUnit).First();
+                       
+
+            var guest = (from GuestRequest guestRequest in myIbl.GetAllGuestReuests()
+                        where guestRequest.GuestRequestKey == guestID
+                        select guestRequest).First();
 
             if (unit == null || guest == null)
             {
@@ -169,10 +211,24 @@ namespace PL
             }
             Order newOrder = new Order()
             {
-                HostingUnitKey = unitID;
+                HostingUnitKey = UnitID,
+                GuestRequestKey = guestID,
+                CreateDate = DateTime.Today,
+                Status = OrderStatus.YetToBeAttendedTo,
+            };
+            try
+            {
+                myIbl.AddOrder(newOrder);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("the hosting unit is occupied in these dates\n");
+                return;
             }
 
         }
+
+
 
         static void PrintOptions()
         {
@@ -185,6 +241,7 @@ namespace PL
             Console.WriteLine("q: quit\n");
         }
 
+        #region PrintAll functions
         private static void PrintAllOrders()
         {
             try
@@ -231,7 +288,7 @@ namespace PL
                 Console.WriteLine("GetAllGuestReuests didn't work\n");
             }
         }
-
+        #endregion
     }
 }
 

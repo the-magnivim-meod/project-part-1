@@ -6,6 +6,7 @@ namespace DAL
 {
     public interface IDal
     {
+        #region guestRequest Methods
         /// <summary>
         /// add a guestRequest to the DataSource
         /// </summary>
@@ -18,23 +19,30 @@ namespace DAL
         /// <param name="guestRequestNumber">the request to update</param>
         /// <param name="status">the new stauts</param>
         void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status);
+        #endregion
 
+        #region hostingUnit Methods
         /// <summary>
         /// add a hostingUnit to the DataSource
         /// </summary>
         /// <param name="hostingUnit">the unit to add</param>
+        ///
         void AddHostingUnit(HostingUnit hostingUnit);
+
         /// <summary>
         /// delete a hostingUnit from the Data source 
         /// </summary>
         /// <param name="hotingUnitNumber">the unit to delete's number</param>
         void DeleteHostingUnit(int hotingUnitNumber);
+
         /// <summary>
         /// update a hosting unit
         /// </summary>
         /// <param name="hostingUnit">the hosting unit to update</param>
         void UpdateHostingUnit(HostingUnit hostingUnit);
+        #endregion
 
+        #region Order Methods
         /// <summary>
         /// add an order to the dataSource
         /// </summary>
@@ -46,7 +54,9 @@ namespace DAL
         /// <param name="orderNumber">the order to update</param>
         /// <param name="status">the new status</param>
         void UpdateOrder(int orderNumber, OrderStatus status);
+        #endregion
 
+        #region Get All Methods
         /// <summary>
         /// return all of the hosting units in the dataSource
         /// </summary>
@@ -67,7 +77,9 @@ namespace DAL
         /// </summary>
         /// <returns></returns>
         IEnumerable<BankBranch> GetAllBankBranches();
+        #endregion
 
+        #region Get Specific Item By Key Methods
         /// <summary>
         /// get a spedcific order by id
         /// </summary>
@@ -88,5 +100,7 @@ namespace DAL
         /// <param name="id"></param>
         /// <returns></returns>
         GuestRequest GetGuestRequest(int id);
+        #endregion
+
     }
 }

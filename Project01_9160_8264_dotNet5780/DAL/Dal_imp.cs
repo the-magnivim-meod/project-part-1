@@ -9,6 +9,7 @@ namespace DAL
 {
     class Dal_imp : IDal
     {
+        #region Check Methods
         /// <summary>
         /// check if the key already exists
         /// </summary>
@@ -18,7 +19,7 @@ namespace DAL
         {
             return DataSource.GuestRequests.Any(stud => stud.GuestRequestKey == key);//if the key exists will return true
         }
-
+        
         /// <summary>
         /// check if the key already exists
         /// </summary>
@@ -39,7 +40,9 @@ namespace DAL
         {
             return DataSource.Orders.Any(unit => unit.HostingUnitKey == key);//if the key exists will return true
         }
+        #endregion
 
+        #region guestRequest Methods
         /// <summary>
         /// adds a new guestRequest to the storage 
         /// </summary>
@@ -50,8 +53,23 @@ namespace DAL
             DataSource.GuestRequests.Add(guestRequest.Clone());
         }
 
-        //public void CreateNewGuestRequest()
+        /// <summary>
+        /// update the status of a guest request
+        /// </summary>
+        /// <param name="guestRequestNumber">the request to update</param>
+        /// <param name="status">the new status</param>
+        public void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status)
+        {
+            GuestRequest oldGuestRequest = DataSource.GuestRequests.Find(req => req.GuestRequestKey == guestRequestNumber);
+            if (oldGuestRequest == null)
+            {
+                throw new NotExistingKey();
+            }
+            oldGuestRequest.Status = status;
+        }
+        #endregion
 
+        #region hostingUnit Methods
         /// <summary>
         /// adds a new hostingUnit to the storage 
         /// </summary>
@@ -63,13 +81,17 @@ namespace DAL
         }
 
         /// <summary>
-        /// adds a new hostingUnit to the storage 
+        /// update the hosting unit by deleting the old one and adding a new one with the same key
         /// </summary>
-        /// <param name="hostingUnit"></param>
-        public void AddOrder(Order order)
+        /// <param name="hostingUnitNumber">the hosting unit to update</param>
+        public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
-            order.OrderKey = Configuration.OrderCounter;
-            DataSource.Orders.Add(order.Clone());
+            int numberDeleted = DataSource.HostingUnits.RemoveAll(unit => unit.HostingUnitKey == hostingUnit.HostingUnitKey);
+            if (numberDeleted == 0)//which means nothing was deleted
+            {
+                throw new NotExistingKey();
+            }
+            DataSource.HostingUnits.Add(hostingUnit.Clone());
         }
 
         public void DeleteHostingUnit(int hotingUnitNumber)
@@ -80,7 +102,31 @@ namespace DAL
                 throw new NotExistingKey();
             }
         }
+        #endregion
 
+        #region order Methods
+        /// <summary>
+        /// adds a new order to the storage 
+        /// </summary>
+        /// <param name="order"></param>
+        public void AddOrder(Order order)
+        {
+            order.OrderKey = Configuration.OrderCounter;
+            DataSource.Orders.Add(order.Clone());
+        }
+
+        public void UpdateOrder(int orderNumber, OrderStatus status)
+        {
+            Order old_order = DataSource.Orders.Find(order => order.OrderKey == orderNumber);
+            if (old_order == null)
+            {
+                throw new NotExistingKey();
+            }
+            old_order.Status = status;
+        }
+        #endregion
+
+        #region Get all Methods
         public IEnumerable<BankBranch> GetAllBankBranches()
         {
             return from branch in DataSource.BankBranches
@@ -119,58 +165,17 @@ namespace DAL
             return from order in DataSource.Orders
                    select order.Clone();
         }
+        #endregion
 
+        #region Get specific item by ID 
         /// <summary>
-        /// update the status of a guest request
+        /// get the order by its guestRequest key
         /// </summary>
-        /// <param name="guestRequestNumber">the request to update</param>
-        /// <param name="status">the new status</param>
-        public void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status)
+        /// <param name="key">guestRequest key</param>
+        public Order GetOrderByGuestRequestKey(int key)
         {
-            GuestRequest oldGuestRequest = DataSource.GuestRequests.Find(req => req.GuestRequestKey == guestRequestNumber);
-            if (oldGuestRequest == null)
-            {
-                throw new NotExistingKey();
-            }
-            oldGuestRequest.Status = status;
-        }
-        
-        /// <summary>
-        /// update the hosting unit by deleting the ld one and adding a new one with the same key
-        /// </summary>
-        /// <param name="hostingUnitNumber">the hosting unit to update</param>
-        public void UpdateHostingUnit(HostingUnit hostingUnit)
-        {
-            int numberDeleted = DataSource.HostingUnits.RemoveAll(unit => unit.HostingUnitKey == hostingUnit.HostingUnitKey);
-            if (numberDeleted == 0)//which means nothing was deleted
-            {
-                throw new NotExistingKey();
-            }
-            DataSource.HostingUnits.Add(hostingUnit.Clone());
-        }
-
-        /// <summary>
-        /// up
-        /// </summary>
-        /// <param name="orderNumber"></param>
-        /// <param name="status"></param>
-        public void UpdateOrder(int orderNumber, OrderStatus status)
-        {
-            Order old_order = DataSource.Orders.Find(order => order.OrderKey == orderNumber);
-            if (old_order == null)
-            {
-                throw new NotExistingKey();
-            }
-            old_order.Status = status;
-        }
-
-        /// <summary>
-        /// get the order by its key
-        /// </summary>
-        /// <param name="">order key</param>
-        public Order GetOrderByKey(int key)
-        {
-            return DataSource.Orders.Find(order => order.GuestRequestKey == key).Clone();
+            Order order = DataSource.Orders.Find(ord => ord.GuestRequestKey == key).Clone();
+            return order == null ? throw new NotExistingKey() : order.Clone();
         }
 
 
@@ -182,14 +187,15 @@ namespace DAL
 
         public HostingUnit GetHostingUnit(int id)
         {
-            HostingUnit temp = DataSource.HostingUnits.First(req => req.HostingUnitKey == id);
-            return temp == null ? throw new NotExistingKey() : temp.Clone();
+            HostingUnit unit = DataSource.HostingUnits.First(uni => uni.HostingUnitKey == id);
+            return unit == null ? throw new NotExistingKey() : unit.Clone();
         }
         
         public Order GetOrder(int id)
         {
-            Order temp = DataSource.Orders.First(req => req.OrderKey == id);
-            return temp == null ? throw new NotExistingKey() : temp.Clone();
+            Order order = DataSource.Orders.First(ord => ord.OrderKey == id);
+            return order == null ? throw new NotExistingKey() : order.Clone();
         }
+        #endregion
     }
 }

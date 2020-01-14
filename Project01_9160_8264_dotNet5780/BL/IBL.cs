@@ -8,6 +8,7 @@ namespace BL
 {
     public interface IBL
     {
+        #region GuestRequest Methods
         /// <summary>
         /// add a guestRequest to the DataSource
         /// </summary>
@@ -21,6 +22,9 @@ namespace BL
         /// <param name="status">the new stauts</param>
         void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status);
 
+        #endregion
+
+        #region hostingUnit Methods
         /// <summary>
         /// add a hostingUnit to the DataSource
         /// </summary>
@@ -36,7 +40,9 @@ namespace BL
         /// </summary>
         /// <param name="hostingUnit">the hosting unit to update</param>
         void UpdateHostingUnit(HostingUnit hostingUnit);
+        #endregion
 
+        #region Order Methods
         /// <summary>
         /// add an order to the dataSource
         /// </summary>
@@ -48,7 +54,9 @@ namespace BL
         /// <param name="orderNumber">the order to update</param>
         /// <param name="status">the new status</param>
         void UpdateOrder(int orderNumber, OrderStatus status);
+        #endregion
 
+        #region get all Methods
         /// <summary>
         /// return all of the hosting units in the dataSource
         /// </summary>
@@ -69,6 +77,9 @@ namespace BL
         /// </summary>
         /// <returns></returns>
         IEnumerable<BankBranch> GetAllBankBranches();
+        #endregion
+
+        #region Miscellaneous Methods
 
         /// <summary>
         /// returns all the hosting units that are empty at the time requested
@@ -115,7 +126,9 @@ namespace BL
         /// <param name="hostingUnit"></param>
         /// <returns></returns>
         int NumOrdersHostingUnit(HostingUnit hostingUnit);
+        #endregion
 
+        #region Grouping Methods
         /// <summary>
         /// group the requests by the area requested
         /// </summary>
@@ -139,5 +152,6 @@ namespace BL
         /// </summary>
         /// <returns>a list of groups</returns>
         IEnumerable<IGrouping<AreaOfTheCountry, HostingUnit>> GroupUnitsByArea();
+        #endregion
     }
 }

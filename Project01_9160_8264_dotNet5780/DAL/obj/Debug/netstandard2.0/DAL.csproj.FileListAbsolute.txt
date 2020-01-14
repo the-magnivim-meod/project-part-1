@@ -9,3 +9,5 @@ C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\DA
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\DAL\obj\Debug\netstandard2.0\DAL.csproj.CopyComplete
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\DAL\obj\Debug\netstandard2.0\DAL.dll
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\DAL\obj\Debug\netstandard2.0\DAL.pdb
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\DAL\bin\Debug\netstandard2.0\DS.dll
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\DAL\bin\Debug\netstandard2.0\DS.pdb

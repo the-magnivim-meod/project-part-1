@@ -11,3 +11,5 @@ C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\BL
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\BL\obj\Debug\netstandard2.0\BL.csproj.CopyComplete
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\BL\obj\Debug\netstandard2.0\BL.dll
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\BL\obj\Debug\netstandard2.0\BL.pdb
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\BL\bin\Debug\netstandard2.0\DS.dll
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\BL\bin\Debug\netstandard2.0\DS.pdb

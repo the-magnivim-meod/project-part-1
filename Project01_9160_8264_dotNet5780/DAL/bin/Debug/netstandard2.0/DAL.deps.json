@@ -10,6 +10,7 @@
       "DAL/1.0.0": {
         "dependencies": {
           "BE": "1.0.0",
+          "DS": "1.0.0",
           "NETStandard.Library": "2.0.3"
         },
         "runtime": {
@@ -25,6 +26,14 @@
       "BE/1.0.0": {
         "runtime": {
           "BE.dll": {}
+        }
+      },
+      "DS/1.0.0": {
+        "dependencies": {
+          "BE": "1.0.0"
+        },
+        "runtime": {
+          "DS.dll": {}
         }
       }
     }
@@ -50,6 +59,11 @@
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
     "BE/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DS/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

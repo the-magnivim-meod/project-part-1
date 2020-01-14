@@ -1,14 +1,15 @@
 ﻿using BE;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using DAL;
 namespace BL
 {
     class BL_imp : IBL
     {
         static IDal Idal = FactoryDal.GetDal();
+
+        #region GuestRequest Methods
         public void AddGuestRequest(GuestRequest guestRequest)
         {
             if (!(guestRequest.EntryDate < guestRequest.ReleaseDate))
@@ -18,17 +19,61 @@ namespace BL
             Idal.AddGuestRequest(guestRequest);
         }
 
+        public void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status)
+        {
+            try
+            {
+                Idal.UpdateGuestRequest(guestRequestNumber, status);
+            }
+            catch (Exception cought)
+            {
+
+                throw cought;
+            }
+        }
+        #endregion
+
+        #region hostingUnit Methods
         public void AddHostingUnit(HostingUnit hostingUnit)
         {
-
-            Y_N NO = Y_N.No;
-            if (Y_N.No == hostingUnit.Owner.CollectionClearance)
+            if (hostingUnit.Owner.CollectionClearance == Y_N.No)
             {
                 throw new DAL.LackOfSigningPermission();
             }
             Idal.AddHostingUnit(hostingUnit);
         }
 
+        public void UpdateHostingUnit(HostingUnit hostingUnit)
+        {
+            try
+            {
+                Idal.UpdateHostingUnit(hostingUnit);
+            }
+            catch (Exception cought)
+            {
+
+                throw cought;
+            }
+        }
+
+        public void DeleteHostingUnit(int hotingUnitNumber)
+        {
+            if (hotingUnitNumber == 0)
+            {
+                throw new DAL.NotExistingKey();
+            }
+            try
+            {
+                Idal.DeleteHostingUnit(hotingUnitNumber);
+            }
+            catch (Exception notExistingKey)
+            {
+                throw notExistingKey;
+            }
+        }
+        #endregion
+
+        #region Order Methods
         public void AddOrder(Order order)
         {
             BE.GuestRequest req = Idal.GetGuestRequest(order.GuestRequestKey);
@@ -53,31 +98,27 @@ namespace BL
             Idal.AddOrder(order);
         }
 
-
-
-        public void DeleteHostingUnit(int hotingUnitNumber)
+        public void UpdateOrder(int orderNumber, OrderStatus status)
         {
-            if (hotingUnitNumber == 0)
+            Order order = Idal.GetOrder(orderNumber);
+            if (order.Status == OrderStatus.DealWasClosed)
             {
-                throw new DAL.NotExistingKey();
+                throw new TheDealWasClosed();
             }
             try
             {
-                Idal.DeleteHostingUnit(hotingUnitNumber);
+                Idal.UpdateOrder(orderNumber, status);
             }
-            catch (Exception NotExistingKey)
+            catch (Exception)
             {
-
                 throw;
             }
+            Console.WriteLine("mail sent\n");
         }
+        #endregion
 
+        #region Get all Methods
         public IEnumerable<BankBranch> GetAllBankBranches()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<HostingUnit> GetAllEmptyUnits(DateTime date, int numberDays)
         {
             throw new NotImplementedException();
         }
@@ -96,7 +137,9 @@ namespace BL
         {
             throw new NotImplementedException();
         }
+        #endregion
 
+        #region Miscellaneous Methods
         public List<Order> GetAllOrders(Predicate<Order> match)
         {
             throw new NotImplementedException();
@@ -107,40 +150,10 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<IGrouping<int, Host>> GroupHostByNumberOfUnits()
+        public List<HostingUnit> GetAllEmptyUnits(DateTime date, int numberDays)
         {
-            IEnumerable<IGrouping<int, HostingUnit>> hostingUnitsByHosts = from unit in Idal.GetAllHostingUnits()
-                                                              group unit by unit.Owner.HostKey;
-            IEnumerable<IGrouping<int, Host>> result = from unitsByHost in  hostingUnitsByHosts
-                                                       group unitsByHost.
-
-
-
-
-
+            throw new NotImplementedException();
         }
-
-        public IEnumerable<IGrouping<AreaOfTheCountry, GuestRequest>> GroupRequestByArea()
-        {
-            IEnumerable<IGrouping<AreaOfTheCountry, GuestRequest>> result = from req in Idal.GetAllGuestReuests()
-                                                                           group req by req.Area;
-            return result;
-        }
-
-        public IEnumerable<IGrouping<int, GuestRequest>> GroupRequestByNumberOfGuests()
-        {
-            IEnumerable<IGrouping<int, GuestRequest>> result = from req in Idal.GetAllGuestReuests()
-                                                                           group req by req.Adults + req.Children;
-            return result;
-        }
-
-        public IEnumerable<IGrouping<AreaOfTheCountry, HostingUnit>> GroupUnitsByArea()
-        {
-            IEnumerable<IGrouping<AreaOfTheCountry, HostingUnit>> result = from unit in Idal.GetAllHostingUnits()
-                                                                           group unit by unit.Area;
-            return result;
-        }
-
         public int NumOfDaysPast(DateTime first, DateTime second)
         {
             throw new NotImplementedException();
@@ -155,51 +168,41 @@ namespace BL
         {
             throw new NotImplementedException();
         }
+        #endregion
 
-        public void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status)
+        #region Grouping Methods 
+        public IEnumerable<IGrouping<AreaOfTheCountry, GuestRequest>> GroupRequestByArea()
         {
-            try
-            {
-                Idal.UpdateGuestRequest(guestRequestNumber, status);
-            }
-            catch (Exception cought)
-            {
-
-                throw cought;
-            }
+            IEnumerable<IGrouping<AreaOfTheCountry, GuestRequest>> result = from req in Idal.GetAllGuestReuests()
+                                                                            group req by req.Area;
+            return result;
         }
 
-        public void UpdateHostingUnit(HostingUnit hostingUnit)
+        public IEnumerable<IGrouping<int, GuestRequest>> GroupRequestByNumberOfGuests()
         {
-            try
-            {
-                Idal.UpdateHostingUnit(hostingUnit);
-            }
-            catch (Exception cought)
-            {
-
-                throw cought;
-            }
+            IEnumerable<IGrouping<int, GuestRequest>> result = from req in Idal.GetAllGuestReuests()
+                                                               let numberOfGuests = req.Adults + req.Children
+                                                               group req by numberOfGuests;
+            return result;
         }
 
-
-
-        public void UpdateOrder(int orderNumber, GuestRequestStatus status)
+        public IEnumerable<IGrouping<AreaOfTheCountry, HostingUnit>> GroupUnitsByArea()
         {
-            if (status == GuestRequestStatus.ConnectedToOrder)
-            {
-                throw new TheDealWasClosed();
-            }
-            try
-            {
-                Idal.UpdateGuestRequest(orderNumber, status);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            Console.WriteLine("mail sent\n");
+            IEnumerable<IGrouping<AreaOfTheCountry, HostingUnit>> result = from unit in Idal.GetAllHostingUnits()
+                                                                           group unit by unit.Area;
+            return result;
         }
 
+        public IEnumerable<IGrouping<int, Host>> GroupHostByNumberOfUnits()
+        {
+            //sort hostingUnits by their hosts
+            var hostingUnitsByHostId = (from item in Idal.GetAllHostingUnits()
+                                        group item by item.Owner);
+
+            //sort the hosts by the amount of hosting units
+            return (from item in hostingUnitsByHostId
+                    group item.Key by item.Count());
+        }
+        #endregion
     }
 }

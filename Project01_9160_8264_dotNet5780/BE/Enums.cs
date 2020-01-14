@@ -4,6 +4,7 @@ using System.Text;
 
 namespace BE
 {
+    #region stati
     /// <summary>
     /// Used to know what 
     /// is the current status of an Order.
@@ -12,9 +13,16 @@ namespace BE
     {
         YetToBeAttendedTo,
         MailWasSent,
-        ClosedByTheClient,
+        DealWasClosed,
         ClosedByExpiration
     }
+
+    public enum GuestRequestStatus
+    {
+        YetToBeAttendedTo,
+        ConnectedToOrder
+    }
+    #endregion
 
     /// <summary>
     /// Used to represent areas
@@ -57,11 +65,5 @@ namespace BE
     {
         No,
         Yes
-    }
-
-    public enum GuestRequestStatus
-    {
-        YetToBeAttendedTo,
-        ConnectedToOrder
     }
 }
