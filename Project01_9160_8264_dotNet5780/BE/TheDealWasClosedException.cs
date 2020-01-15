@@ -4,9 +4,9 @@ using System.Text;
 
 namespace BE
 {
-    public class TheDealWasClosedException : Exception
+    public class TheOrderIsInavailableException : Exception
     {
-        public TheDealWasClosedException()
+        public TheOrderIsInavailableException()
         {
 
         }

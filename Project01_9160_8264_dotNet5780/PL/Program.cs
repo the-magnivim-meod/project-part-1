@@ -138,12 +138,38 @@ namespace PL
                     case 'g':
                         SignCollectionClearance();
                         break;
+                    case 'h':
+                        DeleteHostingUnit();
+                        break;
                     case 'q':
                         break;
                     default:
                         Console.WriteLine("invalid output");
                         break;
                 }
+            }
+        }
+
+        private static void DeleteHostingUnit()
+        {
+            int unitKey;
+            try
+            {
+                Console.WriteLine("enter the hosting unit ID to delete\n");
+                unitKey = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("invalid input\n");
+                return;             
+            }
+            try
+            {
+                myIbl.DeleteHostingUnit(unitKey);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("DeleteHostingUnit didnt work\n");
             }
         }
 
@@ -211,7 +237,7 @@ namespace PL
             }
             catch (Exception)
             {
-                Console.WriteLine("update order did not work either no collectionClearance or status is DealWasClosed\n");
+                Console.WriteLine("update order did not work either no collectionClearance or the Order is inaccesable\n");
                 return;
             }
             Console.WriteLine("mail was sent\n");
@@ -239,7 +265,7 @@ namespace PL
             }
             catch (Exception)
             {
-                Console.WriteLine("updateOrder didnt work either because the dates are occupied or deal was closed or there is a status exception\n");
+                Console.WriteLine("updateOrder didnt work either because the dates are occupied or the Order is inaccesable or there is a status exception\n");
                 return;
             }
             
@@ -310,6 +336,7 @@ namespace PL
             Console.WriteLine("e: send mail\n");
             Console.WriteLine("f: change order status\n");
             Console.WriteLine("g: sign collection clearance\n");
+            Console.WriteLine("h: delete hosting unit\n");
             Console.WriteLine("q: quit\n");
             Console.WriteLine("__________________________________\n");
         }

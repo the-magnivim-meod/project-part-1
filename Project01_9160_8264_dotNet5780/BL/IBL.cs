@@ -54,6 +54,12 @@ namespace BL
         /// <param name="orderNumber">the order to update</param>
         /// <param name="status">the new status</param>
         void UpdateOrder(int orderNumber, OrderStatus status);
+
+        /// <summary>
+        /// delete an order by its key
+        /// </summary>
+        /// <param name="orderKey"></param>
+        void deleteOrder(int orderKey);
         #endregion
 
         #region get all Methods

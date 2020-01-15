@@ -124,6 +124,11 @@ namespace DAL
             }
             old_order.Status = status;
         }
+
+        public void deleteOrder(int orderKey)
+        {
+            DS.DataSource.Orders.RemoveAll(order => order.OrderKey == orderKey);
+        }
         #endregion
 
         #region Get all Methods

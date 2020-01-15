@@ -44,6 +44,19 @@ namespace BL
 
         public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
+            HostingUnit old = (from unit in Idal.GetAllHostingUnits()
+                               where unit.HostingUnitKey == hostingUnit.HostingUnitKey
+                               select unit).First();
+            if (hostingUnit.Owner.CollectionClearance == Y_N.No && old.Owner.CollectionClearance == Y_N.Yes)
+            { 
+                foreach(Order order in Idal.GetAllOrders())
+                {
+                    if (order.HostingUnitKey == hostingUnit.HostingUnitKey)
+                    {
+                        throw new HostingUnitConnectedToOrderException();
+                    }
+                }
+            }
             try
             {
                 Idal.UpdateHostingUnit(hostingUnit);
@@ -57,17 +70,21 @@ namespace BL
 
         public void DeleteHostingUnit(int hotingUnitNumber)
         {
-            if (hotingUnitNumber == 0)
+
+            foreach (Order order in GetAllOrders())
             {
-                throw new NotExistingKeyException();
+                if (order.HostingUnitKey == hotingUnitNumber)
+                {
+                    throw new HostingUnitConnectedToOrderException();
+                }
             }
             try
             {
                 Idal.DeleteHostingUnit(hotingUnitNumber);
             }
-            catch (Exception notExistingKey)
+            catch (Exception)
             {
-                throw notExistingKey;
+                throw new NotExistingKeyException();
             }
         }
 
@@ -85,7 +102,7 @@ namespace BL
                 if (unit.Diary[currentDate.Month - 1, currentDate.Day - 1])
                 {
                     throw new TheUnitIsOccupiedException();
-                }              
+                }
             }
 
             //checks if the request is still available
@@ -101,9 +118,9 @@ namespace BL
             Order order = Idal.GetOrder(orderNumber);
             HostingUnit unit = Idal.GetHostingUnit(order.HostingUnitKey);
             GuestRequest req = Idal.GetGuestRequest(order.GuestRequestKey);
-            if (order.Status == OrderStatus.DealWasClosed)
+            if (order.Status == OrderStatus.DealWasClosed || order.Status == OrderStatus.ClosedByTheSystem)
             {
-                throw new TheDealWasClosedException();
+                throw new TheOrderIsInavailableException();
             }
 
             if (status == OrderStatus.MailWasSent)
@@ -127,7 +144,7 @@ namespace BL
             else if (status == OrderStatus.DealWasClosed)
             {
                 //checks if last status is mailWasSent and that request is still available
-                if (order.Status != OrderStatus.MailWasSent || req.Status== GuestRequestStatus.ConnectedToOrder)
+                if (order.Status != OrderStatus.MailWasSent || req.Status == GuestRequestStatus.ConnectedToOrder)
                 {
                     throw new StatusException();
                 }
@@ -156,7 +173,33 @@ namespace BL
                 }
                 Idal.UpdateHostingUnit(unit);
                 Idal.UpdateGuestRequest(req.GuestRequestKey, GuestRequestStatus.ConnectedToOrder);
+                //change the status of all the orders that were connected to the guestRequests
+                foreach (Order order1 in GetAllOrders())
+                {
+                    if (order1.GuestRequestKey == order.GuestRequestKey && order1.OrderKey != order.OrderKey)
+                    {
+                        UpdateOrder(order1.OrderKey, OrderStatus.ClosedByTheSystem);
+                    }
+                }
+
             }
+
+            {
+                try
+                {
+                    Idal.UpdateOrder(orderNumber, status);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
+
+        public void deleteOrder(int orderKey)
+        {
+            Idal.deleteOrder(orderKey);
         }
         #endregion
 
@@ -193,10 +236,10 @@ namespace BL
         public IEnumerable<Order> GetOrders(int numDays)
         {
             return from order in GetAllOrders()
-                   where CheckForTimeElapsedGetOrder(order,numDays)
+                   where CheckForTimeElapsedGetOrder(order, numDays)
                    select order;
-           
-        } 
+
+        }
 
         /// <summary>
         /// if the deal was order was yet to be attended to we need to check if the time since the creation date is larger then numDays

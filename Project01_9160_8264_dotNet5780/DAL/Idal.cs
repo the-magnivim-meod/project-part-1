@@ -54,6 +54,7 @@ namespace DAL
         /// <param name="orderNumber">the order to update</param>
         /// <param name="status">the new status</param>
         void UpdateOrder(int orderNumber, OrderStatus status);
+        void deleteOrder(int orderKey);
         #endregion
 
         #region Get All Methods

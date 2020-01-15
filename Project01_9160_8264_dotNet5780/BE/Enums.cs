@@ -14,7 +14,8 @@ namespace BE
         YetToBeAttendedTo,
         MailWasSent,
         DealWasClosed,
-        ClosedByExpiration
+        ClosedByExpiration,
+        ClosedByTheSystem   
     }
 
     public enum GuestRequestStatus
