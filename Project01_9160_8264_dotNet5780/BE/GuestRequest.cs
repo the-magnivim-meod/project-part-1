@@ -25,9 +25,8 @@ namespace BE
 
         
         public override string ToString()
-        {
-            string output = $"GuestRequestNumber: {GuestRequestKey}\n";
-            output += "______________________________________________\n";
+        {            
+            string output = $"\nGuestRequestNumber: {GuestRequestKey}\n";           
             output += $"name: {PrivateName} {FamilyName}\n";
             output += $"request status: {Status}\n";
             output += $"mail address: {MailAddress}\n";
@@ -36,7 +35,7 @@ namespace BE
             output += $"Area: {Area}\n";
             output += $"Hosting unit type: {Type}\n";
             output += $"number of guests: {Adults} adults and {Children} children\n";
-            output += $"extras: pool:{Pool} grocery:{CloseByGroceryStore} garden:{Garden} attractions for children:{ChildrensAttractions}\n";
+            output += $"extras: [pool:{Pool}], [grocery:{CloseByGroceryStore}], [garden:{Garden}], [attractions for children:{ChildrensAttractions}]\n";
             return output;
         }
 

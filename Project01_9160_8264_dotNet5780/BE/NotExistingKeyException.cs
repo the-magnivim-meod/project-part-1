@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL
+namespace BE
 {
-    public class TheDealWasClosed : Exception
+    public class NotExistingKeyException : Exception
     {
-        public TheDealWasClosed()
+        public NotExistingKeyException()
         {
 
         }

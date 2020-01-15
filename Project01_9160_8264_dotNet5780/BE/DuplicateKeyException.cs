@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL
+namespace BE
 {
-    public class LackOfSigningPermission : Exception
+    public class DuplicateKeyException : Exception
     {
-        public LackOfSigningPermission()
+        public DuplicateKeyException()
         {
 
         }

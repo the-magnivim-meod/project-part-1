@@ -63,7 +63,7 @@ namespace DAL
             GuestRequest oldGuestRequest = DataSource.GuestRequests.Find(req => req.GuestRequestKey == guestRequestNumber);
             if (oldGuestRequest == null)
             {
-                throw new NotExistingKey();
+                throw new NotExistingKeyException();
             }
             oldGuestRequest.Status = status;
         }
@@ -89,7 +89,7 @@ namespace DAL
             int numberDeleted = DataSource.HostingUnits.RemoveAll(unit => unit.HostingUnitKey == hostingUnit.HostingUnitKey);
             if (numberDeleted == 0)//which means nothing was deleted
             {
-                throw new NotExistingKey();
+                throw new NotExistingKeyException();
             }
             DataSource.HostingUnits.Add(hostingUnit.Clone());
         }
@@ -99,7 +99,7 @@ namespace DAL
             int numberDeleted = DataSource.HostingUnits.RemoveAll(unit => unit.HostingUnitKey == hotingUnitNumber);
             if (numberDeleted == 0)//which means nothing was deleted
             {
-                throw new NotExistingKey();
+                throw new NotExistingKeyException();
             }
         }
         #endregion
@@ -120,7 +120,7 @@ namespace DAL
             Order old_order = DataSource.Orders.Find(order => order.OrderKey == orderNumber);
             if (old_order == null)
             {
-                throw new NotExistingKey();
+                throw new NotExistingKeyException();
             }
             old_order.Status = status;
         }
@@ -175,26 +175,26 @@ namespace DAL
         public Order GetOrderByGuestRequestKey(int key)
         {
             Order order = DataSource.Orders.Find(ord => ord.GuestRequestKey == key).Clone();
-            return order == null ? throw new NotExistingKey() : order.Clone();
+            return order == null ? throw new NotExistingKeyException() : order.Clone();
         }
 
 
         public GuestRequest GetGuestRequest(int id)
         {
             GuestRequest Request = DataSource.GuestRequests.First(req => req.GuestRequestKey == id);
-            return Request == null ? throw new NotExistingKey() : Request.Clone();
+            return Request == null ? throw new NotExistingKeyException() : Request.Clone();
         }
 
         public HostingUnit GetHostingUnit(int id)
         {
             HostingUnit unit = DataSource.HostingUnits.First(uni => uni.HostingUnitKey == id);
-            return unit == null ? throw new NotExistingKey() : unit.Clone();
+            return unit == null ? throw new NotExistingKeyException() : unit.Clone();
         }
         
         public Order GetOrder(int id)
         {
             Order order = DataSource.Orders.First(ord => ord.OrderKey == id);
-            return order == null ? throw new NotExistingKey() : order.Clone();
+            return order == null ? throw new NotExistingKeyException() : order.Clone();
         }
         #endregion
     }

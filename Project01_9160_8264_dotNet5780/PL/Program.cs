@@ -135,12 +135,50 @@ namespace PL
                     case 'f':
                         ChangeOrderStatus();
                         break;
+                    case 'g':
+                        SignCollectionClearance();
+                        break;
                     case 'q':
                         break;
                     default:
                         Console.WriteLine("invalid output");
                         break;
                 }
+            }
+        }
+
+        private static void SignCollectionClearance()
+        {
+            int unitKey;
+            try
+            {
+                Console.WriteLine("enter the hostingUnit you wish to sign collectionClearance for:\n");
+                unitKey = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("invalid input\n");
+                return;
+            }
+            HostingUnit unit = (from hUnit in myIbl.GetAllHostingUnits()
+                               where hUnit.HostingUnitKey == unitKey
+                               select hUnit).First();
+
+            if (unit == null)
+            {
+                Console.WriteLine("not existing hostingUnit\n");
+                return;
+            }
+
+            unit.Owner.CollectionClearance = Y_N.Yes;
+            try
+            {
+                myIbl.UpdateHostingUnit(unit);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("updateHostingUnit didnt work\n");
+                return;
             }
         }
 
@@ -167,13 +205,44 @@ namespace PL
                 Console.WriteLine("not existing order\n");
                 return;
             }
-
-            myIbl.UpdateOrder(key, OrderStatus.MailWasSent);
+            try
+            {
+                myIbl.UpdateOrder(key, OrderStatus.MailWasSent);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("update order did not work either no collectionClearance or status is DealWasClosed\n");
+                return;
+            }
+            Console.WriteLine("mail was sent\n");
+           
         }
 
         private static void ChangeOrderStatus()
         {
-            throw new NotImplementedException();
+            PrintAllOrders();
+            int orderKey;
+            try
+            {
+                Console.WriteLine("enter the order id to update\n");
+                orderKey = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("invalid input\n");
+                return;
+            }
+            try
+            {
+                myIbl.UpdateOrder(orderKey, OrderStatus.DealWasClosed);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("updateOrder didnt work either because the dates are occupied or deal was closed or there is a status exception\n");
+                return;
+            }
+            
         }
 
         private static void AddOrder()
@@ -220,9 +289,9 @@ namespace PL
             {
                 myIbl.AddOrder(newOrder);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine("the hosting unit is occupied in these dates\n");
+                Console.WriteLine("the hosting unit is occupied in these dates or there is a stauts exception\n");
                 return;
             }
 
@@ -238,6 +307,9 @@ namespace PL
             Console.WriteLine("b: print all the hosting units\n");
             Console.WriteLine("c: add an order\n");
             Console.WriteLine("d: print all orders\n");
+            Console.WriteLine("e: send mail\n");
+            Console.WriteLine("f: change order status\n");
+            Console.WriteLine("g: sign collection clearance\n");
             Console.WriteLine("q: quit\n");
             Console.WriteLine("__________________________________\n");
         }

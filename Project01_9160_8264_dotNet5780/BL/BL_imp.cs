@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 namespace BL
 {
+    /// <summary>
+    /// implementation of IBL interface
+    /// </summary>
     class BL_imp : IBL
     {
         static IDal Idal = FactoryDal.GetDal();
@@ -36,10 +39,6 @@ namespace BL
         #region hostingUnit Methods
         public void AddHostingUnit(HostingUnit hostingUnit)
         {
-            /*if (hostingUnit.Owner.CollectionClearance == Y_N.No)
-            {
-                throw new DAL.LackOfSigningPermission();
-            }*/
             Idal.AddHostingUnit(hostingUnit);
         }
 
@@ -60,7 +59,7 @@ namespace BL
         {
             if (hotingUnitNumber == 0)
             {
-                throw new DAL.NotExistingKey();
+                throw new NotExistingKeyException();
             }
             try
             {
@@ -71,6 +70,7 @@ namespace BL
                 throw notExistingKey;
             }
         }
+
         #endregion
 
         #region Order Methods
@@ -78,40 +78,85 @@ namespace BL
         {
             BE.GuestRequest req = Idal.GetGuestRequest(order.GuestRequestKey);
             BE.HostingUnit unit = Idal.GetHostingUnit(order.HostingUnitKey);
-           
+
+            //checks if the dates are already occupied
             for (DateTime currentDate = req.EntryDate; currentDate < req.ReleaseDate; currentDate = currentDate.AddDays(1))
             {
                 if (unit.Diary[currentDate.Month - 1, currentDate.Day - 1])
                 {
-                    throw new TheUnitIsOccupied();
+                    throw new TheUnitIsOccupiedException();
                 }              
             }
 
-            Idal.AddOrder(order);
-
-            for (DateTime currentDate = req.EntryDate; currentDate < req.ReleaseDate; currentDate = currentDate.AddDays(1))
+            //checks if the request is still available
+            if (req.Status == GuestRequestStatus.ConnectedToOrder)
             {
-                unit.Diary[currentDate.Month - 1, currentDate.Day - 1] = true;
+                throw new StatusException();
             }
-            UpdateHostingUnit(unit);
+            Idal.AddOrder(order);
         }
 
         public void UpdateOrder(int orderNumber, OrderStatus status)
         {
             Order order = Idal.GetOrder(orderNumber);
+            HostingUnit unit = Idal.GetHostingUnit(order.HostingUnitKey);
+            GuestRequest req = Idal.GetGuestRequest(order.GuestRequestKey);
             if (order.Status == OrderStatus.DealWasClosed)
             {
-                throw new TheDealWasClosed();
+                throw new TheDealWasClosedException();
             }
-            try
+
+            if (status == OrderStatus.MailWasSent)
             {
-                Idal.UpdateOrder(orderNumber, status);
+                //checks if the host signed on collection clearance
+                if (unit.Owner.CollectionClearance == Y_N.No)
+                {
+                    throw new LackOfSigningPermissionException();
+                }
+
+                try
+                {
+                    Idal.UpdateOrder(orderNumber, status);
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
             }
-            catch (Exception)
+
+            else if (status == OrderStatus.DealWasClosed)
             {
-                throw;
+                //checks if last status is mailWasSent and that request is still available
+                if (order.Status != OrderStatus.MailWasSent || req.Status== GuestRequestStatus.ConnectedToOrder)
+                {
+                    throw new StatusException();
+                }
+
+                //checks if the dates are already occupied
+                for (DateTime currentDate = req.EntryDate; currentDate < req.ReleaseDate; currentDate = currentDate.AddDays(1))
+                {
+                    if (unit.Diary[currentDate.Month - 1, currentDate.Day - 1])
+                    {
+                        throw new TheUnitIsOccupiedException();
+                    }
+                }
+
+                try
+                {
+                    Idal.UpdateOrder(orderNumber, status);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                //fill in the days in the diary
+                for (DateTime currentDate = req.EntryDate; currentDate < req.ReleaseDate; currentDate = currentDate.AddDays(1))
+                {
+                    unit.Diary[currentDate.Month - 1, currentDate.Day - 1] = true;
+                }
+                Idal.UpdateHostingUnit(unit);
+                Idal.UpdateGuestRequest(req.GuestRequestKey, GuestRequestStatus.ConnectedToOrder);
             }
-            Console.WriteLine("mail sent\n");
         }
         #endregion
 
