@@ -48,8 +48,8 @@ namespace BL
                                where unit.HostingUnitKey == hostingUnit.HostingUnitKey
                                select unit).First();
             if (hostingUnit.Owner.CollectionClearance == Y_N.No && old.Owner.CollectionClearance == Y_N.Yes)
-            { 
-                foreach(Order order in Idal.GetAllOrders())
+            {
+                foreach (Order order in Idal.GetAllOrders())
                 {
                     if (order.HostingUnitKey == hostingUnit.HostingUnitKey)
                     {
@@ -255,21 +255,48 @@ namespace BL
 
         public IEnumerable<HostingUnit> GetAllEmptyUnits(DateTime date, int numberDays)
         {
-            throw new NotImplementedException();
+            return from unit in GetAllHostingUnits()
+                   where CheckDatesInUnit(unit, date, numberDays)
+                   select unit;
+
         }
-        public int NumOfDaysPast(DateTime first, DateTime second)
+        /// <summary>
+        /// checks if the unit is empty in dates from date and up to date+numDays
+        /// </summary>
+        private bool CheckDatesInUnit(HostingUnit unit, DateTime date, int numDays)
         {
-            throw new NotImplementedException();
+            for (DateTime currentDate = date; currentDate < date.AddDays(numDays); currentDate = currentDate.AddDays(1))
+            {
+                if (unit.Diary[currentDate.Month - 1, currentDate.Day - 1])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public double NumOfDaysPast(DateTime first, DateTime second)
+        {
+            return (((second.Date - first.Date)).TotalDays);
         }
 
-        public int NumOrdersHost(Host host)
+        public double NumOfDaysPast(DateTime first)
         {
-            throw new NotImplementedException();
+            return (((DateTime.Today - first.Date)).TotalDays);
+        }
+
+        public int NumOrdersGuestRequest(GuestRequest guest)
+        {
+            return (from order in GetAllOrders()
+                    from req in GetAllGuestReuests()
+                    where order.GuestRequestKey == req.GuestRequestKey
+                    select req).Count();
         }
 
         public int NumOrdersHostingUnit(HostingUnit hostingUnit)
         {
-            throw new NotImplementedException();
+            return (from order in GetAllOrders()
+                    where order.HostingUnitKey == hostingUnit.HostingUnitKey
+                    select order).Count();
         }
         #endregion
 

@@ -101,9 +101,14 @@ namespace BL
         /// <param name="first"></param>
         /// <param name="second">default is today</param>
         /// <returns></returns>
-        int NumOfDaysPast(DateTime first, DateTime second /*=today*/);
+        double NumOfDaysPast(DateTime first, DateTime second);
 
-
+        /// <summary>
+        /// returns the number of days past from first until today
+        /// </summary>
+        /// <param name="first"></param>
+        /// <returns></returns>
+        double NumOfDaysPast(DateTime first);
         /// <summary>
         /// returns all the orders that the time that past since they were created/an email was sent
         /// is equal or larger to the amount of days given
@@ -120,11 +125,11 @@ namespace BL
         IEnumerable<Order> GetAllOrders(Predicate<Order> match);
 
         /// <summary>
-        /// returns the amount of orders the host got
+        /// returns the amount of orders the GuestRequest got
         /// </summary>
         /// <param name="host"></param>
         /// <returns></returns>
-        int NumOrdersHost(Host host);
+        int NumOrdersGuestRequest(GuestRequest guest);
 
         /// <summary>
         /// returns the amount of orders that were sent or closed successfuly in this unit 
