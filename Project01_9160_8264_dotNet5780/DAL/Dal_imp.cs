@@ -131,6 +131,18 @@ namespace DAL
         }
         #endregion
 
+        #region Site Owner Methods
+        public void CollectFee(int dayCount)
+        {
+            Configuration.CollectFee(dayCount);
+        }
+
+        public int GetTotalEarnings()
+        {
+            return Configuration.TotalEarnedBySiteOwner;
+        }
+        #endregion
+
         #region Get all Methods
         public IEnumerable<BankBranch> GetAllBankBranches()
         {
@@ -179,27 +191,23 @@ namespace DAL
         /// <param name="key">guestRequest key</param>
         public Order GetOrderByGuestRequestKey(int key)
         {
-            Order order = DataSource.Orders.Find(ord => ord.GuestRequestKey == key).Clone();
-            return order == null ? throw new NotExistingKeyException() : order.Clone();
+            return DataSource.Orders.FirstOrDefault(ord => ord.GuestRequestKey == key).Clone();
         }
 
 
         public GuestRequest GetGuestRequest(int id)
         {
-            GuestRequest Request = DataSource.GuestRequests.First(req => req.GuestRequestKey == id);
-            return Request == null ? throw new NotExistingKeyException() : Request.Clone();
+            return DataSource.GuestRequests.FirstOrDefault(req => req.GuestRequestKey == id).Clone();
         }
 
         public HostingUnit GetHostingUnit(int id)
         {
-            HostingUnit unit = DataSource.HostingUnits.First(uni => uni.HostingUnitKey == id);
-            return unit == null ? throw new NotExistingKeyException() : unit.Clone();
+            return DataSource.HostingUnits.FirstOrDefault(uni => uni.HostingUnitKey == id).Clone();
         }
         
         public Order GetOrder(int id)
         {
-            Order order = DataSource.Orders.First(ord => ord.OrderKey == id);
-            return order == null ? throw new NotExistingKeyException() : order.Clone();
+            return DataSource.Orders.FirstOrDefault(ord => ord.OrderKey == id).Clone();
         }
         #endregion
     }

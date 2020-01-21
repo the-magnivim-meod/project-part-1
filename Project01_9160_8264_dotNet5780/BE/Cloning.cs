@@ -14,6 +14,10 @@ namespace DAL
         /// <returns>copy of item</returns>
         public static GuestRequest Clone(this GuestRequest original)
         {
+            if (original == null)
+            {
+                return null;
+            }
             GuestRequest target = new GuestRequest();
             target.GuestRequestKey = original.GuestRequestKey;
             target.PrivateName = original.PrivateName;
@@ -41,6 +45,10 @@ namespace DAL
         /// <returns>copy of item</returns>
         public static Order Clone(this Order original)
         {
+            if (original == null)
+            {
+                return null;
+            }
             Order target = new Order();
             target.HostingUnitKey = original.HostingUnitKey;
             target.GuestRequestKey = original.GuestRequestKey;
@@ -58,6 +66,10 @@ namespace DAL
         /// <returns>copy of item</returns>
         public static HostingUnit Clone(this HostingUnit original)
         {
+            if (original == null)
+            {
+                return null;
+            }
             HostingUnit target = new HostingUnit();
             target.HostingUnitKey = original.HostingUnitKey;
             target.Owner= original.Owner.Clone();
@@ -70,6 +82,10 @@ namespace DAL
 
         public static Host Clone(this Host original)
         {
+            if (original == null)
+            {
+                return null;
+            }
             Host target = new Host();
             target.HostKey = original.HostKey;
             target.MailAddress = original.MailAddress;
@@ -84,6 +100,10 @@ namespace DAL
 
         public static BankBranch Clone(this BankBranch original)
         {
+            if (original == null)
+            {
+                return null;
+            }
             BankBranch target = new BankBranch();
             target.BankName = original.BankName;
             target.BankAccountNumber = original.BankAccountNumber;

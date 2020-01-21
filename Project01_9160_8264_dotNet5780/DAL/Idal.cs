@@ -57,6 +57,20 @@ namespace DAL
         void deleteOrder(int orderKey);
         #endregion
 
+        #region Site Owner Methods
+        /// <summary>
+        /// collect fee after closing deal
+        /// </summary>
+        /// <param name="dayCount"></param>
+        void CollectFee(int dayCount);
+
+        /// <summary>
+        /// returns the total amount of earnings
+        /// </summary>
+        /// <returns></returns>
+        int GetTotalEarnings();
+        #endregion
+
         #region Get All Methods
         /// <summary>
         /// return all of the hosting units in the dataSource

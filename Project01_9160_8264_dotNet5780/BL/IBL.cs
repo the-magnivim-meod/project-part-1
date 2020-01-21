@@ -35,11 +35,25 @@ namespace BL
         /// </summary>
         /// <param name="hotingUnitNumber">the unit to delete's number</param>
         void DeleteHostingUnit(int hotingUnitNumber);
+        
+        /*
         /// <summary>
         /// update a hosting unit
         /// </summary>
         /// <param name="hostingUnit">the hosting unit to update</param>
-        void UpdateHostingUnit(HostingUnit hostingUnit);
+        void UpdateHostingUnit(HostingUnit hostingUnit);*/
+
+        /// <summary>
+        /// sign collection clearance for hosting unit
+        /// </summary>
+        /// <param name="hotingUnitNumber"></param>
+        void SignCollectionClearance(int hotingUnitNumber);
+        
+        /// <summary>
+        /// unsign collection clearance for the  hosting unit
+        /// </summary>
+        /// <param name="hotingUnitNumber"></param>
+        void RemoveCollectionClearance(int hotingUnitNumber);
         #endregion
 
         #region Order Methods
@@ -48,18 +62,33 @@ namespace BL
         /// </summary>
         /// <param name="order">the new order</param>
         void AddOrder(Order order);
+
         /// <summary>
-        /// update an Order's status
+        /// send an invite mail to the guest
         /// </summary>
-        /// <param name="orderNumber">the order to update</param>
-        /// <param name="status">the new status</param>
-        void UpdateOrder(int orderNumber, OrderStatus status);
+        /// <param name="orderNumber"></param>
+        void SendMail(int orderNumber);
+
+        /// <summary>
+        /// change an order status from MailWasSent to DealWasClosed
+        /// </summary>
+        /// <param name="orderNumber"></param>
+        void CloseDeal(int orderNumber);
 
         /// <summary>
         /// delete an order by its key
         /// </summary>
         /// <param name="orderKey"></param>
         void deleteOrder(int orderKey);
+        #endregion
+
+        #region Site Owner Methods
+        /// <summary>
+        /// returns the total earnings of the site owner
+        /// </summary>
+        /// <returns></returns>
+        int GetTotalEarnings();
+
         #endregion
 
         #region get all Methods

@@ -84,19 +84,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yitzhaka\\.nuget\\packages\\": {}
+    "C:\\Users\\yezob\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\PL\\PL.csproj",
+      "projectUniqueName": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\PL\\PL.csproj",
       "projectName": "PL",
-      "projectPath": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\PL\\PL.csproj",
-      "packagesPath": "C:\\Users\\yitzhaka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\PL\\obj\\",
+      "projectPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\PL\\PL.csproj",
+      "packagesPath": "C:\\Users\\yezob\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\PL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\yitzhaka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yezob\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -109,11 +109,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj": {
-              "projectPath": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj"
+            "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj": {
+              "projectPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj"
             },
-            "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BL\\BL.csproj": {
-              "projectPath": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BL\\BL.csproj"
+            "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BL\\BL.csproj": {
+              "projectPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BL\\BL.csproj"
             }
           }
         }

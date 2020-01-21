@@ -10,6 +10,7 @@ namespace DAL
         private static int hostCounter = 10000000;
         private static int guestRequestCounter = 1;
         private static int orderCounter = 1;
+        private static int totalEarnedBySiteOwner = 0;
 
         public static int HostingUnitCounter
         {          
@@ -41,6 +42,19 @@ namespace DAL
             {
                 return orderCounter++;
             }
+        }
+
+        public static int TotalEarnedBySiteOwner
+        {
+            get 
+            { 
+                return totalEarnedBySiteOwner;
+            }
+        }
+
+        public static void CollectFee(int numDays)
+        {
+            totalEarnedBySiteOwner += numDays * 10;
         }
     }
 }

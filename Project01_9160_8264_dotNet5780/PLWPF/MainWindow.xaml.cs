@@ -26,5 +26,20 @@ namespace PLWPF
         {
             InitializeComponent();
         }
+
+        private void HostButtonClick(object sender, RoutedEventArgs e)
+        {
+            //in need to go to the Host's window (page 2.0)
+        }
+
+        private void GuestButtonClick(object sender, RoutedEventArgs e)
+        {
+            //in need to go to the GuestRequest's window (page 1.0)
+        }
+
+        private void OwnerButtonClick(object sender, RoutedEventArgs e)
+        {
+            //in need to go to the Owner's window (page 4.0)
+        }
     }
 }
