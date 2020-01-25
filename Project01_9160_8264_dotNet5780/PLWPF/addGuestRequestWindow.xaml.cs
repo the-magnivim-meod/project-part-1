@@ -22,9 +22,5 @@ namespace PLWPF
             InitializeComponent();
         }
 
-        private void pName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }

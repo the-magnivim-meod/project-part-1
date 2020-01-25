@@ -21,5 +21,10 @@ namespace PLWPF
         {
             InitializeComponent();
         }
+
+        private void addGuestRequestButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

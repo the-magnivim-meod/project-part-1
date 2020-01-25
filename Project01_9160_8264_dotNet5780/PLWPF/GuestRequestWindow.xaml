@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="GuestRequestWindow" Height="450" Width="800">
     <Window.Resources>
-        <Style x:Name="fontStyle">
-            <Setter Property="FontSize" Value="32"/>
+        <Style x:Key="fontStyle" TargetType="Control">
+            <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
 
-        <Style x:Name="myLabelStyle" TargetType="Label" BasedOn="fontStyle"/>
+        <Style x:Key="myLabelStyle"  TargetType="Label" BasedOn="{StaticResource fontStyle}"/>
     </Window.Resources>
 
     <Grid>
@@ -22,6 +22,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Welcome to the system. would you like to send a guest Request?" Grid.Row="0" Margin="3" Style="myLabelStyle"/>
+        <Label Content="Welcome to the system. would you like to send a guest Request?" Grid.Row="0" Margin="3" Style="{StaticResource myLabelStyle}"/>
+        <Button x:Name="addGuestRequestButton" Content="Add a guestRequest" Click="addGuestRequestButton_Click"
     </Grid>
 </Window>
