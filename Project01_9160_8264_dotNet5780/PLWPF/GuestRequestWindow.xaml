@@ -6,23 +6,45 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="GuestRequestWindow" Height="450" Width="800">
-    <Window.Resources>
-        <Style x:Key="fontStyle" TargetType="Control">
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-        </Style>
 
-        <Style x:Key="myLabelStyle"  TargetType="Label" BasedOn="{StaticResource fontStyle}"/>
-    </Window.Resources>
 
-    <Grid>
+    <Grid Background="AntiqueWhite">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="HostingUnit" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" >
+                <TextBlock.TextDecorations>
+                    <TextDecoration/>
+                </TextBlock.TextDecorations>
+            </TextBlock>
+            <TextBlock Text="please select your option:" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="30"/>
+        </StackPanel>
 
-        <Label Content="Welcome to the system. would you like to send a guest Request?" Grid.Row="0" Margin="3" Style="{StaticResource myLabelStyle}"/>
-        <Button x:Name="addGuestRequestButton" Content="Add a guestRequest" Click="addGuestRequestButton_Click"
+        <Button x:Name="SelectAddHostingUnit" Grid.Row="1" Content="AddGuestRequest" Click="AddHostingUnitButtonClick" FontSize="22" Margin="0,0,398,0" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.57"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-1.99"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Image Source="http://services.travelsavers.com/AMGService.svc/REST/GetImage?ImageID=09e6f7f0-3fc3-e911-be17-782bcb66a2f2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3" Margin="396,64,-10,-93" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.266"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.995"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+
+
     </Grid>
 </Window>
