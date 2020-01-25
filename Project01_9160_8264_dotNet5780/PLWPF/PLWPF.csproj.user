@@ -7,15 +7,33 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AddHostingUnit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GuestRequest.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="HostingUnit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PrivateArea.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AddHostingUnit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="GuestRequest.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="HostingUnit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PrivateArea.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
