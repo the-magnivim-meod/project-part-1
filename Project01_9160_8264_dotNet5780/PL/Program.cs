@@ -49,7 +49,7 @@ namespace PL
                     case 'q':
                         break;
                     default:
-                        Console.WriteLine("invalid output");
+                        Console.WriteLine("invalid input");
                         break;
                 }
             }

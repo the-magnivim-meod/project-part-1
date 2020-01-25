@@ -35,6 +35,8 @@ namespace PLWPF
         private void GuestButtonClick(object sender, RoutedEventArgs e)
         {
             //in need to go to the GuestRequest's window (page 1.0)
+            Window guestRequestWin = new GuestRequestWindow();
+            guestRequestWin.Show();
         }
 
         private void OwnerButtonClick(object sender, RoutedEventArgs e)
