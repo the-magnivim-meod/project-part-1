@@ -16,9 +16,9 @@ namespace PLWPF
     /// <summary>
     /// Interaction logic for PrivateArea.xaml
     /// </summary>
-    public partial class PrivateArea : Page
+    public partial class PrivateAreaWindow : Window
     {
-        public PrivateArea()
+        public PrivateAreaWindow()
         {
             InitializeComponent();
         }

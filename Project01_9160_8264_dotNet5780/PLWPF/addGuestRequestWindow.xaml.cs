@@ -15,9 +15,9 @@ namespace PLWPF
     /// <summary>
     /// Interaction logic for addGuestRequest.xaml
     /// </summary>
-    public partial class addGuestRequest : Window
+    public partial class addGuestRequestWindow : Window
     {
-        public addGuestRequest()
+        public addGuestRequestWindow()
         {
             InitializeComponent();
         }

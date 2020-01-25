@@ -29,13 +29,14 @@ namespace PLWPF
 
         private void GuestRequestButtonClick(object sender, RoutedEventArgs e)
         {
-            //in need to go to the GuestRequest's window (page 1.0)
+            Window guestRequestWindow = new GuestRequestWindow();
+            guestRequestWindow.Show();
         }
 
         private void HostingUnitButtonClick(object sender, RoutedEventArgs e)
         {
-            Window guestRequestWin = new GuestRequestWindow();
-            guestRequestWin.Show();
+            Window hostingUnitWindow = new HostingUnitWindow();
+            hostingUnitWindow.Show();
         }
 
         private void AdminButtonClick(object sender, RoutedEventArgs e)

@@ -26,8 +26,8 @@ namespace PLWPF
 
         private void AddHostingUnitButtonClick(object sender, RoutedEventArgs e)
         {
-            Window addGuestRequest=new 
-
+            Window addGuestRequest = new addGuestRequestWindow();
+            addGuestRequest.Show();
         }
     }
 }

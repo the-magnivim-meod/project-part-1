@@ -16,9 +16,9 @@ namespace PLWPF
     /// <summary>
     /// Interaction logic for AddHostingUnit.xaml
     /// </summary>
-    public partial class AddHostingUnit : Page
+    public partial class AddHostingUnitWindow : Window
     {
-        public AddHostingUnit()
+        public AddHostingUnitWindow()
         {
             InitializeComponent();
         }

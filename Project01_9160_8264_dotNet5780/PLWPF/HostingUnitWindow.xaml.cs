@@ -19,9 +19,9 @@ namespace PLWPF
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class HostingUnitWindow : Window
     {
-        public Page1()
+        public HostingUnitWindow()
         {
             InitializeComponent();
         }
@@ -30,12 +30,14 @@ namespace PLWPF
 
         private void AddHostingUnitButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Window addHostingUnit = new AddHostingUnitWindow();
+            addHostingUnit.Show();
         }
 
         private void PrivateAreaButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Window privateArea = new PrivateAreaWindow();
+            privateArea.Show();
         }
     }
 }
