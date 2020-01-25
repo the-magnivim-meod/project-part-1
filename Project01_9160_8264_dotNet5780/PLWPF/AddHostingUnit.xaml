@@ -25,7 +25,7 @@
         <TextBox Text="" TextWrapping="Wrap" Width="240" Margin="185,108,375,245" Grid.Row="1" FontSize="20"/>
         <Label Content="Name of HostingUnit:" Margin="0,108,620,245" Grid.Row="1" FontSize="18"/>
         <Label Content="Type:" Margin="0,161,620,179" Grid.Row="1" FontSize="25"/>
-        <ComboBox SelectionChanged="ComboBox_SelectionChanged" Margin="185,160,435,190" Grid.Row="1" FontSize="22" IsDropDownOpen="True">
+        <ComboBox Margin="185,160,435,190" Grid.Row="1" FontSize="22" IsDropDownOpen="True">
             <ComboBoxItem>Zimmer</ComboBoxItem>
             <ComboBoxItem >Hotel</ComboBoxItem>
             <ComboBoxItem>OutdoorCamp</ComboBoxItem>

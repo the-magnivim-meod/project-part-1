@@ -50,7 +50,20 @@
 
         <Label Content="select the time of your trip:" Style="{StaticResource fontStyle}" Grid.Column="0" Grid.Row="3"/>
         <DatePicker Grid.Row="3" Grid.Column="1" x:Name="startDate"/>
-        <Label Content="-" Style="{StaticResource fontStyle}" Grid.Column="2" Grid.Row="3" Margin="50"/>
+        <Label Content="ending date:" Style="{StaticResource fontStyle}" Grid.Column="2" Grid.Row="3"/>
+        <DatePicker Grid.Row="3" Grid.Column="3" x:Name="EndingDate"/>
+
+        <Label Content="Select the area of  your vacation:" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fontStyle}"/>
+        <ListBox x:Name="Area" Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="2">
+            <ListBoxItem Content="North" x:Name="area1"/>
+            <ListBoxItem Content="Haifa" x:Name="area2"/>
+            <ListBoxItem Content="TelAviv" x:Name="area3"/>
+            <ListBoxItem Content="Center" x:Name="area4"/>
+            <ListBoxItem Content="Jerusalem" x:Name="area5"/>
+            <ListBoxItem Content="South" x:Name="area6"/>
+            <ListBoxItem Content="WestBank" x:Name="area7"/>
+
+        </ListBox>
 
     </Grid>
 </Window>

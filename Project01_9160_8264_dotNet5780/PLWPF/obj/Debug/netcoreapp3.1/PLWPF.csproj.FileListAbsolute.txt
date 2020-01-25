@@ -1,0 +1,8 @@
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.csprojAssemblyReference.cache
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AddHostingUnit.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnit.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PrivateArea.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF_MarkupCompile.cache
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF_MarkupCompile.lref
