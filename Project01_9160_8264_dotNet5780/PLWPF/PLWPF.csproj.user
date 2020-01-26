@@ -10,15 +10,24 @@
     <Compile Update="addGuestRequestWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AddHostingUnit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="AddOrder.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="GuestRequestWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UpdateHostingUnit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="addGuestRequestWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddHostingUnit.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AddOrder.xaml">
@@ -28,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UpdateHostingUnit.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
