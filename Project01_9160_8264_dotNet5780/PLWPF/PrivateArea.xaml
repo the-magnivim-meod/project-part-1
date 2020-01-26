@@ -18,7 +18,7 @@
                 <TextDecoration/>
             </TextBlock.TextDecorations>
         </TextBlock>
-        <TextBox Text="" TextWrapping="Wrap" Width="240" Margin="185,0,375,350" Grid.Row="1" FontSize="20"/>
+        <TextBox Text="" TextWrapping="Wrap" Width="240" Margin="185,0,375,350" Grid.Row="1" FontSize="20" TextChanged="TextBox_TextChanged"/>
         <Label Content="name of Host:" Margin="0,0,620,350" Grid.Row="1" FontSize="22"/>
         <TextBox Text="" TextWrapping="Wrap" Width="240" Margin="185,55,375,297" Grid.Row="1" FontSize="20"/>
         <Label Content="passward of Host:" Margin="0,55,620,297" Grid.Row="1" FontSize="22"/>
