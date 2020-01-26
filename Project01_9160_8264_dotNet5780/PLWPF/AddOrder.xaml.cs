@@ -19,14 +19,22 @@ namespace PLWPF
     /// <summary>
     /// Interaction logic for AddOrder.xaml
     /// </summary>
-    public partial class AddOrder : Page
+    public partial class AddOrderWindow : Page
     {
-        public AddOrder()
+        IBL myIBL = FactoryBL.GetBL();
+
+        public AddOrderWindow()
         {
             InitializeComponent();
+
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void AddOrderBotton(object sender, RoutedEventArgs e)
         {
 
         }

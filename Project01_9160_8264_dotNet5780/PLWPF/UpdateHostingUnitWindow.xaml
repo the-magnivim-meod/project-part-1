@@ -9,7 +9,7 @@
 
     <Grid x:Name="HostingUnitDetails">
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Update Hosting Unit" VerticalAlignment="Top" FontWeight="Bold" FontSize="36" TextAlignment="Center" Margin="0,10,0,0"/>
-        <ComboBox x:Name="SelectHostingUnit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="185,69,0,376" Width="120" SelectionChanged="HostingUnitBox_SelectionChanged" Height="24"/>
+        <ComboBox x:Name="SelectHostingUnit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="185,69,0,376" Width="120" Height="24"/>
         <TextBox TextWrapping="Wrap" Text="select a hosting unit:" SpellCheck.IsEnabled="True" FontSize="16" Margin="20,69,311,377" FontWeight="Bold" OpacityMask="Black" HorizontalAlignment="Left" VerticalAlignment="Center">
             <TextBox.BorderBrush>
                 <ImageBrush/>
@@ -27,12 +27,12 @@
         <CheckBox x:Name="Jacuzzi" Content="Jacuzzi" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,316,0,133" FontSize="16" IsChecked="{Binding jacuzzi,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         <CheckBox x:Name="Garden" Content="Garden" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,291,0,158" FontSize="16" IsChecked="{Binding Garden,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         <CheckBox x:Name="ChildrensAttractions" Content="ChildrensAttractions" HorizontalAlignment="Left" Margin="20,341,0,108" FontSize="16" IsChecked="{Binding ChildrensAttractions,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
-        <Button x:Name="add" Content="Update" VerticalAlignment="Top" Margin="241,408,0,0" Click="Add_Click" FontSize="36" FontWeight="Bold" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" HorizontalAlignment="Left" BorderBrush="Black" OpacityMask="Black" Width="259" Height="92">
+        <Button x:Name="add" Content="Update" VerticalAlignment="Top" Margin="241,408,0,0" FontSize="36" FontWeight="Bold" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" HorizontalAlignment="Left" BorderBrush="Black" OpacityMask="Black" Width="259" Height="92">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <Button x:Name="cancel" Content="Cancel" VerticalAlignment="Bottom" Click="Cancel_Click" FontSize="36" FontWeight="Bold" Foreground="#FFFF1515" HorizontalAlignment="Left" BorderBrush="Black" OpacityMask="Black" Height="92" Width="241">
+        <Button x:Name="cancel" Content="Cancel" VerticalAlignment="Bottom" FontSize="36" FontWeight="Bold" Foreground="#FFFF1515" HorizontalAlignment="Left" BorderBrush="Black" OpacityMask="Black" Height="92" Width="241">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>

@@ -30,8 +30,8 @@ namespace PLWPF
 
         private void AddHostingUnitButtonClick(object sender, RoutedEventArgs e)
         {
-            Window addHostingUnit = new AddHostingUnitWindow();
-            addHostingUnit.Show();
+            //Window addHostingUnit = new AddHostingUnitWindow();
+            //addHostingUnit.Show();
         }
 
         private void PrivateAreaButtonClick(object sender, RoutedEventArgs e)

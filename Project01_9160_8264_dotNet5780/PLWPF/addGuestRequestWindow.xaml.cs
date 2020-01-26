@@ -35,5 +35,10 @@ namespace PLWPF
         {
             
         }
+
+        private void EmailAdd_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
