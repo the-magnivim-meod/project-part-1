@@ -13,6 +13,9 @@
     <Compile Update="AddOrder.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AdminWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GuestRequestWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,6 +28,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AddOrder.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GuestRequestWindow.xaml">

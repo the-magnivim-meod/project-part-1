@@ -37,10 +37,10 @@
         <Image Source="https://r-cf.bstatic.com/images/hotel/max1024x768/173/173348341.jpg" Grid.Row="3" Grid.Column="2" Margin="3" MaxHeight="200"/>
 
         <Button x:Name="SelectAddHostingUnit" Grid.Row="4" Grid.Column="2" Content="AddHostingUnit"
-                Margin="3" Foreground="Maroon" Height="50" Click="AddHostingUnitButtonClick"/>
+                Margin="3" Foreground="Maroon" Height="50" Background="Beige" Click="AddHostingUnitButtonClick"/>
 
         <Button x:Name="SelectPrivateArea" Grid.Row="5" Grid.Column="2" Content="PrivateArea" Click="PrivateAreaButtonClick"
-                Foreground="Maroon" Margin="3" Height="50"/>
+                Foreground="Maroon" Margin="3" Height="50" Background="Beige"/>
         
     </Grid>
 </Window>
