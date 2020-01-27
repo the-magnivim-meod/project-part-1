@@ -71,6 +71,6 @@
             </Button.Style>
         </Button>
 
-        <Image Source="https://media-cdn.tripadvisor.com/media/photo-s/0f/39/ed/23/zimmer-mit-echtem-dielen.jpg" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" MaxHeight="200" Margin="0,3,250,3"/>
+        <Image Source="Images/HotelRoomImage.jpg" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" MaxHeight="200" Margin="0,3,250,3"/>
     </Grid>
 </Window>

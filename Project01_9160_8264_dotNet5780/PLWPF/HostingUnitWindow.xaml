@@ -34,7 +34,7 @@
             </TextBlock>
         <TextBlock Text="please select your option:" Grid.Column="2" Grid.Row="2" Margin="3"/>
 
-        <Image Source="https://r-cf.bstatic.com/images/hotel/max1024x768/173/173348341.jpg" Grid.Row="3" Grid.Column="2" Margin="3" MaxHeight="200"/>
+        <Image Source="Images/HotelBuildingImage.jpg" Grid.Row="3" Grid.Column="2" Margin="3" MaxHeight="200"/>
 
         <Button x:Name="SelectAddHostingUnit" Grid.Row="4" Grid.Column="2" Content="AddHostingUnit"
                 Margin="3" Foreground="Maroon" Height="50" Background="Beige" Click="AddHostingUnitButtonClick"/>

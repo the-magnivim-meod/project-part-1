@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,7 @@ namespace PLWPF
         public AdminWindow()
         {
             InitializeComponent();
+            //ObservableCollection list = new List<System.IObservable> 
         }
     }
 }

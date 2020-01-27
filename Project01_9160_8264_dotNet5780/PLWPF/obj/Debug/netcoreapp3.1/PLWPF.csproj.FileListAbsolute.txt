@@ -76,3 +76,5 @@ C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PL
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.csproj.CopyComplete
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AddHostingUnitWindow.g.cs
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AddHostingUnitWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AdminWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AdminWindow.baml
