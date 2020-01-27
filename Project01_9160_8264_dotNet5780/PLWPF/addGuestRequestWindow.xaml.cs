@@ -21,24 +21,30 @@ namespace PLWPF
     /// </summary>
     public partial class addGuestRequestWindow : Window
     {
+        static IBL myIBL = FactoryBL.GetBL();
+        GuestRequest newGuestRequest = new GuestRequest();
         public addGuestRequestWindow()
         {
             InitializeComponent();
+            pool.ItemsSource = Enum.GetValues(typeof(AmountOfIntrenst));
+            cAttractions.ItemsSource = Enum.GetValues(typeof(AmountOfIntrenst));
+            gStore.ItemsSource = Enum.GetValues(typeof(AmountOfIntrenst));
+            garden.ItemsSource = Enum.GetValues(typeof(AmountOfIntrenst));
+            AreaOfCountry.ItemsSource = Enum.GetValues(typeof(AreaOfTheCountry));
+            TypeOfHostingUnit.ItemsSource = Enum.GetValues(typeof(HostingUnitType));
         }
 
-        private void pName_TextChanged(object sender, TextChangedEventArgs e)
+        private void AddRequest_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void EmailAdd_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            try
+            {
+                int children = int.Parse(numChildren.Text);
+                int adults = int.Parse(numAdults.Text);
+            }
+            catch (Exception)
+            {
+               
+            }
         }
     }
 }

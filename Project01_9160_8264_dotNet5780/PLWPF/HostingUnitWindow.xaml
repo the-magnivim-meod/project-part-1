@@ -4,27 +4,43 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PLWPF"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Page1">
+      mc:Ignorable="d" FontSize="18" FontFamily="Bookman Old Style" 
+      d:DesignHeight="500" d:DesignWidth="500"
+      Title="HostingUnitWindow">
 
-    <Grid Background="AntiqueWhite">
+    <Grid Background="DarkCyan">
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="HostingUnit" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+            <TextBlock Text="HostingUnit:" Grid.Column="2" Grid.Row="1" FontSize="40" FontWeight="Bold" Margin="3">
                 <TextBlock.TextDecorations>
                     <TextDecoration/>
                 </TextBlock.TextDecorations>
             </TextBlock>
-            <TextBlock Text="please select your option:" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="30"/>
-        </StackPanel>
+        <TextBlock Text="please select your option:" Grid.Column="2" Grid.Row="2" Margin="3"/>
 
-        <Button x:Name="SelectAddHostingUnit" Grid.Row="1" Content="AddHostingUnit" Click="AddHostingUnitButtonClick" FontSize="22"/>
-        <Button x:Name="SelectPrivateArea" Grid.Row="2" Content="PrivateArea" Click="PrivateAreaButtonClick" FontSize="22"/>
+        <Image Source="https://r-cf.bstatic.com/images/hotel/max1024x768/173/173348341.jpg" Grid.Row="3" Grid.Column="2" Margin="3" MaxHeight="200"/>
+
+        <Button x:Name="SelectAddHostingUnit" Grid.Row="4" Grid.Column="2" Content="AddHostingUnit"
+                Margin="3" Foreground="Maroon" Height="50" Click="AddHostingUnitButtonClick"/>
+
+        <Button x:Name="SelectPrivateArea" Grid.Row="5" Grid.Column="2" Content="PrivateArea" Click="PrivateAreaButtonClick"
+                Foreground="Maroon" Margin="3" Height="50"/>
         
     </Grid>
 </Window>

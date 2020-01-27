@@ -1,0 +1,52 @@
+﻿<Window x:Class="PLWPF.AddHostingUnitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d" FontSize="18" FontFamily="Bookman Old Style" 
+        Title="AddHostingUnitWindow" Height="450" Width="800">
+    <Grid Background="DarkCyan">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Welcome to add HostingUnit:" FontSize="35" Grid.Column="2"  Grid.Row="1" Grid.ColumnSpan="4" Margin="3" FontWeight="Bold">
+            <TextBlock.TextDecorations>
+                <TextDecoration/>
+            </TextBlock.TextDecorations>
+        </TextBlock>
+
+        <TextBlock Text="enter the unit's name:" Grid.Column="2" Grid.Row="2" Margin="3"/>
+        <TextBox x:Name="unitName" Grid.Row="2" Grid.Column="3" Width="150" Margin="3"/>
+
+        <TextBlock Text="area of the country:" Grid.Column="2" Grid.Row="3" Margin="3"/>
+        <ComboBox x:Name="unitArea" Grid.Row="3" Grid.Column="3" Width="150" Margin="3" Background="Beige"/>
+
+        <TextBlock Text="enter the unit's type:" Grid.Column="2" Grid.Row="4" Margin="3"/>
+        <ComboBox x:Name="unitType" Grid.Row="4" Grid.Column="3" Width="150" Margin="3"/>
+
+        <Button x:Name="AddHostingUnit" Content="Add unit" Margin="3" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" Background="Beige" Foreground="Maroon" Height="50" Click="AddHostingUnit_Click"/>
+
+        <Image Source="https://media-cdn.tripadvisor.com/media/photo-s/0f/39/ed/23/zimmer-mit-echtem-dielen.jpg" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" MaxHeight="200" Margin="0,3,250,3"/>
+    </Grid>
+</Window>
