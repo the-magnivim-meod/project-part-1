@@ -45,7 +45,31 @@
         <TextBlock Text="enter the unit's type:" Grid.Column="2" Grid.Row="4" Margin="3"/>
         <ComboBox x:Name="unitType" Grid.Row="4" Grid.Column="3" Width="150" Margin="3"/>
 
-        <Button x:Name="AddHostingUnit" Content="Add unit" Margin="3" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" Background="Beige" Foreground="Maroon" Height="50" Click="AddHostingUnit_Click"/>
+        <Button x:Name="AddHostingUnit" Content="Add unit" Margin="3" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" Height="50" Click="AddHostingUnit_Click">
+            <Button.Style>
+                <Style TargetType="Button" x:Name="ButtonAvailable">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=unitName, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=unitArea}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=unitType}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                    <Setter Property="Foreground" Value="Maroon"/>
+                    <Setter Property="Background" Value="Beige"/>
+                    <Setter Property="IsEnabled" Value="True"/>
+                </Style>
+            </Button.Style>
+        </Button>
 
         <Image Source="https://media-cdn.tripadvisor.com/media/photo-s/0f/39/ed/23/zimmer-mit-echtem-dielen.jpg" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" MaxHeight="200" Margin="0,3,250,3"/>
     </Grid>

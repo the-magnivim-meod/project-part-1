@@ -35,7 +35,7 @@
         <TextBlock Text="please select your option:" Grid.Column="2" Grid.Row="2" Margin="3"/>
 
         <Button x:Name="SelectAddHostingUnit" Grid.Row="4" Grid.Column="2" Content="AddGuestRequest" Click="AddGuestRquestButtonClick" 
-                FontSize="22" Margin="5" Foreground="Maroon" Height="50"/>
+                FontSize="22" Margin="5" Background="Beige" Foreground="Maroon" Height="50"/>
         
         <Image Source="http://services.travelsavers.com/AMGService.svc/REST/GetImage?ImageID=09e6f7f0-3fc3-e911-be17-782bcb66a2f2" 
                Grid.Row="3" Grid.Column="2"  Margin="30"/>

@@ -7,6 +7,9 @@
         mc:Ignorable="d" FontSize="18" FontFamily="Bookman Old Style" 
         Title="addGuestRequestWindow" Height="450" Width="1000">
 
+    <Window.Resources>
+        
+    </Window.Resources>
     <Grid ShowGridLines="False" Background="DarkCyan">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -65,7 +68,7 @@
 
         <TextBlock Text="enter your email address:" Grid.Row="8" Grid.Column="2" Margin="3"/>
         <TextBox x:Name="EmailAdd" Grid.Row="8" Grid.Column="3"  Width="150" Margin="3"/>
-        
+
         <TextBlock Text="requested area:" Grid.Column="2" Grid.Row="9" Margin="3"/>
         <ComboBox x:Name="AreaOfCountry" Width="150"  Grid.Column="3" Grid.Row="9" Margin="3" Background="Beige"/>
 
@@ -73,66 +76,80 @@
         <ComboBox x:Name="TypeOfHostingUnit" Width="150"  Grid.Column="3" Grid.Row="10" Margin="3" Background="Beige"/>
 
         <Image Source="https://www.woodlandtrust.org.uk/media/3817/ash-tree-overall-tree-blue-skies-alamy-bj7mxm-jeremy-inglis.jpg?center=0.472,0.43243243243243246" Grid.Row="8" Grid.Column="4" Grid.RowSpan="3" Margin="3" MaxHeight="100"/>
-        <Button x:Name="AddRequest" Content="Add" Grid.Column="2" Grid.ColumnSpan="4" Margin="3" Foreground="Maroon" Background="Beige" Grid.Row="11" Height="50" Click="AddRequest_Click"/>
+        <Button x:Name="AddRequest" Content="Add" Grid.Column="2" Grid.ColumnSpan="4" Margin="3" Grid.Row="11" Height="50" Click="AddRequest_Click">
+            <Button.Style>
+                <Style TargetType="Button" x:Name="ButtonAvailable">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=Pname, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=Fname, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=EmailAdd, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=numAdults, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=numChildren, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=pool}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=garden}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=cAttractions}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=gStore}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=TypeOfHostingUnit}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=AreaOfCountry}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedDate, ElementName=StartingDate}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedDate, ElementName=EndingDate}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                    <Setter Property="Foreground" Value="Maroon"/>
+                    <Setter Property="Background" Value="Beige"/>
+                    <Setter Property="IsEnabled" Value="True"/>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
-    <!--<Window.Resources>
-        <Style x:Key="fontStyle" TargetType="ContentControl">
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontSize" Value="30"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="Foreground" Value="MediumPurple"/>
-        </Style>
-        <Style x:Key="textBoxStyle" TargetType="TextBox">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="Foreground" Value="LightGray"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-        </Style>
-    </Window.Resources>
-    <Grid ShowGridLines="False">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <Label Content="Please fill in the following fields:" Grid.Row="0" Grid.ColumnSpan="4" Style="{StaticResource fontStyle}" FontSize="35" Margin="3"/>
-
-        <Label Content="Private Name:" Style="{StaticResource fontStyle}" Grid.Column="0" Grid.Row="1"/>
-        <TextBox Text="fill your name in here" x:Name="pName" Grid.Column="1" Grid.Row="1" Style="{StaticResource textBoxStyle}" TextChanged="pName_TextChanged"/>
-        <Label Content="Family Name:" Style="{StaticResource fontStyle}" Grid.Column="2" Grid.Row="1"/>
-        <TextBox Text="fill your name in here" x:Name="fName" Grid.Column="3" Grid.Row="1" Style="{StaticResource textBoxStyle}"/>
-
-        <Label Content="enter your email address:" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fontStyle}"/>
-        <TextBox x:Name="email" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Text="example@organization.com" Style="{StaticResource textBoxStyle}"/>
-
-        <Label Content="select the time of your trip:" Style="{StaticResource fontStyle}" Grid.Column="0" Grid.Row="3"/>
-        <DatePicker Grid.Row="3" Grid.Column="1" x:Name="startDate"/>
-        <Label Content="ending date:" Style="{StaticResource fontStyle}" Grid.Column="2" Grid.Row="3"/>
-        <DatePicker Grid.Row="3" Grid.Column="3" x:Name="EndingDate"/>
-
-        <Label Content="Select the area of  your vacation:" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fontStyle}"/>
-        <ListBox x:Name="Area" Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="2">
-            <ListBoxItem Content="North" x:Name="area1"/>
-            <ListBoxItem Content="Haifa" x:Name="area2"/>
-            <ListBoxItem Content="TelAviv" x:Name="area3"/>
-            <ListBoxItem Content="Center" x:Name="area4"/>
-            <ListBoxItem Content="Jerusalem" x:Name="area5"/>
-            <ListBoxItem Content="South" x:Name="area6"/>
-            <ListBoxItem Content="WestBank" x:Name="area7"/>
-
-        </ListBox>
-        <Button Content="Add" Grid.ColumnSpan="4" Grid.Row="5" FontSize="22" Click="Button_Click"/>
-
-    </Grid>-->
 </Window>
