@@ -6,12 +6,12 @@ namespace BE
 {
     public class Order
     {
-        public int HostingUnitKey;
-        public int GuestRequestKey;
-        public int OrderKey;
-        public OrderStatus Status;
-        public DateTime CreateDate;
-        public DateTime OrderDate;
+        public int HostingUnitKey { get; set; }
+        public int GuestRequestKey { get; set; }
+        public int OrderKey { get; set; }
+        public OrderStatus Status { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime OrderDate { get; set; }
         public override string ToString()
         {
             string output = $"HostingUnitKey: {HostingUnitKey} \n";

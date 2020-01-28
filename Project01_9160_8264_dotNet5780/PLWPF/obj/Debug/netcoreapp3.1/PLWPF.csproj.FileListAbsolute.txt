@@ -1,5 +1,4 @@
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.csprojAssemblyReference.cache
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF_MarkupCompile.cache
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF_MarkupCompile.lref
@@ -41,12 +40,6 @@ C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780
 C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.pdb
 C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AddOrder.g.cs
 C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AddOrder.baml
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\addGuestRequestWindow.g.cs
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AddOrder.g.cs
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\GuestRequestWindow.g.cs
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindow.g.cs
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PrivateAreaWindow.g.cs
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\UpdateHostingUnitWindow.g.cs
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.dll
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.pdb
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\bin\Debug\netcoreapp3.1\PLWPF.exe
@@ -63,18 +56,29 @@ C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PL
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\bin\Debug\netcoreapp3.1\BL.pdb
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\bin\Debug\netcoreapp3.1\DAL.pdb
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\bin\Debug\netcoreapp3.1\DS.pdb
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\addGuestRequestWindow.baml
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AddOrder.baml
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\GuestRequestWindow.baml
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindow.baml
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\MainWindow.baml
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PrivateAreaWindow.baml
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\UpdateHostingUnitWindow.baml
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.g.resources
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.AssemblyInfoInputs.cache
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.AssemblyInfo.cs
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.csproj.CopyComplete
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AddHostingUnitWindow.g.cs
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AddHostingUnitWindow.baml
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AdminWindow.g.cs
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AdminWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\Guest Windows\addGuestRequestWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\Guest Windows\GuestRequestWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HomeWindows\Login.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HomeWindows\MainWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HomeWindows\RegisterWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\AddHostingUnitWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\AddOrder.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\HostingUnitWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\PrivateAreaWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\UpdateHostingUnitWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\Guest Windows\addGuestRequestWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\Guest Windows\GuestRequestWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HomeWindows\Login.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HomeWindows\MainWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HomeWindows\RegisterWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\AddHostingUnitWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\AddOrder.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\HostingUnitWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\PrivateAreaWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\UpdateHostingUnitWindow.baml

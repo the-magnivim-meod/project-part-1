@@ -6,14 +6,14 @@ namespace BE
 {
     public class HostingUnit
     {
-        public int HostingUnitKey;
-        public Host Owner;
-        public string HostingUnitName;
-        public bool[,] Diary = new bool[12, 31]; 
-        public HostingUnitType Type;
-        public AreaOfTheCountry Area;
+        public int HostingUnitKey { get; set; }
+        public Host Owner { get; set; }
+        public string HostingUnitName { get; set; }
+        public bool[,] Diary = new bool[12, 31];
+    public HostingUnitType Type { get; set; }
+    public AreaOfTheCountry Area { get; set; }
 
-        public override string ToString()
+    public override string ToString()
         {
             string output = $"HostingUnitKey {HostingUnitKey}\n";
             output += $"Owner {Owner}\n";

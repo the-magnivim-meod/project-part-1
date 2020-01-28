@@ -31,7 +31,7 @@ namespace BE
     /// </summary>
     public enum AreaOfTheCountry
     {
-        North = 1,
+        North,
         Haifa,
         TelAviv,
         Center,
@@ -42,7 +42,7 @@ namespace BE
 
     public enum HostingUnitType
     {
-        Zimmer = 1,
+        Zimmer,
         Hotel,
         OutdoorCamp
     }
@@ -66,5 +66,15 @@ namespace BE
     {
         No,
         Yes
+    }
+
+    /// <summary>
+    /// used to tell what kind of user the user is
+    /// </summary>
+    public enum UserType
+    {
+        Guest,
+        Host,
+        Admin
     }
 }

@@ -14,12 +14,33 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Images\GuestRequestImage.jpg" />
+    <None Remove="Images\HotelBuildingImage.jpg" />
+    <None Remove="Images\HotelRoomImage.jpg" />
+    <None Remove="Images\ProjectLogoImage.jpg" />
+    <None Remove="Images\ReturnButtonImage.jpg" />
+    <None Remove="Images\TreeAddGuestRequestImage.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\GuestRequestImage.jpg" />
+    <Resource Include="Images\HotelBuildingImage.jpg" />
+    <Resource Include="Images\HotelRoomImage.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj" />
     <ProjectReference Include="..\BL\BL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\ProjectLogoImage.jpg" />
+    <Resource Include="Images\ReturnButtonImage.jpg" />
+    <Resource Include="Images\TreeAddGuestRequestImage.jpg" />
   </ItemGroup>
 
 </Project>

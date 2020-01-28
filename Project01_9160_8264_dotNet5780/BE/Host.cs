@@ -4,16 +4,14 @@ using System.Text;
 
 namespace BE
 {
-    public class Host
+    public class Host : User
     {
-        public int HostKey;
-        public string PrivateName;
-        public string FamilyName;
-        public string PhoneNumber;
-        public string MailAddress;
-        public BankBranch BankBranchDetails;
-        public int BankAccountNumber;
-        public Y_N CollectionClearance;
+        public int HostKey { get; set; }
+        public string PhoneNumber { get; set; }
+        public string MailAddress { get; set; }
+        public BankBranch BankBranchDetails { get; set; }
+        public int BankAccountNumber { get; set; }
+        public Y_N CollectionClearance { get; set; }
         public override string ToString()
         {
             string output = "HostKey:" + HostKey + "\n";

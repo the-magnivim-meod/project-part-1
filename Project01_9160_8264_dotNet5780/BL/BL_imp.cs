@@ -3,6 +3,7 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 namespace BL
 {
     /// <summary>
@@ -16,7 +17,7 @@ namespace BL
         public BL_imp()
         {
             myDal = FactoryDal.GetDal();
-            init();
+            //init();
         }
 
         /// <summary>
@@ -167,6 +168,12 @@ namespace BL
             }
             return true;
         }
+
+        bool MailAddressIsValid(string address)
+        {
+            var a = new EmailAddressAttribute();
+            return a.IsValid(address);
+        }
         #endregion
 
         #region GuestRequest Methods
@@ -174,7 +181,17 @@ namespace BL
         {
             if (!(guestRequest.EntryDate < guestRequest.ReleaseDate))
             {
-                throw new InvalidInputException();
+                throw new DateOrderException();
+            }
+
+            else if (!(DateTime.Today <= guestRequest.EntryDate))
+            {
+                throw new DateComparedToTodayException();
+            }
+
+            else if (!(MailAddressIsValid(guestRequest.MailAddress)))
+            {
+                throw new NotValidEmailAddressException();
             }
             myDal.AddGuestRequest(guestRequest.Clone());
         }
