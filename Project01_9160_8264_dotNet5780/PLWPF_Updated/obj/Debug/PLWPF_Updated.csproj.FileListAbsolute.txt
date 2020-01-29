@@ -29,3 +29,11 @@ C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PL
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\PLWPF_Updated.csproj.CopyComplete
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\PLWPF_Updated.exe
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\PLWPF_Updated.pdb
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\Homewindows\LoginWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\Homewindows\LoginWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\Homewindows\RegisterWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\Homewindows\RegisterWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AddOrderWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\HostWindows\UpdateHostingUnitWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AddOrderWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\HostWindows\UpdateHostingUnitWindow.baml

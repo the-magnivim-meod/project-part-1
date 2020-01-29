@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
+using System.Globalization;
+
 namespace BL
 {
     /// <summary>
@@ -171,8 +174,49 @@ namespace BL
 
         bool MailAddressIsValid(string address)
         {
-            var a = new EmailAddressAttribute();
-            return a.IsValid(address);
+            //var a = new System.ComponentModel.DataAnnotations.EmailAddressAttribute();
+            //return a.IsValid(address);
+            if (string.IsNullOrWhiteSpace(address))
+                return false;
+
+            try
+            {
+                // Normalize the domain
+                address = Regex.Replace(address, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match)
+                {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    var idn = new IdnMapping();
+
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    var domainName = idn.GetAscii(match.Groups[2].Value);
+
+                    return match.Groups[1].Value + domainName;
+                }
+            }
+            catch (System.Text.RegularExpressions.RegexMatchTimeoutException)
+            {
+                return false;
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+
+            try
+            {
+                return Regex.IsMatch(address,
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
         }
         #endregion
 
@@ -274,7 +318,7 @@ namespace BL
                 throw new NotExistingKeyException();
             }
 
-            foreach(Order order in myDal.GetAllOrders())
+            foreach (Order order in myDal.GetAllOrders())
             {
                 if (CheckOrderInOpenStatus(order) && order.HostingUnitKey == hotingUnitNumber)
                 {
@@ -342,7 +386,7 @@ namespace BL
         {
             Order order = myDal.GetOrder(orderNumber);
             //checks if the order exists
-            if(order==null)
+            if (order == null)
             {
                 throw new NotExistingKeyException();
             }
@@ -350,7 +394,7 @@ namespace BL
             HostingUnit unit = myDal.GetHostingUnit(order.HostingUnitKey);
             GuestRequest req = myDal.GetGuestRequest(order.GuestRequestKey);
             //checks if the deal is the order did not send a mail yet
-            if (order.Status != OrderStatus.YetToBeAttendedTo) 
+            if (order.Status != OrderStatus.YetToBeAttendedTo)
             {
                 throw new StatusException();
             }
@@ -359,7 +403,7 @@ namespace BL
             if (req.Status == GuestRequestStatus.ConnectedToOrder)
             {
                 myDal.UpdateOrder(orderNumber, OrderStatus.ClosedByTheSystem);//close the order
-                throw new StatusException();                
+                throw new StatusException();
             }
 
             //checks if the host signed on collection clearance
@@ -368,7 +412,7 @@ namespace BL
                 throw new LackOfSigningPermissionException();
             }
 
-            myDal.UpdateOrder(orderNumber, OrderStatus.MailWasSent);           
+            myDal.UpdateOrder(orderNumber, OrderStatus.MailWasSent);
         }
 
         public void CloseDeal(int orderNumber)

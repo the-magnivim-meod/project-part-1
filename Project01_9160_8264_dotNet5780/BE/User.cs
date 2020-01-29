@@ -10,7 +10,7 @@ namespace BE
         public string PrivateName { get; set; }
         public string FamilyName { get; set; }
         public string UserName { get; set; }
-        public SecureString Password { get;private set; }
+        public string Password { get;private set; }
         public UserType Type { get; set; }
         public DateTime RegistrationDate { get; set; }
     }

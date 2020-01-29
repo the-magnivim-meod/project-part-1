@@ -1,0 +1,54 @@
+﻿<Window x:Class="PLWPF_Updated.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF_Updated"
+        mc:Ignorable="d" FontSize="18" FontFamily="Bookman Old Style"
+        Title="Login" Height="450" Width="600">
+    <Grid  Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="/Images/ProjectLogoImage.jpg" Grid.Column="2" Grid.Row="1" MaxWidth="375" Margin="3"/>
+
+        <TextBlock Text="Login or Register:" FontSize="35" Grid.Column="2" Grid.Row="2" Margin="3"/>
+
+        <StackPanel Grid.Column="2" Grid.Row="3" Orientation="Horizontal">
+            <TextBlock Text="UserName:" Grid.Column="2" Grid.Row="3" Margin="3"/>
+            <TextBox x:Name="UserName" Grid.Row="3" Grid.Column="2" Width="150" TextChanged="TextChangedForLoginButton" Foreground="Gray" GotFocus="UserName_GotFocus" LostFocus="UserName_LostFocus"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="4" Orientation="Horizontal">
+            <TextBlock Text="Password:" Grid.Column="2" Grid.Row="4" Margin="3"/>
+            <PasswordBox x:Name="UserPassword" Width="150" Margin="7,0,0,0" PasswordChanged="TextChangedForLoginButton" Foreground="Gray" GotFocus="UserPassword_GotFocus" LostFocus="UserPassword_LostFocus"/>
+        </StackPanel>
+
+        <Grid Grid.Row="5" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="LoginButton" Content="Login" Grid.Column="0"  Height="50" IsEnabled="False" Click="LoginButton_Click"/>
+            <Button x:Name="RegisterButton" Content="Register" Grid.Column="1" Background="Beige" Foreground="Maroon" Height="50" Click="RegisterButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>
