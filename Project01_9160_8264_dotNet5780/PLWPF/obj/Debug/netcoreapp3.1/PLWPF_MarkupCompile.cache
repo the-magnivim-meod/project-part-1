@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\App.xaml
-11673799512
+11588156897
 
-131423721134
+13-661074606
 1961661421944
-AdminWindow.xaml;Guest Windows\addGuestRequestWindow.xaml;Guest Windows\GuestRequestWindow.xaml;HomeWindows\Login.xaml;HomeWindows\MainWindow.xaml;HomeWindows\RegisterWindow.xaml;HostingUnitWindows\AddHostingUnitWindow.xaml;HostingUnitWindows\AddOrder.xaml;HostingUnitWindows\HostingUnitWindow.xaml;HostingUnitWindows\PrivateAreaWindow.xaml;HostingUnitWindows\UpdateHostingUnitWindow.xaml;
+AdminWindows\AdminWindow.xaml;Guest Windows\addGuestRequestWindow.xaml;Guest Windows\GuestRequestWindow.xaml;HomeWindows\Login.xaml;HomeWindows\MainWindow.xaml;HomeWindows\RegisterWindow.xaml;HostingUnitWindows\AddHostingUnitWindow.xaml;HostingUnitWindows\AddOrder.xaml;HostingUnitWindows\HostingUnitWindow.xaml;HostingUnitWindows\PrivateAreaWindow.xaml;HostingUnitWindows\UpdateHostingUnitWindow.xaml;
 
 False
 

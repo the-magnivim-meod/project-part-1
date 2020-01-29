@@ -60,8 +60,6 @@ C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PL
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.AssemblyInfoInputs.cache
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.AssemblyInfo.cs
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\PLWPF.csproj.CopyComplete
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AdminWindow.g.cs
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AdminWindow.baml
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\Guest Windows\addGuestRequestWindow.g.cs
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\Guest Windows\GuestRequestWindow.g.cs
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HomeWindows\Login.g.cs
@@ -82,3 +80,5 @@ C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PL
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\HostingUnitWindow.baml
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\PrivateAreaWindow.baml
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\HostingUnitWindows\UpdateHostingUnitWindow.baml
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AdminWindows\AdminWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF\obj\Debug\netcoreapp3.1\AdminWindows\AdminWindow.baml

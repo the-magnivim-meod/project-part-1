@@ -29,5 +29,27 @@ namespace PLWPF
 
             UserType.ItemsSource = Enum.GetValues(typeof(UserType));
         }
+
+        /// <summary>
+        /// make sure the login button appears only if the all the feilds not empty
+        /// checks if either the feilds have the default value or their length is not 0 as it can be if focus is on the field
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContentChangedForRegisterButton(object sender, RoutedEventArgs e)
+        {
+            if (UserName.Text.Length > 0 && UserPassword.Password.Length > 0 && UserPasswordEnsure.Password.Length>0 && Pname.Text.Length > 0 && Fname.Text.Length > 0)
+            {
+                RegisterButton.IsEnabled = true;
+                RegisterButton.Background = (Brush)new BrushConverter().ConvertFromString("Beige");
+                RegisterButton.Foreground = (Brush)new BrushConverter().ConvertFromString("Maroon");
+
+            }
+            else
+            {
+                RegisterButton.IsEnabled = false;
+                RegisterButton.Foreground = (Brush)new BrushConverter().ConvertFromString("Gray");
+            }
+        }
     }
 }
