@@ -48,8 +48,8 @@ namespace PLWPF_Updated
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Window MainHostWindow = new HostMainWindow();
-            MainHostWindow.Show();
+            Window AdminWindow = new AdminMainWindow();
+            AdminWindow.Show();
             this.Close();
         }
 

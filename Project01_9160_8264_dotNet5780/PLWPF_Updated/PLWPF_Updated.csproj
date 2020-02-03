@@ -55,19 +55,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdminWindows\AdminWindow.xaml.cs">
-      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    <Compile Include="AdminWindows\AdminMainWindow.xaml.cs">
+      <DependentUpon>AdminMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GuestRequestsDataWindow.xaml.cs">
+      <DependentUpon>GuestRequestsDataWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="HostWindows\AddOrderWindow.xaml.cs">
       <DependentUpon>AddOrderWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Homewindows\RegisterWindow.xaml.cs">
+    <Compile Include="HomeWindows\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="HostWindows\UpdateHostingUnitWindow.xaml.cs">
       <DependentUpon>UpdateHostingUnitWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="AdminWindows\AdminWindow.xaml">
+    <Compile Include="UpdateGuestRequests.xaml.cs">
+      <DependentUpon>UpdateGuestRequests.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AdminWindows\AdminMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GuestRequestsDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,7 +101,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Homewindows\MainWindow.xaml">
+    <Page Include="HomeWindows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -111,15 +121,15 @@
     <Compile Include="HostWindows\HostMainWindow.xaml.cs">
       <DependentUpon>HostMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Homewindows\MainWindow.xaml.cs">
+    <Compile Include="HomeWindows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Homewindows\LoginWindow.xaml">
+    <Page Include="HomeWindows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Homewindows\RegisterWindow.xaml">
+    <Page Include="HomeWindows\RegisterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,9 +141,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UpdateGuestRequests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Homewindows\LoginWindow.xaml.cs">
+    <Compile Include="HomeWindows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="HostWindows\PrivateArea.xaml.cs">

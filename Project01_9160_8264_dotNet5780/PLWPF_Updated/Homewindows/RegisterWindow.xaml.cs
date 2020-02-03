@@ -52,5 +52,12 @@ namespace PLWPF_Updated
                 RegisterButton.Foreground = (Brush)new BrushConverter().ConvertFromString("Gray");
             }
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Window NewLoginWindow = new LoginWindow();
+            NewLoginWindow.Show();
+            this.Close();
+        }
     }
 }

@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF_Updated"
         mc:Ignorable="d" FontSize="18" FontFamily="Bookman Old Style"
-        Title="RegisterWindow" Height="500" Width="1000">
+        Title="RegisterWindow" Height="550" Width="1000">
     <Grid x:Name="RegisterGrid" Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -61,5 +63,17 @@
         <Button x:Name="RegisterButton" Content="Register" Margin="3" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" Height="50"/>
 
         <Image Source="/Images/ProjectLogoImage.jpg" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" MaxWidth="300" Margin="3"/>
+
+        <Grid Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Back" Content="Return" Click="Back_Click"  Margin="3" Background="Black" Foreground="Green" Grid.Column="4" Height="30"/>
+        </Grid>
     </Grid>
 </Window>

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace PLWPF_Updated
 {
     /// <summary>
-    /// Interaction logic for AdminWindows.xaml
+    /// Interaction logic for HostingUnitDataWindow.xaml
     /// </summary>
-    public partial class AdminWindows : Window
+    public partial class HostingUnitDataWindow : Window
     {
-        public AdminWindows()
+        public HostingUnitDataWindow()
         {
             InitializeComponent();
         }

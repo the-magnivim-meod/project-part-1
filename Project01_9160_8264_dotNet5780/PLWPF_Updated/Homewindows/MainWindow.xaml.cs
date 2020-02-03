@@ -44,7 +44,9 @@ namespace PLWPF_Updated
 
         private void AdminButtonClick(object sender, RoutedEventArgs e)
         {
-            //in need to go to the Admin's window (page 4.0)
+            Window AdminWindow = new AdminMainWindow();
+            AdminWindow.Show();
+            this.Close();
         }
     }
 }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\App.xaml
-9-2067157312
+12-1496188060
 
-131166867398
+161013232638
 16-1711210606
-AddOrderWindow.xaml;GuestWindows\AddGuestRequestWindow.xaml;HostWindows\AddHostingUnitWindow.xaml;GuestWindows\GuestMainWindow.xaml;HostWindows\HostMainWindow.xaml;Homewindows\MainWindow.xaml;Homewindows\LoginWindow.xaml;Homewindows\RegisterWindow.xaml;HostWindows\UpdateHostingUnitWindow.xaml;
+AdminWindows\AdminMainWindow.xaml;HostWindows\AddOrderWindow.xaml;GuestWindows\AddGuestRequestWindow.xaml;HostWindows\AddHostingUnitWindow.xaml;GuestWindows\GuestMainWindow.xaml;HostWindows\HostMainWindow.xaml;HomeWindows\MainWindow.xaml;HomeWindows\LoginWindow.xaml;HomeWindows\RegisterWindow.xaml;HostWindows\UpdateHostingUnitWindow.xaml;HostWindows\PrivateArea.xaml;UpdateGuestRequests.xaml;
 
 False
 

@@ -174,8 +174,6 @@ namespace BL
 
         bool MailAddressIsValid(string address)
         {
-            //var a = new System.ComponentModel.DataAnnotations.EmailAddressAttribute();
-            //return a.IsValid(address);
             if (string.IsNullOrWhiteSpace(address))
                 return false;
 
@@ -208,6 +206,7 @@ namespace BL
 
             try
             {
+                //checks if address matches a valid email address(if the stucture is valid)
                 return Regex.IsMatch(address,
                     @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
                     @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",

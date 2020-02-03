@@ -109,7 +109,15 @@ namespace PLWPF_Updated
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
