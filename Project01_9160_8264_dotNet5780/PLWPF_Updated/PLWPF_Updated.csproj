@@ -58,9 +58,6 @@
     <Compile Include="AdminWindows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GuestRequestsDataWindow.xaml.cs">
-      <DependentUpon>GuestRequestsDataWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HostWindows\AddOrderWindow.xaml.cs">
       <DependentUpon>AddOrderWindow.xaml</DependentUpon>
     </Compile>
@@ -71,10 +68,6 @@
       <DependentUpon>UpdateHostingUnitWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AdminWindows\AdminWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GuestRequestsDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
