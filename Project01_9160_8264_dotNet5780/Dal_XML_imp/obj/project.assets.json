@@ -25,16 +25,6 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
-      },
-      "BE/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/BE.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/BE.dll": {}
-        }
       }
     }
   },
@@ -182,33 +172,27 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
-    },
-    "BE/1.0.0": {
-      "type": "project",
-      "path": "../BE/BE.csproj",
-      "msbuildProject": "../BE/BE.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "BE >= 1.0.0",
       "NETStandard.Library >= 2.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yezob\\.nuget\\packages\\": {}
+    "C:\\Users\\yitzhaka\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\Dal_XML_imp\\Dal_XML_imp.csproj",
+      "projectUniqueName": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\Dal_XML_imp\\Dal_XML_imp.csproj",
       "projectName": "Dal_XML_imp",
-      "projectPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\Dal_XML_imp\\Dal_XML_imp.csproj",
-      "packagesPath": "C:\\Users\\yezob\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\Dal_XML_imp\\obj\\",
+      "projectPath": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\Dal_XML_imp\\Dal_XML_imp.csproj",
+      "packagesPath": "C:\\Users\\yitzhaka\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\Dal_XML_imp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\yezob\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yitzhaka\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -220,11 +204,7 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {
-            "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj": {
-              "projectPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -253,7 +233,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

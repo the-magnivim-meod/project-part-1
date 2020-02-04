@@ -59,5 +59,17 @@ namespace PLWPF_Updated
             NewLoginWindow.Show();
             this.Close();
         }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(Enum.GetValues(typeof(UserType))== Enum.GetValues(typeof(Host)))
+            {
+                Window NewHostRegWindow = new HostRegWindow();
+                NewHostRegWindow.Show();
+                this.Close();
+            }
+        }
+
+        
     }
 }

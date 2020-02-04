@@ -1,0 +1,3 @@
+C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\Dal_XML_imp\obj\Debug\netstandard2.0\Dal_XML_imp.csprojAssemblyReference.cache
+C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\Dal_XML_imp\obj\Debug\netstandard2.0\Dal_XML_imp.AssemblyInfoInputs.cache
+C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\Dal_XML_imp\obj\Debug\netstandard2.0\Dal_XML_imp.AssemblyInfo.cs
