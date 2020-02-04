@@ -43,6 +43,7 @@ namespace PLWPF_Updated
             NewGuestRequest.Pool = AmountOfIntrenst.Optional;
             NewGuestRequest.EntryDate = DateTime.Today;
             NewGuestRequest.ReleaseDate = DateTime.Today.AddDays(1);
+            NewGuestRequest.Adults = 1;
         }
 
         private void AddRequest_Click(object sender, RoutedEventArgs e)
@@ -51,17 +52,21 @@ namespace PLWPF_Updated
             try
             {
                 myIBL.AddGuestRequest(NewGuestRequest);
-                NewGuestRequest = new GuestRequest()
-                {
-                    ChildrensAttractions = AmountOfIntrenst.Optional,
-                    Garden = AmountOfIntrenst.Optional,
-                    CloseByGroceryStore = AmountOfIntrenst.Optional,
-                    Pool = AmountOfIntrenst.Optional,
-                    EntryDate = DateTime.Today,
-                    ReleaseDate = DateTime.Today.AddDays(1),
-                };
-                AddRequestGrid.DataContext = NewGuestRequest;
-
+                //i think it is better to go back to the menu
+                //--------------------------------
+                //NewGuestRequest = new GuestRequest()
+                //{
+                //    ChildrensAttractions = AmountOfIntrenst.Optional,
+                //    Garden = AmountOfIntrenst.Optional,
+                //    CloseByGroceryStore = AmountOfIntrenst.Optional,
+                //    Pool = AmountOfIntrenst.Optional,
+                //    EntryDate = DateTime.Today,
+                //    ReleaseDate = DateTime.Today.AddDays(1),
+                //};
+                //AddRequestGrid.DataContext = NewGuestRequest;
+                Window mainGuest = new GuestMainWindow();
+                mainGuest.Show();
+                this.Close();
             }
             catch (DateOrderException)
             {
@@ -77,12 +82,20 @@ namespace PLWPF_Updated
             catch (NotValidEmailAddressException)
             {
                 MessageBox.Show("The email address must be valid.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                EmailAdd.Text = "";
+                EmailAdd.Focus();
             }
-            //catch (Exception exxxc)
-            //{
-            //    MessageBox.Show("There Was a problem. Please try again soon", "ERROR!", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
+            catch(ChildrenAmountException)
+            {
+                MessageBox.Show("There cannot be a negative amount of people, this is earth!!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                numChildren.Text = "0";
+                numChildren.Focus();
+            }
+            catch(AdultAmountException)
+            {
+                MessageBox.Show("if there are no adults, who is requesting the vacation?!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                numAdults.Text = "1";
+                numAdults.Focus();
+            }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

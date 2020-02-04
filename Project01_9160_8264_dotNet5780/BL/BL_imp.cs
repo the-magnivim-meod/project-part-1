@@ -236,6 +236,16 @@ namespace BL
             {
                 throw new NotValidEmailAddressException();
             }
+
+            else if (guestRequest.Adults < 1)
+            {
+                throw new AdultAmountException();
+            }
+
+            else if (guestRequest.Children < 0)
+            {
+                throw new ChildrenAmountException();
+            }
             myDal.AddGuestRequest(guestRequest.Clone());
         }
 

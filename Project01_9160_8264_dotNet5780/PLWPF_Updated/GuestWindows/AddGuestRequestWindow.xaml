@@ -103,46 +103,6 @@
                             <Setter Property="IsEnabled" Value="False"/>
                             <Setter Property="Background" Value="Gray"/>
                         </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=pool}" Value="{x:Null}">
-                            <Setter Property="IsEnabled" Value="False"/>
-                            <Setter Property="Background" Value="Gray"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=garden}" Value="{x:Null}">
-                            <Setter Property="IsEnabled" Value="False"/>
-                            <Setter Property="Background" Value="Gray"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=cAttractions}" Value="{x:Null}">
-                            <Setter Property="IsEnabled" Value="False"/>
-                            <Setter Property="Background" Value="Gray"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=gStore}" Value="{x:Null}">
-                            <Setter Property="IsEnabled" Value="False"/>
-                            <Setter Property="Background" Value="Gray"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=TypeOfHostingUnit}" Value="{x:Null}">
-                            <Setter Property="IsEnabled" Value="False"/>
-                            <Setter Property="Background" Value="Gray"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=AreaOfCountry}" Value="{x:Null}">
-                            <Setter Property="IsEnabled" Value="False"/>
-                            <Setter Property="Background" Value="Gray"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=SelectedDate, ElementName=StartingDate}" Value="{x:Null}">
-                            <Setter Property="IsEnabled" Value="False"/>
-                            <Setter Property="Background" Value="Gray"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Path=SelectedDate, ElementName=EndingDate}" Value="{x:Null}">
-                            <Setter Property="IsEnabled" Value="False"/>
-                            <Setter Property="Background" Value="Gray"/>
-                        </DataTrigger>
                     </Style.Triggers>
                     <Setter Property="Foreground" Value="Maroon"/>
                     <Setter Property="Background" Value="Beige"/>
