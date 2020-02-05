@@ -1,8 +1,9 @@
 ﻿
 
 FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\AdminWindows\AdminMainWindow.xaml;;
-FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\GuestRequestsDataWindow.xaml;;
-FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\HostRegWindow.xaml;;
+FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\AdminWindows\GuestRequestsDataWindow.xaml;;
+FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\HomeWindows\HostRegWindow.xaml;;
+FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\AdminWindows\HostingUnitDataWindow.xaml;;
 FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\HostWindows\AddOrderWindow.xaml;;
 FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\GuestWindows\AddGuestRequestWindow.xaml;;
 FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\HostWindows\AddHostingUnitWindow.xaml;;
@@ -13,5 +14,5 @@ FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet578
 FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\HomeWindows\RegisterWindow.xaml;;
 FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\HostWindows\UpdateHostingUnitWindow.xaml;;
 FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\HostWindows\PrivateArea.xaml;;
-FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\UpdateGuestRequests.xaml;;
+FC:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\GuestWindows\UpdateGuestRequests.xaml;;
 

@@ -73,11 +73,14 @@
     <Compile Include="AdminWindows\AdminMainWindow.xaml.cs">
       <DependentUpon>AdminMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GuestRequestsDataWindow.xaml.cs">
+    <Compile Include="AdminWindows\GuestRequestsDataWindow.xaml.cs">
       <DependentUpon>GuestRequestsDataWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HostRegWindow.xaml.cs">
+    <Compile Include="HomeWindows\HostRegWindow.xaml.cs">
       <DependentUpon>HostRegWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminWindows\HostingUnitDataWindow.xaml.cs">
+      <DependentUpon>HostingUnitDataWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="HostWindows\AddOrderWindow.xaml.cs">
       <DependentUpon>AddOrderWindow.xaml</DependentUpon>
@@ -88,18 +91,22 @@
     <Compile Include="HostWindows\UpdateHostingUnitWindow.xaml.cs">
       <DependentUpon>UpdateHostingUnitWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UpdateGuestRequests.xaml.cs">
+    <Compile Include="GuestWindows\UpdateGuestRequests.xaml.cs">
       <DependentUpon>UpdateGuestRequests.xaml</DependentUpon>
     </Compile>
     <Page Include="AdminWindows\AdminMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GuestRequestsDataWindow.xaml">
+    <Page Include="AdminWindows\GuestRequestsDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HostRegWindow.xaml">
+    <Page Include="HomeWindows\HostRegWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminWindows\HostingUnitDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,7 +170,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UpdateGuestRequests.xaml">
+    <Page Include="GuestWindows\UpdateGuestRequests.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

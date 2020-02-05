@@ -50,4 +50,29 @@
       <releaseDate>2020-02-06T00:00:00+02:00</releaseDate>
     </dates>
   </guestRequest>
+  <guestRequest>
+    <id>3</id>
+    <name>
+      <firstName>david</firstName>
+      <familyName>abargel</familyName>
+    </name>
+    <guests>
+      <adults>2</adults>
+      <children>3</children>
+    </guests>
+    <extras>
+      <pool>Neccecery</pool>
+      <garden>Optional</garden>
+      <groceryStore>Optional</groceryStore>
+      <attractions>Optional</attractions>
+    </extras>
+    <status>YetToBeAttendedTo</status>
+    <area>Center</area>
+    <mail>davidabar4@gmail.com</mail>
+    <dates>
+      <registrationDate>0001-01-01T00:00:00</registrationDate>
+      <entryDate>2020-02-19T00:00:00</entryDate>
+      <releaseDate>2020-02-27T00:00:00</releaseDate>
+    </dates>
+  </guestRequest>
 </guestRequests>

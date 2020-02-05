@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <config>
-  <guestRequestCounter>3</guestRequestCounter>
+  <guestRequestCounter>4</guestRequestCounter>
   <hostingUnitCounter>1</hostingUnitCounter>
   <orderCounter>1</orderCounter>
   <hostingUnitCounter>1</hostingUnitCounter>

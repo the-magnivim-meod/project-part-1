@@ -37,5 +37,12 @@ namespace PLWPF_Updated
             NewMainWindow.Show();
             this.Close();
         }
+
+        private void HostingUnitList_Click(object sender, RoutedEventArgs e)
+        {
+            Window HostingUnitData = new HostingUnitDataWindow();
+            HostingUnitData.Show();
+            this.Close();
+        }
     }
 }
