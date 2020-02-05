@@ -74,6 +74,7 @@ namespace BE
     public enum UserType
     {
         Guest,
-        Host
+        Host,
+        Admin
     }
 }

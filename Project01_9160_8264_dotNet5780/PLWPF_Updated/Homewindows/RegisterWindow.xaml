@@ -58,7 +58,7 @@
         <TextBox x:Name="Fname" Grid.Row="8" Grid.Column="3" Width="150" Margin="3" Text="{Binding FamilyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="ContentChangedForRegisterButton"/>
 
         <TextBlock Text="Type of user you want to be:" Grid.Column="2" Grid.Row="9" Margin="3"/>
-        <ComboBox x:Name="UserType" Grid.Row="9" Grid.Column="3" Width="150" Margin="3" Background="Beige" Text="{Binding FamilyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="ContentChangedForRegisterButton"/>
+        <ComboBox x:Name="UserTypeComboBox" Grid.Row="9" Grid.Column="3" Width="150" Margin="3" Background="Beige" Text="{Binding FamilyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="ContentChangedForRegisterButton"/>
 
         <Button x:Name="RegisterButton" Content="Register" Margin="3" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" Height="50" Click="RegisterButton_Click"/>
 

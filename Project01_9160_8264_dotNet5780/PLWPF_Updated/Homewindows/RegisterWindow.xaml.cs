@@ -28,7 +28,7 @@ namespace PLWPF_Updated
             user = new User();
             RegisterGrid.DataContext = user;
 
-            UserType.ItemsSource = Enum.GetValues(typeof(UserType));
+            UserTypeComboBox.ItemsSource = Enum.GetValues(typeof(UserType));
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace PLWPF_Updated
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            if(Enum.GetValues(typeof(UserType))== Enum.GetValues(typeof(Host)))
+            if((UserType)UserTypeComboBox.SelectedItem == BE.UserType.Host)
             {
                 Window NewHostRegWindow = new HostRegWindow();
                 NewHostRegWindow.Show();
