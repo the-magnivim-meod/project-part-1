@@ -32,8 +32,8 @@ namespace PLWPF_Updated
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Window MainHostWindow = new HostMainWindow();
-            MainHostWindow.Show();
+            Window MainGuestWindow = new GuestMainWindow();
+            MainGuestWindow.Show();
             this.Close();
         }
 
