@@ -196,19 +196,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yitzhaka\\.nuget\\packages\\": {}
+    "C:\\Users\\yezob\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\DS\\DS.csproj",
+      "projectUniqueName": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\DS\\DS.csproj",
       "projectName": "DS",
-      "projectPath": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\DS\\DS.csproj",
-      "packagesPath": "C:\\Users\\yitzhaka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\DS\\obj\\",
+      "projectPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\DS\\DS.csproj",
+      "packagesPath": "C:\\Users\\yezob\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\DS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\yitzhaka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yezob\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -221,8 +221,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj": {
-              "projectPath": "C:\\Users\\yitzhaka\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj"
+            "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj": {
+              "projectPath": "C:\\Users\\yezob\\Documents\\GitHub\\project-part-1\\Project01_9160_8264_dotNet5780\\BE\\BE.csproj"
             }
           }
         }
@@ -253,7 +253,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

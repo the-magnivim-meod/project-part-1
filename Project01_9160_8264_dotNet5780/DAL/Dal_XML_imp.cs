@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml.Linq;
 using System.IO;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace DAL
 {
@@ -14,12 +15,19 @@ namespace DAL
     class Dal_XML_imp : IDal
     {
         XElement guestRequestRoot;
-        string guestRequestPath = @"GuestRequestXML.xml";
+        string guestRequestPath = @"guestRequestXML.xml";
+
         XElement configRoot;
         string configPath = @"config.xml";
 
+        XElement hostingUnitRoot;
+        string hostingUnitPath = @"hostingUnit.xml";
+
+        XElement orderRoot;
+        string orderPath = @"order.xml";
         public Dal_XML_imp()
         {
+            //guestRequest
             if (!File.Exists(guestRequestPath))
             {
                 CreateGuestRequestFile();
@@ -28,7 +36,7 @@ namespace DAL
             {
                 guestRequestRoot = XElement.Load(guestRequestPath);
             }
-
+            //config
             if (!File.Exists(configPath))
             {
                 CreateConfigFile();
@@ -36,6 +44,24 @@ namespace DAL
             else
             {
                 configRoot = XElement.Load(configPath);
+            }
+            //hostingUnit
+            if (!File.Exists(hostingUnitPath))
+            {
+                CreateHostingUnitFile();
+            }
+            else
+            {
+                hostingUnitRoot = XElement.Load(hostingUnitPath);
+            }
+            //order
+            if (!File.Exists(orderPath))
+            {
+                CreateOrderFile();
+            }
+            else
+            {
+                orderRoot = XElement.Load(orderPath);
             }
         }
 
@@ -48,13 +74,25 @@ namespace DAL
 
         void CreateConfigFile()
         {
-            configRoot = new XElement("config", 
-                         new XElement("guestRequestCounter", 1), 
-                         new XElement("hostingUnitCounter", 1), 
-                         new XElement("orderCounter", 1), 
-                         new XElement("hostingUnitCounter", 1), 
+            configRoot = new XElement("config",
+                         new XElement("guestRequestCounter", 1),
+                         new XElement("hostingUnitCounter", 1),
+                         new XElement("orderCounter", 1),
+                         new XElement("hostingUnitCounter", 1),
                          new XElement("totalEarnings", 0));
             configRoot.Save(configPath);
+        }
+
+        void CreateHostingUnitFile()
+        {
+            hostingUnitRoot = new XElement("hostingUnits");
+            hostingUnitRoot.Save(hostingUnitPath);
+        }
+
+        void CreateOrderFile()
+        {
+            orderRoot = new XElement("orders");
+            orderRoot.Save(orderPath);
         }
         #endregion
 
@@ -65,11 +103,11 @@ namespace DAL
             guestRequestRoot.Add(new XElement("guestRequest",
                 new XElement("id", guestRequest.GuestRequestKey),
                 new XElement("name", new XElement("firstName", guestRequest.PrivateName), new XElement("familyName", guestRequest.FamilyName)),
-                new XElement("guests", new XElement("adults",guestRequest.Adults), new XElement("children",guestRequest.Children)),
+                new XElement("guests", new XElement("adults", guestRequest.Adults), new XElement("children", guestRequest.Children)),
                 new XElement("extras", new XElement("pool", guestRequest.Pool), new XElement("garden", guestRequest.Garden), new XElement("groceryStore", guestRequest.CloseByGroceryStore), new XElement("attractions", guestRequest.ChildrensAttractions)),
                 new XElement("status", guestRequest.Status),
                 new XElement("area", guestRequest.Area),
-                new XElement("mail",guestRequest.MailAddress),
+                new XElement("mail", guestRequest.MailAddress),
                 new XElement("dates", new XElement("registrationDate", guestRequest.RegistrationDate), new XElement("entryDate", guestRequest.EntryDate), new XElement("releaseDate", guestRequest.ReleaseDate))
                 ));
             guestRequestRoot.Save(guestRequestPath);
@@ -78,10 +116,10 @@ namespace DAL
         public void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status)
         {
             XElement guestRequestElement = (from req in guestRequestRoot.Elements()
-                                           where int.Parse(req.Element("id").Value) == guestRequestNumber
-                                           select req).FirstOrDefault();
+                                            where int.Parse(req.Element("id").Value) == guestRequestNumber
+                                            select req).FirstOrDefault();
             guestRequestElement.Element("status").Value = status.ToString();
-            guestRequestRoot.Save(guestRequestPath);                          
+            guestRequestRoot.Save(guestRequestPath);
         }
         #endregion
 
@@ -89,6 +127,18 @@ namespace DAL
         public void AddHostingUnit(HostingUnit hostingUnit)
         {
             throw new NotImplementedException();
+
+            //hostingUnit.HostingUnitKey = GetHostingUnitKey();
+            //hostingUnitRoot.Add(new XElement("hostingUnit",
+            //    new XElement("id", hostingUnit.HostingUnitKey),
+            //    new XElement("name", hostingUnit.HostingUnitName),
+            //    new XElement("extras", new XElement("pool", hostingUnit.HasPool), new XElement("garden", hostingUnit.HasGarden), new XElement("groceryStore", hostingUnit.HasNearByGroceryStore), new XElement("attractions", hostingUnit.HasChildrensAttractions)),
+            //    new XElement("status", guestRequest.Status),
+            //    new XElement("area", guestRequest.Area),
+            //    new XElement("mail", guestRequest.MailAddress),
+            //    new XElement("dates", new XElement("registrationDate", guestRequest.RegistrationDate), new XElement("entryDate", guestRequest.EntryDate), new XElement("releaseDate", guestRequest.ReleaseDate))
+            //    ));
+            //guestRequestRoot.Save(guestRequestPath);
         }
 
         public void DeleteHostingUnit(int hotingUnitNumber)
@@ -99,23 +149,43 @@ namespace DAL
         public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
             throw new NotImplementedException();
+            //XElement guestRequestElement = (from req in guestRequestRoot.Elements()
+            //                                where int.Parse(req.Element("id").Value) == guestRequestNumber
+            //                                select req).FirstOrDefault();
+            //guestRequestElement.Element("status").Value = status.ToString();
+            //guestRequestRoot.Save(guestRequestPath);
         }
         #endregion
 
         #region order methods
         public void AddOrder(Order order)
         {
-            throw new NotImplementedException();
+            order.OrderKey = GetOrderKey();
+            guestRequestRoot.Add(new XElement("order",
+                new XElement("id", order.OrderKey),
+                new XElement("foreignKeys", new XElement("guestRequestId", order.GuestRequestKey), new XElement("hostingUnitId", order.HostingUnitKey)),
+                new XElement("status", order.Status),
+                new XElement("dates", new XElement("creationDate", order.CreateDate), new XElement("orderDate", order.OrderDate))
+                ));
+            guestRequestRoot.Save(guestRequestPath);
         }
 
         public void deleteOrder(int orderKey)
         {
-            throw new NotImplementedException();
+            XElement orderElement = (from ord in orderRoot.Elements()
+                                     where int.Parse(ord.Element("id").Value) == orderKey
+                                     select ord).FirstOrDefault();
+            orderElement.Remove();
+            orderRoot.Save(orderPath);
         }
 
         public void UpdateOrder(int orderNumber, OrderStatus status)
         {
-            throw new NotImplementedException();
+            XElement orderElement = (from ord in orderRoot.Elements()
+                                            where int.Parse(ord.Element("id").Value) == orderNumber
+                                            select ord).FirstOrDefault();
+            orderElement.Element("status").Value = status.ToString();
+            orderRoot.Save(orderPath);
         }
         #endregion
 
@@ -197,7 +267,41 @@ namespace DAL
             configRoot.Save(configPath);
             return old;
         }
+
+        int GetHostingUnitKey()
+        {
+            int old = int.Parse(configRoot.Element("hostingUnitCounter").Value);
+            configRoot.Element("hostingUnitCounter").Value = (old + 1).ToString();
+            configRoot.Save(configPath);
+            return old;
+        }
+
+        int GetOrderKey()
+        {
+            int old = int.Parse(configRoot.Element("orderCounter").Value);
+            configRoot.Element("orderCounter").Value = (old + 1).ToString();
+            configRoot.Save(configPath);
+            return old;
+        }
         #endregion
+
+        //#region serialize functions
+        //public static void SaveToXML<T>(T source, string path)
+        //{
+        //    FileStream file = new FileStream(path, FileMode.Create);
+        //    XmlSerializer xmlSerializer = new XmlSerializer(source.GetType());
+        //    xmlSerializer.Serialize(file, source);
+        //    file.Close();
+        //}
+        //public static T LoadFromXML<T>(string path)
+        //{
+        //    FileStream file = new FileStream(path, FileMode.Open);
+        //    XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+        //    T result = (T)xmlSerializer.Deserialize(file);
+        //    file.Close();
+        //    return result;
+        //}
+        //#endregion
     }
 }
 

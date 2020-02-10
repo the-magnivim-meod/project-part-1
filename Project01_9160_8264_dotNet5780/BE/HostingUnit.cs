@@ -10,10 +10,13 @@ namespace BE
         public Host Owner { get; set; }
         public string HostingUnitName { get; set; }
         public bool[,] Diary = new bool[12, 31];
-    public HostingUnitType Type { get; set; }
-    public AreaOfTheCountry Area { get; set; }
-
-    public override string ToString()
+        public HostingUnitType Type { get; set; }
+        public AreaOfTheCountry Area { get; set; }        
+        public bool HasPool { get; set; }
+        public bool HasGarden { get; set; }
+        public bool HasNearByGroceryStore { get; set; }
+        public bool HasChildrensAttractions { get; set; }
+        public override string ToString()
         {
             string output = $"HostingUnitKey {HostingUnitKey}\n";
             output += $"Owner {Owner}\n";
