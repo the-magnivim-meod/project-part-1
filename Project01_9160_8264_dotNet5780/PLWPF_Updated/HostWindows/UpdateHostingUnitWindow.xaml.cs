@@ -17,9 +17,9 @@ namespace PLWPF_Updated
     /// <summary>
     /// Interaction logic for UpdateHostingUnit.xaml
     /// </summary>
-    public partial class UpdateHostingUnit : Window
+    public partial class UpdateHostingUnitWindow : Window
     {
-        public UpdateHostingUnit()
+        public UpdateHostingUnitWindow()
         {
             InitializeComponent();
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BE;
+using BL;
 namespace PLWPF_Updated
 {
     /// <summary>
@@ -19,17 +21,26 @@ namespace PLWPF_Updated
     /// </summary>
     public partial class HostingUnitDataWindow : Window
     {
+        IBL myIBL = FactoryBL.GetBL();
         public HostingUnitDataWindow()
         {
             InitializeComponent();
+            ObservableCollection<HostingUnit> hostingUnits = new ObservableCollection<HostingUnit>(myIBL.GetAllHostingUnits());
+            GuestRequestDataGrid.ItemsSource = hostingUnits;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
+            Window MainGuestWindow = new GuestMainWindow();
+            MainGuestWindow.Show();
+            this.Close();
+        }
 
-            System.Windows.Data.CollectionViewSource hostingUnitViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("hostingUnitViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // hostingUnitViewSource.Source = [generic data source]
+        private void LogOff_Click(object sender, RoutedEventArgs e)
+        {
+            Window Login = new MainWindow();
+            Login.Show();
+            this.Close();
         }
     }
 }

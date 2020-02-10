@@ -26,7 +26,7 @@ namespace PLWPF_Updated
 
         private void GuestRequestsList_Click(object sender, RoutedEventArgs e)
         {
-            Window GuestGrid = new UpdateGuestRequests();
+            Window GuestGrid = new GuestRequestDataWindow();
             GuestGrid.Show();
             this.Close();
         }

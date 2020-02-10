@@ -73,9 +73,6 @@
     <Compile Include="AdminWindows\AdminMainWindow.xaml.cs">
       <DependentUpon>AdminMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminWindows\GuestRequestsDataWindow.xaml.cs">
-      <DependentUpon>GuestRequestsDataWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HomeWindows\HostRegWindow.xaml.cs">
       <DependentUpon>HostRegWindow.xaml</DependentUpon>
     </Compile>
@@ -91,14 +88,10 @@
     <Compile Include="HostWindows\UpdateHostingUnitWindow.xaml.cs">
       <DependentUpon>UpdateHostingUnitWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GuestWindows\UpdateGuestRequests.xaml.cs">
-      <DependentUpon>UpdateGuestRequests.xaml</DependentUpon>
+    <Compile Include="AdminWindows\GuestRequestDataWindow.xaml.cs">
+      <DependentUpon>GuestRequestDataWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AdminWindows\AdminMainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AdminWindows\GuestRequestsDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,7 +163,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GuestWindows\UpdateGuestRequests.xaml">
+    <Page Include="AdminWindows\GuestRequestDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
