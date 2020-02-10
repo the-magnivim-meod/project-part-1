@@ -79,7 +79,7 @@
     <Compile Include="HomeWindows\HostRegWindow.xaml.cs">
       <DependentUpon>HostRegWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HostingUnitDataWindow.xaml.cs">
+    <Compile Include="AdminWindows\HostingUnitDataWindow.xaml.cs">
       <DependentUpon>HostingUnitDataWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="HostWindows\AddOrderWindow.xaml.cs">
@@ -106,7 +106,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HostingUnitDataWindow.xaml">
+    <Page Include="AdminWindows\HostingUnitDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
