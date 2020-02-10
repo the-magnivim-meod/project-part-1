@@ -222,6 +222,7 @@ namespace BL
         #region GuestRequest Methods
         public void AddGuestRequest(GuestRequest guestRequest)
         {
+            guestRequest.RegistrationDate = DateTime.Today;
             if (!(guestRequest.EntryDate < guestRequest.ReleaseDate))
             {
                 throw new DateOrderException();
