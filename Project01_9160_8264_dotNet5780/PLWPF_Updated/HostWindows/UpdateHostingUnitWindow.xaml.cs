@@ -24,5 +24,62 @@ namespace PLWPF_Updated
             InitializeComponent();
         }
 
+        private void SelectHostingUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+    }
+}
+
+
+
+
+namespace PLWPF
+{
+    /// <summary>
+    /// Interaction logic for UpdateHostingUnit.xaml
+    /// </summary>
+    public partial class UpdateHostingUnit : Window
+    {
+        BE.HostUser hostUser;
+        BL.IBL bL;
+        public UpdateHostingUnit(BE.HostUser hostUser)
+        {
+            InitializeComponent();
+            this.hostUser = hostUser;
+
+            bL = new BL.BL_imp();
+            HostingUnitBox.ItemsSource = hostUser.HostingUnits.Select(item => item.HostinUnitKey);
+            Location.ItemsSource = Enum.GetValues(typeof(Location));
+            KindOfUnit.ItemsSource = Enum.GetValues(typeof(KindOfUnit));
+
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                bL.updateHostingUnit(hostUser.HostingUnits[HostingUnitBox.SelectedIndex]);
+
+                new Host(hostUser).Show();
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            new Host(hostUser).Show();
+            Close();
+        }
+
+        private void HostingUnitBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            HostingUnitDetails.DataContext = hostUser.HostingUnits[HostingUnitBox.SelectedIndex];
+        }
     }
 }
