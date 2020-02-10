@@ -11,13 +11,16 @@
         <CollectionViewSource x:Key="hostingUnitViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:HostingUnit}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource hostingUnitViewSource}">
-
-        <DataGrid x:Name="hostingUnitDataGrid" Background="DarkCyan" RowDetailsVisibilityMode="VisibleWhenSelected" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <DataGrid x:Name="hostingUnitDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Background="DarkCyan" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="areaColumn" Width="SizeToHeader" Header="Area" Binding="{Binding Area}"/>
-                <DataGridTextColumn x:Name="hostingUnitKeyColumn" Width="SizeToHeader" Header="Hosting Unit Key" Binding="{Binding HostingUnitKey}"/>
-                <DataGridTextColumn x:Name="hostingUnitNameColumn" Width="SizeToHeader" Header="Hosting Unit Name" Binding="{Binding HostingUnitName}"/>
-                <DataGridTextColumn x:Name="typeColumn" Width="SizeToHeader" Header="Type" Binding="{Binding Type}"/>
+                <DataGridTextColumn x:Name="areaColumn" Binding="{Binding Area}" Header="Area" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="hasChildrensAttractionsColumn" Binding="{Binding HasChildrensAttractions}" Header="Has Childrens Attractions" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="hasGardenColumn" Binding="{Binding HasGarden}" Header="Has Garden" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="hasNearByGroceryStoreColumn" Binding="{Binding HasNearByGroceryStore}" Header="Has Near By Grocery Store" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="hasPoolColumn" Binding="{Binding HasPool}" Header="Has Pool" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="hostingUnitKeyColumn" Binding="{Binding HostingUnitKey}" Header="Hosting Unit Key" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="hostingUnitNameColumn" Binding="{Binding HostingUnitName}" Header="Hosting Unit Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
 

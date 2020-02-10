@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<guestRequests>
+  <guestRequest>
+    <id>1</id>
+    <name>
+      <firstName>ori</firstName>
+      <familyName>sobol</familyName>
+    </name>
+    <guests>
+      <adults>1</adults>
+      <children>0</children>
+    </guests>
+    <extras>
+      <pool>Neccecery</pool>
+      <garden>Neccecery</garden>
+      <groceryStore>Optional</groceryStore>
+      <attractions>NotInterested</attractions>
+    </extras>
+    <status>YetToBeAttendedTo</status>
+    <area>North</area>
+    <mail>aa@aa.aa</mail>
+    <dates>
+      <registrationDate>0001-01-01T00:00:00</registrationDate>
+      <entryDate>2020-02-10T00:00:00+02:00</entryDate>
+      <releaseDate>2020-02-20T00:00:00</releaseDate>
+    </dates>
+  </guestRequest>
+</guestRequests>

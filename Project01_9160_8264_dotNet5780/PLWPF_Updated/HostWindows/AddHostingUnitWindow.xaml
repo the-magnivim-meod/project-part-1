@@ -4,14 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF_Updated"
-        mc:Ignorable="d" FontSize="18" FontFamily="Bookman Old Style" 
-        Title="AddHostingUnitWindow" Height="550" Width="800">
+        mc:Ignorable="d" FontSize="18" FontFamily="Bookman Old Style"
+        Title="AddHostingUnitWindow" Height="650" Width="800">
     <Grid x:Name="AddUnitGrid" Background="DarkCyan">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
@@ -21,6 +19,11 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -38,15 +41,20 @@
         </TextBlock>
 
         <TextBlock Text="enter the unit's name:" Grid.Column="2" Grid.Row="2" Margin="3"/>
-        <TextBox x:Name="unitName" Grid.Row="2" Grid.Column="3" Width="150" Margin="3" Text="{Binding HostingUnitName, Mode=TwoWay}"/>
+        <TextBox x:Name="unitName" Grid.Row="2" Grid.Column="3" Margin="62,3,61,3" Text="{Binding HostingUnitName, Mode=TwoWay}"/>
 
         <TextBlock Text="area of the country:" Grid.Column="2" Grid.Row="3" Margin="3"/>
-        <ComboBox x:Name="unitArea" Grid.Row="3" Grid.Column="3" Width="150" Margin="3" Background="Beige" SelectedItem="{Binding Area, Mode=TwoWay}"/>
+        <ComboBox x:Name="unitArea" Grid.Row="3" Grid.Column="3" Margin="62,3,61,3" Background="Beige" SelectedItem="{Binding Area, Mode=TwoWay}"/>
 
         <TextBlock Text="enter the unit's type:" Grid.Column="2" Grid.Row="4" Margin="3"/>
-        <ComboBox x:Name="unitType" Grid.Row="4" Grid.Column="3" Width="150" Margin="3" SelectedItem="{Binding Type, Mode=TwoWay}"/>
+        <ComboBox x:Name="unitType" Grid.Row="4" Grid.Column="3" Margin="62,3,61,3" SelectedItem="{Binding Type, Mode=TwoWay}"/>
 
-        <Button x:Name="AddHostingUnit" Content="Add unit" Margin="3" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" Height="50" Click="AddHostingUnit_Click">
+        <CheckBox x:Name="Pool" Content="pool" Grid.Column="2" Grid.Row="5"  FontSize="16" IsChecked="{Binding HasPool,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <CheckBox x:Name="Jacuzzi" Content="Jacuzzi" Grid.Column="2" Grid.Row="6" FontSize="16" IsChecked="{Binding HasNearByGroceryStore ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <CheckBox x:Name="Garden" Content="Garden" Grid.Column="2" Grid.Row="7"  FontSize="16" IsChecked="{Binding HasGarden,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <CheckBox x:Name="ChildrensAttractions" Content="ChildrensAttractions" Grid.Column="2" Grid.Row="8" FontSize="16" IsChecked="{Binding HasChildrensAttractions,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  />
+
+        <Button x:Name="AddHostingUnit" Content="Add unit" Margin="3" Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="2" Click="AddHostingUnit_Click" Height="50">
             <Button.Style>
                 <Style TargetType="Button" x:Name="ButtonAvailable">
                     <Style.Triggers>
@@ -72,9 +80,9 @@
             </Button.Style>
         </Button>
 
-        <Image Source="/Images/HotelRoomImage.jpg" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" MaxHeight="200" Margin="0,3,250,3"/>
+        <Image Source="/Images/HotelRoomImage.jpg" Grid.Column="3" Grid.Row="5"  MaxHeight="200" Margin="3" Grid.RowSpan="4"/>
 
-        <Grid Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2">
+        <Grid Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

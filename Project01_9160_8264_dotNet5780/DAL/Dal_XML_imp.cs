@@ -6,6 +6,8 @@ using System.Xml.Linq;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using System.Threading;
+using System.Net;
 
 namespace DAL
 {
@@ -25,6 +27,11 @@ namespace DAL
 
         XElement orderRoot;
         string orderPath = @"order.xml";
+
+        XElement BankAccountLocalPath;
+        const string xmlLocalPath = @"atm.xml";
+        Thread getBankAccounts;
+
         public Dal_XML_imp()
         {
             //guestRequest
@@ -63,6 +70,9 @@ namespace DAL
             {
                 orderRoot = XElement.Load(orderPath);
             }
+
+            getBankAccounts = new Thread(getBanks);
+            getBankAccounts.Start();
         }
 
         #region create files
@@ -182,8 +192,8 @@ namespace DAL
         public void UpdateOrder(int orderNumber, OrderStatus status)
         {
             XElement orderElement = (from ord in orderRoot.Elements()
-                                            where int.Parse(ord.Element("id").Value) == orderNumber
-                                            select ord).FirstOrDefault();
+                                     where int.Parse(ord.Element("id").Value) == orderNumber
+                                     select ord).FirstOrDefault();
             orderElement.Element("status").Value = status.ToString();
             orderRoot.Save(orderPath);
         }
@@ -259,6 +269,10 @@ namespace DAL
         }
         #endregion
 
+        #region bankAccount
+
+        #endregion
+
         #region configuration
         int GetGuestRequestKey()
         {
@@ -284,6 +298,46 @@ namespace DAL
             return old;
         }
         #endregion
+
+        #region thread
+        private static void getBanks()
+        {
+            bool downloadedSuccefully = false;
+            WebClient wc = new WebClient();
+            while (!downloadedSuccefully)
+            {
+                try
+                {
+
+                    string xmlServerPath = @"http://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
+                    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                    downloadedSuccefully = true;
+                }
+                catch (Exception)
+                {
+                    string xmlServerPath = @"http://www.jct.ac.il/~coshri/atm.xml";
+                    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                    downloadedSuccefully = true;
+                }
+                finally
+                {
+                    downloadedSuccefully = false;
+                    wc.Dispose();
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
+        public bool IsDoneDownlloadingBanks()
+        {
+            if(getBankAccounts.IsAlive)
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
+
 
         //#region serialize functions
         //public static void SaveToXML<T>(T source, string path)
