@@ -23,7 +23,7 @@ namespace BE
             output += $"HostingUnitName {HostingUnitName}\n";
             output += $"type:{Type}\n";
             output += $"area:{Area}\n";
-
+            output += $"HasPool:{HasPool}, HasGarden:{HasGarden}, HasNearByGroceryStore:{HasNearByGroceryStore}, HasChildrensAttractions:{HasNearByGroceryStore}\n";
             for (int i = 0; i < 12; i++)
             {
                 output += $"month:{i}\n";

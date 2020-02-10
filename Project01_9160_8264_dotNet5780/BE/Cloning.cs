@@ -77,6 +77,10 @@ namespace DAL
             target.Diary = original.Diary;
             target.Type = original.Type;
             target.Area = original.Area;
+            target.HasGarden = original.HasGarden;
+            target.HasNearByGroceryStore = original.HasNearByGroceryStore;
+            target.HasPool = original.HasPool;
+            target.HasChildrensAttractions = original.HasChildrensAttractions;
             return target;
         }
 
