@@ -32,13 +32,6 @@ namespace PLWPF_Updated
             this.Close();
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            Window NewMainWindow = new MainWindow();
-            NewMainWindow.Show();
-            this.Close();
-        }
-
         private void HostingUnitList_Click(object sender, RoutedEventArgs e)
         {
             Window HostingUnitData = new HostingUnitDataWindow();
@@ -50,6 +43,13 @@ namespace PLWPF_Updated
         {
             Window OrderData = new OrderDataWindow();
             OrderData.Show();
+            this.Close();
+        }
+
+        private void LogOff_Click(object sender, RoutedEventArgs e)
+        {
+            Window NewMainWindow = new MainWindow();
+            NewMainWindow.Show();
             this.Close();
         }
     }
