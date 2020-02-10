@@ -12,10 +12,9 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto" MinHeight="8"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto" MinHeight="49"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
@@ -33,10 +32,11 @@
             </TextBlock.TextDecorations>
         </TextBlock>
 
-        <Button x:Name="GuestRequestsList" Content="GuestRequestList" Grid.Column="2" Grid.Row="2" Margin="3,3,3,0" Click="GuestRequestsList_Click" Background="Beige" Foreground="Maroon" Grid.RowSpan="5"/>
-        <Button x:Name="HostingUnitList" Content="HostingUnitList" Grid.Column="2" Grid.Row="7" Margin="3,10,3,205" Click="HostingUnitList_Click" Background="Beige" Foreground="Maroon"/>
+        <Button x:Name="GuestRequestsList" Content="GuestRequestList" Grid.Column="2" Grid.Row="2" Margin="3" Click="GuestRequestsList_Click" Background="Beige" Foreground="Maroon" Height="50"/>
+        <Button x:Name="HostingUnitList" Content="HostingUnitList" Grid.Column="2" Grid.Row="3" Margin="3" Click="HostingUnitList_Click" Background="Beige" Foreground="Maroon" Height="50"/>
+        <Button x:Name="OrderList" Content="OrderList" Grid.Column="2" Grid.Row="4" Margin="3" Click="OrderList_Click" Background="Beige" Foreground="Maroon" Height="50"/>
 
-        <Grid Grid.Column="2" Grid.Row="3" Margin="0,0,0,3" Grid.RowSpan="2">
+        <Grid Grid.Column="2" Grid.Row="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -45,7 +45,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="Back" Content="Return"  Margin="3,130,3,-153" Background="Black" Foreground="Green" Grid.Column="4" Click="Back_Click"/>
+            <Button x:Name="Back" Content="Return"  Margin="3" Background="Black" Foreground="Green" Grid.Column="4" Click="Back_Click"/>
         </Grid>
     </Grid>
 </Window>

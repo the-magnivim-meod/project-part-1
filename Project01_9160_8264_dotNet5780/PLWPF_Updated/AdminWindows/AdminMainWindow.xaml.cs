@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BE;
+using BL;
 namespace PLWPF_Updated
 {
     /// <summary>
@@ -42,6 +43,13 @@ namespace PLWPF_Updated
         {
             Window HostingUnitData = new HostingUnitDataWindow();
             HostingUnitData.Show();
+            this.Close();
+        }
+
+        private void OrderList_Click(object sender, RoutedEventArgs e)
+        {
+            Window OrderData = new OrderDataWindow();
+            OrderData.Show();
             this.Close();
         }
     }
