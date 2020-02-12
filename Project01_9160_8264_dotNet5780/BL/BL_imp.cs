@@ -3,7 +3,6 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 using System.Globalization;
 
@@ -262,6 +261,32 @@ namespace BL
                 throw cought;
             }
         }
+        public IEnumerable<GuestRequest> GetGuestRequests()
+        {
+            return myDal.GetAllGuestReuests();
+        }
+
+
+        public List<Guest> GetGuests()
+        {
+            return myDal.GetGuests();
+        }
+
+        public void AddGuest(Guest guest)
+        {
+            //if (guest == null)
+            //    throw new BlArgumentNullException();
+            //if (IsUserExist(guest.UserName))
+            //    throw new BlNickAlreadyExistException();
+            //if (IsMailExist(guest.MailAddress))
+            //    throw new BlMailAlreadyExistException();
+           
+            if (!(MailAddressIsValid(guest.MailAddress)))
+                throw new NotValidEmailAddressException();
+            
+            myDal.AddGuest(guest);
+            
+        }
 
         #endregion
 
@@ -366,6 +391,33 @@ namespace BL
             {
                 throw new NotExistingKeyException();
             }
+            
+        }
+        public IEnumerable<HostingUnit> GetHostingUnits()
+        {
+            return myDal.GetAllHostingUnits();
+        }
+
+        public List<Host> GetHosts()
+        {
+            return myDal.GetHosts();
+        }
+
+        public void AddHost(Host host)
+        {
+            //if (host == null)
+            //    throw new BlArgumentNullException();
+            //if (IsUserExist(host.Username))
+            //    throw new BlNickAlreadyExistException();
+            //if (IsMailExist(host.MailAddress))
+            //    throw new BlMailAlreadyExistException();
+            
+            if (!(MailAddressIsValid(host.MailAddress)))
+                throw new NotValidEmailAddressException();
+
+
+            myDal.AddHost(host);
+            
         }
 
         #endregion
@@ -602,5 +654,32 @@ namespace BL
                     group item.Key by item.Count());
         }
         #endregion
+
+        #region User methods
+        public List<User> GetUsers()
+        {
+            List<User> users = new List<User>();
+            var guests = GetGuests();
+            if (guests != null)
+                foreach (var item in guests)
+                    users.Add(item);
+            var hosts = GetHosts();
+            if (hosts != null)
+                foreach (var item in hosts)
+                    users.Add(item);
+
+            return users;
+        }
+
+        public User GetUser(string username)
+        {
+            User user = GetUsers().Find(item => item.UserName == username);
+            if (user == null)
+                throw new NotExistingKeyException();
+            return user;
+        }
+
+        #endregion
+
     }
 }

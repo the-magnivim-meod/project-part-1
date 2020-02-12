@@ -67,6 +67,17 @@ namespace DAL
             }
             oldGuestRequest.Status = status;
         }
+
+        List<Guest> IDal.GetGuests()
+        {
+            return DataSource.Guests;
+        }
+
+        void IDal.AddGuest(Guest guest)
+        {
+            DataSource.Guests.Add(guest);
+        }
+
         #endregion
 
         #region hostingUnit Methods
@@ -102,6 +113,33 @@ namespace DAL
                 throw new NotExistingKeyException();
             }
         }
+
+
+        public List<Host> GetHosts()
+        {
+            return DataSource.Hosts;
+        }
+
+        public void AddHost(Host host)
+        {
+            if (KeyInvalid(host.HostKey) || HostExists(host.HostKey))
+                host.HostKey = Configuration.hostCounter++;
+
+            DataSource.Hosts.Add(host);
+        }
+
+        private bool HostExists(int hostKey)
+        {
+            return (from item in GetHosts()
+                    where item.HostKey == hostKey
+                    select item).ToList().Count > 0;
+        }
+
+        private bool KeyInvalid(int hostKey)
+        {
+            return hostKey < 1;
+        }
+
         #endregion
 
         #region order Methods

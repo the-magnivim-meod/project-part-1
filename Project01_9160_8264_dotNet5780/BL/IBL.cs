@@ -22,6 +22,19 @@ namespace BL
         /// <param name="status">the new stauts</param>
         void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status);
 
+
+        /// <summary>
+        /// Get list of guests.
+        /// </summary>
+        /// <returns>List of guest.</returns>
+        List<Guest> GetGuests();
+
+        /// <summary>
+        /// Adds new guest to the guests in the system.
+        /// </summary>
+        /// <param name="user">New guest to be added.</param>
+        void AddGuest(Guest guest);
+
         #endregion
 
         #region hostingUnit Methods
@@ -54,6 +67,19 @@ namespace BL
         /// </summary>
         /// <param name="hotingUnitNumber"></param>
         void RemoveCollectionClearance(int hotingUnitNumber);
+
+
+        /// <summary>
+        /// Get list of Hosts.
+        /// </summary>
+        /// <returns>List of host.</returns>
+        List<Host> GetHosts();
+
+        /// <summary>
+        /// Adds new hosts to the hosts in the system.
+        /// </summary>
+        /// <param name="user">New host to be added.</param>
+        void AddHost(Host host);
         #endregion
 
         #region Order Methods
@@ -193,5 +219,10 @@ namespace BL
         /// <returns>a list of groups</returns>
         IEnumerable<IGrouping<AreaOfTheCountry, HostingUnit>> GroupUnitsByArea();
         #endregion
+
+
+        List<User> GetUsers();
+        User GetUser(string username);
+
     }
 }

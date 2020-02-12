@@ -7,7 +7,7 @@ namespace DAL
     public static class Configuration
     {
         private static int hostingUnitCounter = 1;
-        private static int hostCounter = 10000000;
+        public static int hostCounter = 10000000;
         private static int guestRequestCounter = 1;
         private static int orderCounter = 1;
         private static int totalEarnedBySiteOwner = 0;

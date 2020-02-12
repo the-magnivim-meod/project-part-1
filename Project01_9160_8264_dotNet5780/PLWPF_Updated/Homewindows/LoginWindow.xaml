@@ -48,7 +48,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="LoginButton" Content="Login" Grid.Column="0"  Height="50" IsEnabled="False" Click="LoginButton_Click"/>
+            <Button x:Name="LoginButton" Content="Login" Grid.Column="0"  Height="50" IsEnabled="False" Click="LoginButton_Click" VerticalAlignment="Top"/>
             <Button x:Name="RegisterButton" Content="Register" Grid.Column="1" Background="Beige" Foreground="Maroon" Height="50" Click="RegisterButton_Click"/>
         </Grid>
     </Grid>

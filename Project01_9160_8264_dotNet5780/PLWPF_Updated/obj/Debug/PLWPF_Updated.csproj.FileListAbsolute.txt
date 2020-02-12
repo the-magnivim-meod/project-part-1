@@ -126,3 +126,9 @@ C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PL
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\GuestRequestDataWindow.baml
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\OrderDataWindow.g.cs
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\OrderDataWindow.baml
+C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\OrderDataWindow.g.cs
+C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\HostingUnitDataWindow.g.cs
+C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\GuestRequestDataWindow.g.cs
+C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\OrderDataWindow.baml
+C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\HostingUnitDataWindow.baml
+C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\GuestRequestDataWindow.baml
