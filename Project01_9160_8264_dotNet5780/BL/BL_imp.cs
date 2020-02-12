@@ -103,7 +103,6 @@ namespace BL
                     FamilyName = "artzi",
                     BankBranchDetails = new BankBranch(),
                     PhoneNumber = "053-472-3327",
-                    HostKey = 1,
                     MailAddress = "amosss@yahoo.il"
                 }
             });
@@ -121,7 +120,6 @@ namespace BL
                     FamilyName = "Yoff",
                     BankBranchDetails = new BankBranch(),
                     PhoneNumber = "059-780-9363",
-                    HostKey = 2,
                     MailAddress = "zimmerShave@Yoff.com"
                 }
             });
@@ -267,11 +265,6 @@ namespace BL
         }
 
 
-        public List<Guest> GetGuests()
-        {
-            return myDal.GetGuests();
-        }
-
         public void AddGuest(Guest guest)
         {
             //if (guest == null)
@@ -396,11 +389,6 @@ namespace BL
         public IEnumerable<HostingUnit> GetHostingUnits()
         {
             return myDal.GetAllHostingUnits();
-        }
-
-        public List<Host> GetHosts()
-        {
-            return myDal.GetHosts();
         }
 
         public void AddHost(Host host)
@@ -568,6 +556,16 @@ namespace BL
         {
             return myDal.GetAllOrders();
         }
+
+        public IEnumerable<Host> GetAllHosts()
+        {
+            return myDal.GetAllHosts();
+        }
+
+        public IEnumerable<Guest> GetAllGuests()
+        {
+            return myDal.GetAllGuests();
+        }
         #endregion
 
         #region Miscellaneous Methods
@@ -659,11 +657,11 @@ namespace BL
         public List<User> GetUsers()
         {
             List<User> users = new List<User>();
-            var guests = GetGuests();
+            var guests = GetAllGuests();
             if (guests != null)
                 foreach (var item in guests)
                     users.Add(item);
-            var hosts = GetHosts();
+            var hosts = GetAllHosts();
             if (hosts != null)
                 foreach (var item in hosts)
                     users.Add(item);

@@ -13,11 +13,9 @@ C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PL
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\bin\Debug\BE.dll
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\bin\Debug\BL.dll
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\bin\Debug\DAL.dll
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\bin\Debug\DS.dll
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\bin\Debug\BE.pdb
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\bin\Debug\BL.pdb
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\bin\Debug\DAL.pdb
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\bin\Debug\DS.pdb
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\GuestWindows\AddGuestRequestWindow.baml
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\HostWindows\AddHostingUnitWindow.baml
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\GuestWindows\GuestMainWindow.baml

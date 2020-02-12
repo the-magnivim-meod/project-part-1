@@ -14,5 +14,7 @@ namespace BE
         public UserType Type { get; set; }
         public DateTime RegistrationDate { get; set; }
         public bool finish { get; set; } = false;
+        public string MailAddress { get; set; }
+
     }
 }

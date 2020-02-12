@@ -166,14 +166,14 @@ namespace PLWPF_Updated
         }
         private Guest GetGuest(User user)
         {
-            return (from item in myIBL.GetGuests()
+            return (from item in myIBL.GetAllGuests()
                     where item.UserName == user.UserName
                     select item).ToList().First();
         }
 
         private Host GetHost(User user)
         {
-            return (from item in myIBL.GetHosts()
+            return (from item in myIBL.GetAllHosts()
                     where item.UserName == user.UserName
                     select item).ToList().First();
         }

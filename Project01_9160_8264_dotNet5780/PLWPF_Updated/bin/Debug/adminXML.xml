@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ArrayOfAdmin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Admin>
+    <PrivateName>Micky</PrivateName>
+    <FamilyName>Zohar</FamilyName>
+    <UserName>RackBibi</UserName>
+    <Password>300000</Password>
+    <Type>Admin</Type>
+    <RegistrationDate>2020-02-12T00:00:00+02:00</RegistrationDate>
+    <finish>false</finish>
+    <MailAddress>MickyZohar@likud.com</MailAddress>
+  </Admin>
+</ArrayOfAdmin>

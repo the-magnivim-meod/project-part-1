@@ -6,5 +6,6 @@ namespace BE
 {
     public class Guest : User
     {
+
     }
 }

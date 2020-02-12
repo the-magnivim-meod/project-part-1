@@ -20,13 +20,6 @@ namespace DAL
         /// <param name="status">the new stauts</param>
         void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status);
 
-
-        /// <summary>
-        /// Get list of guests.
-        /// </summary>
-        /// <returns>List of guest.</returns>
-        List<Guest> GetGuests();
-
         /// <summary>
         /// Adds new guest to the guests in the system.
         /// </summary>
@@ -54,13 +47,6 @@ namespace DAL
         /// </summary>
         /// <param name="hostingUnit">the hosting unit to update</param>
         void UpdateHostingUnit(HostingUnit hostingUnit);
-
-
-        /// <summary>
-        /// Get list of Hosts.
-        /// </summary>
-        /// <returns>List of host.</returns>
-        List<Host> GetHosts();
 
         /// <summary>
         /// Adds new hosts to the hosts in the system.
@@ -121,6 +107,18 @@ namespace DAL
         /// </summary>
         /// <returns></returns>
         IEnumerable<BankBranch> GetAllBankBranches();
+
+        /// <summary>
+        /// Get list of guests.
+        /// </summary>
+        /// <returns>List of guest.</returns>
+        IEnumerable<Guest> GetAllGuests();
+
+        /// <summary>
+        /// Get list of Hosts.
+        /// </summary>
+        /// <returns>List of host.</returns>
+        IEnumerable<Host> GetAllHosts();
         #endregion
 
         #region Get Specific Item By Key Methods

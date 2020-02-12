@@ -91,7 +91,6 @@ namespace DAL
                 return null;
             }
             Host target = new Host();
-            target.HostKey = original.HostKey;
             target.MailAddress = original.MailAddress;
             target.PhoneNumber = original.PhoneNumber;
             target.PrivateName = original.PrivateName;
@@ -99,6 +98,28 @@ namespace DAL
             target.BankAccountNumber = original.BankAccountNumber;
             target.BankBranchDetails = original.BankBranchDetails;
             target.CollectionClearance = original.CollectionClearance;
+            target.UserName = original.UserName;
+            target.Password = original.Password;
+            target.RegistrationDate = original.RegistrationDate;
+            target.PhoneNumber = original.PhoneNumber;
+            target.Type = original.Type;
+            return target;
+        }
+
+        public static Guest Clone(this Guest original)
+        {
+            if (original == null)
+            {
+                return null;
+            }
+            Guest target = new Guest();
+            target.UserName = original.UserName;
+            target.Password = original.Password;
+            target.PrivateName = original.PrivateName;
+            target.FamilyName = original.FamilyName;
+            target.Type = original.Type;
+            target.RegistrationDate = original.RegistrationDate;
+            target.MailAddress = original.MailAddress;
             return target;
         }
 
@@ -131,6 +152,7 @@ namespace DAL
             target.FamilyName = original.FamilyName;
             target.Type = original.Type;
             target.RegistrationDate = original.RegistrationDate;
+            target.MailAddress = original.MailAddress;
             return target;
         }
     }

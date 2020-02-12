@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ArrayOfGuest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Guest>
+    <PrivateName>Yoaz</PrivateName>
+    <FamilyName>Handle</FamilyName>
+    <UserName>Blue</UserName>
+    <Password>White</Password>
+    <Type>Guest</Type>
+    <RegistrationDate>2020-02-12T00:00:00+02:00</RegistrationDate>
+    <finish>false</finish>
+    <MailAddress>YoazHandle@CaholLavan.com</MailAddress>
+  </Guest>
+</ArrayOfGuest>

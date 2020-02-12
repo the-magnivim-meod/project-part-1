@@ -24,14 +24,15 @@ namespace DAL
 
         string hostingUnitPath = @"hostingUnitXML.xml";
 
-        XElement orderRoot;
         string orderPath = @"orderXML.xml";
 
-        XElement BankAccountLocalPath;
+        //XElement BankAccountLocalPath;
         const string xmlLocalPath = @"atmXML.xml";
-        Thread getBankAccounts;
+        //Thread getBankAccounts;
 
-        string adminPath = "AdminXML.xml";
+        string adminPath = "adminXML.xml";
+        string guestPath = "guestXML.xml";
+        string hostPath = "hostXML.xml";
 
         public Dal_XML_imp()
         {
@@ -58,29 +59,26 @@ namespace DAL
             {
                 CreateHostingUnitFile();
             }
-            else
-            {
-                //there is a file and there is nothing to be done
-            }
             //order
             if (!File.Exists(orderPath))
             {
                 CreateOrderFile();
             }
-            else
-            {
-                orderRoot = XElement.Load(orderPath);
-            }
-
+            //admin
             if (!File.Exists(adminPath))
             {
                 CreateAdminFile();
             }
-            else
+            //host
+            if (!File.Exists(hostPath))
             {
-                //there is a file and there is nothing to be done
+                CreateHostFile();
             }
-
+            //guest
+            if (!File.Exists(guestPath))
+            {
+                CreateGuestFile();
+            }
             //getBankAccounts = new Thread(getBanks);
             //getBankAccounts.Start();
         }
@@ -110,8 +108,7 @@ namespace DAL
 
         void CreateOrderFile()
         {
-            orderRoot = new XElement("orders");
-            orderRoot.Save(orderPath);
+            SaveToXML(new List<Order>(), orderPath);
         }
 
         void CreateAdminFile()
@@ -125,10 +122,52 @@ namespace DAL
                     FamilyName = "Zohar",
                     Password = "300000",
                     RegistrationDate = DateTime.Today,
-                    Type = UserType.Admin
+                    Type = UserType.Admin,
+                    MailAddress = "MickyZohar@likud.com"
                 }
             };
             SaveToXML(admins, adminPath);
+        }
+
+        void CreateGuestFile()
+        {
+            List<Guest> guests = new List<Guest>()
+            {
+                new Guest()
+                {
+                    UserName = "Blue",
+                    PrivateName = "Yoaz",
+                    FamilyName = "Handle",
+                    Password = "White",
+                    RegistrationDate = DateTime.Today,
+                    Type = UserType.Guest,
+                    MailAddress = "YoazHandle@CaholLavan.com"
+                }
+            };
+            SaveToXML(guests, guestPath);
+        }
+
+        void CreateHostFile()
+        {
+            List<Host> hosts = new List<Host>()
+            {
+                new Host()
+                {
+                    UserName = "RackBibi",
+                    PrivateName = "Micky",
+                    FamilyName = "Zohar",
+                    Password = "300000",
+                    RegistrationDate = DateTime.Today,
+                    Type = UserType.Host,
+                    MailAddress = "",
+                    BankAccountNumber = 1,
+                    CollectionClearance = Y_N.No,
+                    BankBranchDetails = null,
+                    finish = false,
+                    PhoneNumber = "054-3232-421"
+                }
+            };
+            SaveToXML(hosts,hostPath);
         }
         #endregion
 
@@ -196,32 +235,33 @@ namespace DAL
         #region order methods
         public void AddOrder(Order order)
         {
+            List<Order> orderList = LoadFromXML<List<Order>>(orderPath);
             order.OrderKey = GetOrderKey();
-            guestRequestRoot.Add(new XElement("order",
-                new XElement("id", order.OrderKey),
-                new XElement("foreignKeys", new XElement("guestRequestId", order.GuestRequestKey), new XElement("hostingUnitId", order.HostingUnitKey)),
-                new XElement("status", order.Status),
-                new XElement("dates", new XElement("creationDate", order.CreateDate), new XElement("orderDate", order.OrderDate))
-                ));
-            guestRequestRoot.Save(guestRequestPath);
+            orderList.Add(order);
+            SaveToXML<List<Order>>(orderList, hostingUnitPath);
         }
 
         public void deleteOrder(int orderKey)
         {
-            XElement orderElement = (from ord in orderRoot.Elements()
-                                     where int.Parse(ord.Element("id").Value) == orderKey
-                                     select ord).FirstOrDefault();
-            orderElement.Remove();
-            orderRoot.Save(orderPath);
+            List<Order> orderList = LoadFromXML<List<Order>>(hostingUnitPath);
+            int numberDeleted = orderList.RemoveAll(order => order.OrderKey == orderKey);
+            if (numberDeleted == 0)//which means nothing was deleted
+            {
+                throw new NotExistingKeyException();
+            }
+            SaveToXML<List<Order>>(orderList, hostingUnitPath);
         }
 
         public void UpdateOrder(int orderNumber, OrderStatus status)
         {
-            XElement orderElement = (from ord in orderRoot.Elements()
-                                     where int.Parse(ord.Element("id").Value) == orderNumber
-                                     select ord).FirstOrDefault();
-            orderElement.Element("status").Value = status.ToString();
-            orderRoot.Save(orderPath);
+            List<Order> orderList = LoadFromXML<List<Order>>(hostingUnitPath);
+            Order myOrder = orderList.FindAll(order => order.OrderKey == orderNumber).FirstOrDefault();
+            if (myOrder == null)//which means the key doesnt exist
+            {
+                throw new NotExistingKeyException();
+            }
+            myOrder.Status = status;
+            SaveToXML(orderList, hostingUnitPath);
         }
         #endregion
 
@@ -263,7 +303,9 @@ namespace DAL
 
         public IEnumerable<Order> GetAllOrders()
         {
-            throw new NotImplementedException();
+            List<Order> orderList = LoadFromXML<List<Order>>(orderPath);
+            return from ord in orderList
+                   select ord.Clone();
         }
 
         public IEnumerable<Admin> getAllAdmins()
@@ -271,6 +313,20 @@ namespace DAL
             List<Admin> AdminList = LoadFromXML<List<Admin>>(adminPath);
             return from ad in AdminList
                    select ad.Clone();
+        }
+
+        public IEnumerable<Host> GetAllHosts()
+        {
+            List<Host> HostList = LoadFromXML<List<Host>>(hostPath);
+            return from host in HostList
+                   select host.Clone();
+        }
+
+        public IEnumerable<Guest> GetAllGuests()
+        {
+            List<Guest> GuestList = LoadFromXML<List<Guest>>(guestPath);
+            return from guest in GuestList
+                   select guest.Clone();
         }
         #endregion
 
@@ -363,14 +419,14 @@ namespace DAL
             }
         }
 
-        public bool IsDoneDownlloadingBanks()
-        {
-            if (getBankAccounts.IsAlive)
-            {
-                return false;
-            }
-            return true;
-        }
+        //public bool IsDoneDownlloadingBanks()
+        //{
+        //    if (getBankAccounts.IsAlive)
+        //    {
+        //        return false;
+        //    }
+        //    return true;
+        //}
         #endregion
 
         #region serialize functions
@@ -391,17 +447,7 @@ namespace DAL
         #endregion
 
         #region User stuff
-        public List<Guest> GetGuests()
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddGuest(Guest guest)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Host> GetHosts()
         {
             throw new NotImplementedException();
         }

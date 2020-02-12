@@ -1,28 +1,2 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<guestRequests>
-  <guestRequest>
-    <id>1</id>
-    <name>
-      <firstName>david</firstName>
-      <familyName>abarjell</familyName>
-    </name>
-    <guests>
-      <adults>8</adults>
-      <children>3</children>
-    </guests>
-    <extras>
-      <pool>Neccecery</pool>
-      <garden>Neccecery</garden>
-      <groceryStore>Neccecery</groceryStore>
-      <attractions>NotInterested</attractions>
-    </extras>
-    <status>YetToBeAttendedTo</status>
-    <area>Center</area>
-    <mail>davidabar@gmail.com</mail>
-    <dates>
-      <registrationDate>2020-02-12T00:00:00+02:00</registrationDate>
-      <entryDate>2020-02-13T00:00:00</entryDate>
-      <releaseDate>2020-02-28T00:00:00</releaseDate>
-    </dates>
-  </guestRequest>
-</guestRequests>
+<guestRequests />
