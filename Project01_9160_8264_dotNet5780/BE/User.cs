@@ -13,5 +13,6 @@ namespace BE
         public string Password { get; set; }
         public UserType Type { get; set; }
         public DateTime RegistrationDate { get; set; }
+        public bool finish { get; set; } = false;
     }
 }

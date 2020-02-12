@@ -269,8 +269,8 @@ namespace DAL
         public IEnumerable<Admin> getAllAdmins()
         {
             List<Admin> AdminList = LoadFromXML<List<Admin>>(adminPath);
-            return from unit in AdminList
-                   select unit.Clone();
+            return from ad in AdminList
+                   select ad.Clone();
         }
         #endregion
 
@@ -387,6 +387,28 @@ namespace DAL
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
             T result = (T)xmlSerializer.Deserialize(file);
             file.Close(); return result;
+        }
+        #endregion
+
+        #region User stuff
+        public List<Guest> GetGuests()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddGuest(Guest guest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Host> GetHosts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddHost(Host host)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }
