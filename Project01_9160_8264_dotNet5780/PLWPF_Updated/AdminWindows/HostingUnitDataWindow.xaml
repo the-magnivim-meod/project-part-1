@@ -1,11 +1,12 @@
-﻿<Window x:Class="PLWPF_Updated.HostingUnitDataWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF_Updated"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF_Updated.HostingUnitDataWindow"
         mc:Ignorable="d"
-        Title="HostingUnitDataWindow" Height="450" Width="800">
+        Title="HostingUnitDataWindow" Height="450" Width="800" >
     <Grid x:Name="GuestRequestGrid" Background="DarkCyan">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -29,7 +30,19 @@
             </TextBlock.TextDecorations>
         </TextBlock>
 
-        <DataGrid x:Name="GuestRequestDataGrid" Grid.Row="2" Grid.Column="2" Width="700" ItemsSource="{Binding HostingUnits}" IsReadOnly="True" Margin="3"/>
+        <DataGrid x:Name="GuestRequestDataGrid" Grid.Row="2" Grid.Column="2" Width="700" IsReadOnly="True" Margin="3" ItemsSource="{Binding hostingUnits}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="HostingUnitKey" Binding="{Binding HostingUnitKey}"/>
+                <DataGridTextColumn Header="Owner" Binding="{Binding Owner}"/>
+                <DataGridTextColumn Header="HostingUnitName" Binding="{Binding HostingUnitName}"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                <DataGridTextColumn Header="Area" Binding="{Binding Area}"/>
+                <DataGridTextColumn Header="HasPool" Binding="{Binding HasPool}"/>
+                <DataGridTextColumn Header="HasGarden" Binding="{Binding HasGarden}"/>
+                <DataGridTextColumn Header="HasNearByGroceryStore" Binding="{Binding HasNearByGroceryStore}"/>
+                <DataGridTextColumn Header="HasChildrensAttractions" Binding="{Binding HasChildrensAttractions}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
         <Grid Grid.Column="2" Grid.Row="3">
             <Grid.ColumnDefinitions>

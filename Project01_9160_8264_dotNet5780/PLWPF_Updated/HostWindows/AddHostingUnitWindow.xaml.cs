@@ -40,7 +40,7 @@ namespace PLWPF_Updated
                 unit = new HostingUnit();
                 AddUnitGrid.DataContext = unit;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("There Was a problem. Please try again soon", "ERROR!", MessageBoxButton.OK, MessageBoxImage.Error);
             }

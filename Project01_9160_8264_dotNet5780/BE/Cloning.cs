@@ -117,5 +117,21 @@ namespace DAL
             target.BranchNumber = original.BranchNumber;
             return target;
         }
+
+        public static Admin Clone(this Admin original)
+        {
+            if (original == null)
+            {
+                return null;
+            }
+            Admin target = new Admin();
+            target.UserName = original.UserName;
+            target.Password = original.Password;
+            target.PrivateName = original.PrivateName;
+            target.FamilyName = original.FamilyName;
+            target.Type = original.Type;
+            target.RegistrationDate = original.RegistrationDate;
+            return target;
+        }
     }
 }
