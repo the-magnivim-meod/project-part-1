@@ -62,14 +62,126 @@ namespace PLWPF_Updated
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            if((UserType)UserTypeComboBox.SelectedItem == BE.UserType.Host)
+            RegisterGrid.DataContext = user;
+
+            user.Password = UserPassword.Password;
+            string rePass = UserPasswordEnsure.Password;
+
+            if (UserName.Text == "" || UserPassword.Password == "" || UserPasswordEnsure.Password == "" )
+                MessageBox.Show("You must fill all fields!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            else if (rePass != user.Password)
+                MessageBox.Show("Passwords aren't equal!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
             {
-                Window NewHostRegWindow = new HostRegWindow();
-                NewHostRegWindow.Show();
-                this.Close();
+                user.RegistrationDate = DateTime.Today;
+
+                if (user.Type == UserType.Guest)
+                    CompleteGuestRegistration();
+                else
+                    CompleteHostRegistration();
+
             }
         }
 
+        private void CompleteGuestRegistration()
+        {
+            try
+            {
+                user.finish = true;
+                Guest guest = GetGuest(user);
+                myIBL.AddGuest(guest);
+                GoToLogin();
+            }
+            
+            catch (mailAlreadyExistException)
+            {
+                MessageBox.Show("Mail address already exist in the system. Please try another address.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (UserNameAlreadyExistException)
+            {
+                MessageBox.Show("Nickname already exist in the system. Please try another nickname.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+           
+            catch (NotValidEmailAddressException)
+            {
+                MessageBox.Show("Mail address invalid.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+        }
+
+        private Guest GetGuest(User user)
+        {
+            Guest guest = new Guest();
+
+            guest.UserName = user.UserName;
+            guest.Password = user.Password;
+            guest.MailAddress = user.MailAddress;
+            guest.PrivateName = user.PrivateName;
+            guest.FamilyName = user.FamilyName;
+            guest.RegistrationDate = user.RegistrationDate;
+            guest.Type = user.Type;
+            guest.finish = user.finish;
+
+            return guest;
+        }
+
         
+
+        private void CompleteHostRegistration()
+        {
+            Host host = GetHost(user);
+            host.BankBranchDetails = new BankBranch() { BankName = "", BankNumber = 0, BranchAddress = "", BranchCity = "", BranchNumber = 0 };
+            try
+            {
+                myIBL.AddHost(host);
+                Window hostRegistrationWindow = new HostRegWindow();
+                hostRegistrationWindow.Show();
+                Close();
+            }
+            
+            catch (mailAlreadyExistException)
+            {
+                MessageBox.Show("Mail address already exist in the system. Please try another address.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (UserNameAlreadyExistException)
+            {
+                MessageBox.Show("Nickname already exist in the system. Please try another nickname.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            catch (NotValidEmailAddressException)
+            {
+                MessageBox.Show("Mail address invalid.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+        }
+
+        private Host GetHost(User user)
+        {
+            Host host = new Host();
+
+            host.UserName = user.UserName;
+            host.Password = user.Password;
+            host.MailAddress = user.MailAddress;
+            host.PrivateName = user.PrivateName;
+            host.FamilyName = user.FamilyName;
+            host.RegistrationDate = user.RegistrationDate;
+            host.Type = user.Type;
+            host.finish = false;
+            host.PhoneNumber = "0546557768";
+
+            return host;
+        }
+
+
+        private void GoToLogin()
+        {
+            Window LoginWindow = new LoginWindow();
+            LoginWindow.Show();
+            Close();
+        }
+
+
+
+
     }
 }

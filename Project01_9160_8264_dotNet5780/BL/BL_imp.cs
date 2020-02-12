@@ -407,11 +407,11 @@ namespace BL
         {
             //if (host == null)
             //    throw new BlArgumentNullException();
-            //if (IsUserExist(host.Username))
-            //    throw new BlNickAlreadyExistException();
-            //if (IsMailExist(host.MailAddress))
-            //    throw new BlMailAlreadyExistException();
-            
+            if (UserExist(host.UserName))
+                throw new UserNameAlreadyExistException();
+            if (mailExist(host.MailAddress))
+                throw new mailAlreadyExistException();
+
             if (!(MailAddressIsValid(host.MailAddress)))
                 throw new NotValidEmailAddressException();
 
@@ -678,6 +678,29 @@ namespace BL
                 throw new NotExistingKeyException();
             return user;
         }
+
+        private bool UserExist(string Username)
+        {
+            var nick = (from item in GetUsers()
+                        where item.UserName == Username
+                        select item).ToList();
+            if (nick.Count > 0)
+                return true;
+
+            return false;
+        }
+
+        private bool mailExist(string mailAddress)
+        {
+            var mail = (from item in GetUsers()
+                        where item.MailAddress == mailAddress
+                        select item).ToList();
+            if (mail.Count > 0)
+                return true;
+
+            return false;
+        }
+
 
         #endregion
 

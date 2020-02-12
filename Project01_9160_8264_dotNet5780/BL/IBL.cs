@@ -223,6 +223,7 @@ namespace BL
 
         List<User> GetUsers();
         User GetUser(string username);
+        
 
     }
 }

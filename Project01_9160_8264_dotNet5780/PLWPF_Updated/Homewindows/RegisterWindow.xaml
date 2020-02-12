@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF_Updated"
         mc:Ignorable="d" FontSize="18" FontFamily="Bookman Old Style"
-        Title="RegisterWindow" Height="550" Width="1000">
+        Title="RegisterWindow" Height="600" Width="1000">
     <Grid x:Name="RegisterGrid" Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -19,8 +19,9 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto" MinHeight="57"/>
+            <RowDefinition Height="auto" MinHeight="41"/>
+            <RowDefinition/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
@@ -40,27 +41,30 @@
             </TextBlock.TextDecorations>
         </TextBlock>
 
-        <TextBlock Text="please fill in the feilds and press Register:" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Margin="3" HorizontalAlignment="Center"/>
+        <TextBlock Text="please fill in the feilds and press Register:" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Margin="95,3" HorizontalAlignment="Center" Width="366"/>
 
         <TextBlock Text="UserName:" Grid.Column="2" Grid.Row="4" Margin="3"/>
-        <TextBox x:Name="UserName" Grid.Row="4" Grid.Column="3" Width="150" TextChanged="ContentChangedForRegisterButton" Foreground="Gray" Margin="3" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="UserName" Grid.Row="4" Grid.Column="3" TextChanged="ContentChangedForRegisterButton" Foreground="Gray" Margin="39,3" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <TextBlock Text="password:" Grid.Column="2" Grid.Row="5" Margin="3"/>
-        <PasswordBox x:Name="UserPassword" Grid.Row="5" Grid.Column="3" Width="150" PasswordChanged="ContentChangedForRegisterButton" Foreground="Gray" Margin="3"/>
+        <PasswordBox x:Name="UserPassword" Grid.Row="5" Grid.Column="3" PasswordChanged="ContentChangedForRegisterButton" Foreground="Gray" Margin="39,3"/>
 
         <TextBlock Text="type your password again:" Grid.Column="2" Grid.Row="6" Margin="3"/>
-        <PasswordBox x:Name="UserPasswordEnsure" Grid.Row="6" Grid.Column="3" Width="150" PasswordChanged="ContentChangedForRegisterButton" Foreground="Gray" Margin="3"/>
+        <PasswordBox x:Name="UserPasswordEnsure" Grid.Row="6" Grid.Column="3" PasswordChanged="ContentChangedForRegisterButton" Foreground="Gray" Margin="39,3"/>
 
         <TextBlock Text="enter the your name:" Grid.Column="2" Grid.Row="7" Margin="3"/>
-        <TextBox x:Name="Pname"  Grid.Row="7" Grid.Column="3" Width="150" Margin="3" Text="{Binding PrivateName, Mode=TwoWay}" TextChanged="ContentChangedForRegisterButton"/>
+        <TextBox x:Name="Pname"  Grid.Row="7" Grid.Column="3" Margin="39,3" Text="{Binding PrivateName, Mode=TwoWay}" TextChanged="ContentChangedForRegisterButton"/>
 
         <TextBlock Text="Family Name:" Grid.Column="2" Grid.Row="8" Margin="3"/>
-        <TextBox x:Name="Fname" Grid.Row="8" Grid.Column="3" Width="150" Margin="3" Text="{Binding FamilyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="ContentChangedForRegisterButton"/>
+        <TextBox x:Name="Fname" Grid.Row="8" Grid.Column="3" Margin="39,3" Text="{Binding FamilyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="ContentChangedForRegisterButton"/>
 
-        <TextBlock Text="Type of user you want to be:" Grid.Column="2" Grid.Row="9" Margin="3"/>
-        <ComboBox x:Name="UserTypeComboBox" Grid.Row="9" Grid.Column="3" Width="150" Margin="3" Background="Beige" Text="{Binding FamilyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="ContentChangedForRegisterButton"/>
+        <TextBlock Text="mail address:" Grid.Column="2" Grid.Row="9" Margin="3"/>
+        <TextBox x:Name="mail" Grid.Row="9" Grid.Column="3" Margin="39,3" Text="{Binding MailAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="ContentChangedForRegisterButton"/>
 
-        <Button x:Name="RegisterButton" Content="Register" Margin="3" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" Height="50" Click="RegisterButton_Click"/>
+        <TextBlock Text="Type of user you want to be:" Grid.Column="2" Grid.Row="10" Margin="3"/>
+        <ComboBox x:Name="UserTypeComboBox" Grid.Row="10" Grid.Column="3" Margin="39,3" Background="Beige" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="ContentChangedForRegisterButton"/>
+
+        <Button x:Name="RegisterButton" Content="Register" Margin="3,3,3,0" Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="2" Click="RegisterButton_Click"/>
 
         <Image Source="/Images/ProjectLogoImage.jpg" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" MaxWidth="300" Margin="3"/>
 
@@ -73,7 +77,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="Back" Content="Return" Click="Back_Click"  Margin="3" Background="Black" Foreground="Green" Grid.Column="4" Height="30"/>
+            <Button x:Name="Back" Content="Return" Click="Back_Click"  Margin="0,51,6,-45" Background="Black" Foreground="Green" Grid.Column="5" Height="30"/>
         </Grid>
     </Grid>
 </Window>
