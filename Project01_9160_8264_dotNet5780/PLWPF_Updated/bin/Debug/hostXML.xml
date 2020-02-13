@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
 <ArrayOfHost xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Host>
-    <PrivateName>Micky</PrivateName>
-    <FamilyName>Zohar</FamilyName>
-    <UserName>RackBibi</UserName>
-    <Password>300000</Password>
+    <PrivateName>Naftali</PrivateName>
+    <FamilyName>Bennet</FamilyName>
+    <UserName>Yamin</UserName>
+    <Password>DayCvar</Password>
     <Type>Host</Type>
-    <RegistrationDate>2020-02-12T00:00:00+02:00</RegistrationDate>
-    <finish>false</finish>
-    <MailAddress />
+    <RegistrationDate>2020-02-13T00:00:00+02:00</RegistrationDate>
+    <MailAddress>hoot@f.close</MailAddress>
     <PhoneNumber>054-3232-421</PhoneNumber>
     <BankAccountNumber>1</BankAccountNumber>
     <CollectionClearance>No</CollectionClearance>

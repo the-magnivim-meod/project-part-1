@@ -37,8 +37,8 @@ namespace PLWPF_Updated
 
         private void LogOff_Click(object sender, RoutedEventArgs e)
         {
-            Window Main = new MainWindow();
-            Main.Show();
+            Window Login = new LoginWindow();
+            Login.Show();
             this.Close();
         }
     }

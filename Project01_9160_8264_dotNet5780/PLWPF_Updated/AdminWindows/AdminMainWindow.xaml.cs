@@ -48,8 +48,8 @@ namespace PLWPF_Updated
 
         private void LogOff_Click(object sender, RoutedEventArgs e)
         {
-            Window NewMainWindow = new MainWindow();
-            NewMainWindow.Show();
+            Window Login = new LoginWindow();
+            Login.Show();
             this.Close();
         }
     }

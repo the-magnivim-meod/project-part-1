@@ -1,2 +1,16 @@
 <?xml version="1.0"?>
-<ArrayOfHostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+<ArrayOfHost xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Host>
+    <PrivateName>Naftali</PrivateName>
+    <FamilyName>Bennet</FamilyName>
+    <UserName>Yamin</UserName>
+    <Password>DayCvar</Password>
+    <Type>Host</Type>
+    <RegistrationDate>2020-02-13T00:00:00+02:00</RegistrationDate>
+    <MailAddress />
+    <PhoneNumber>054-3232-421</PhoneNumber>
+    <BankAccountNumber>1</BankAccountNumber>
+    <CollectionClearance>No</CollectionClearance>
+  </Host>
+  <Host xsi:nil="true" />
+</ArrayOfHost>

@@ -28,7 +28,7 @@ namespace PLWPF_Updated
             user = new User();
             RegisterGrid.DataContext = user;
 
-            UserTypeComboBox.ItemsSource = Enum.GetValues(typeof(UserType));
+            UserTypeComboBox.ItemsSource = new List<UserType>() {UserType.Guest, UserType.Host};
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace PLWPF_Updated
         /// <param name="e"></param>
         private void ContentChangedForRegisterButton(object sender, RoutedEventArgs e)
         {
-            if (UserName.Text.Length > 0 && UserPassword.Password.Length > 0 && UserPasswordEnsure.Password.Length > 0 && Pname.Text.Length > 0 && Fname.Text.Length > 0)
+            if (UserName.Text.Length > 0 && UserPassword.Password.Length > 0 && UserPasswordEnsure.Password.Length > 0 && Pname.Text.Length > 0 && Fname.Text.Length > 0 && MailTextBox.Text.Length > 0)
             {
                 RegisterButton.IsEnabled = true;
                 RegisterButton.Background = (Brush)new BrushConverter().ConvertFromString("Beige");
@@ -62,14 +62,66 @@ namespace PLWPF_Updated
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            if((UserType)UserTypeComboBox.SelectedItem == BE.UserType.Host)
+            if (UserPassword.Password == UserPasswordEnsure.Password)
             {
-                Window NewHostRegWindow = new HostRegWindow();
-                NewHostRegWindow.Show();
-                this.Close();
+                user.Password = UserPassword.Password;
+                if ((UserType)UserTypeComboBox.SelectedItem == BE.UserType.Host)
+                {
+                    try
+                    {
+                        if (myIBL.AddHostCanMoveOn(user))
+                        {
+                            Window NewHostRegWindow = new HostRegWindow(user);
+                            NewHostRegWindow.Show();
+                            this.Close();
+                        }
+                    }
+                    catch (UserAlreadyExistsException)
+                    {
+                        UserName.Focus();
+                        MessageBox.Show("The UserName you entered is alredy used.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    catch (NotValidEmailAddressException)
+                    {
+                        MailTextBox.Focus();
+                        MessageBox.Show("The MailAddress you entered is invalid.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("There was a problem!!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else if ((UserType)UserTypeComboBox.SelectedItem == BE.UserType.Guest)
+                {
+                    try
+                    {
+                        myIBL.AddGuest(user);
+                        Window loginWindow = new LoginWindow();
+                        loginWindow.Show();
+                        this.Close();
+                    }
+                    catch (UserAlreadyExistsException)
+                    {
+                        UserName.Focus();
+                        MessageBox.Show("The UserName you entered is alredy used.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    catch (NotValidEmailAddressException)
+                    {
+                        MailTextBox.Focus();
+                        MessageBox.Show("The MailAddress you entered is invalid.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("There was a problem!!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+
+            else
+            {
+                UserPasswordEnsure.Focus();
+                MessageBox.Show("Check Your Password again!!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        
     }
 }

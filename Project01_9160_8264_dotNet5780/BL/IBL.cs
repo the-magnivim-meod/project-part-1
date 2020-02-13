@@ -22,12 +22,6 @@ namespace BL
         /// <param name="status">the new stauts</param>
         void UpdateGuestRequest(int guestRequestNumber, GuestRequestStatus status);
 
-        /// <summary>
-        /// Adds new guest to the guests in the system.
-        /// </summary>
-        /// <param name="user">New guest to be added.</param>
-        void AddGuest(Guest guest);
-
         #endregion
 
         #region hostingUnit Methods
@@ -60,12 +54,6 @@ namespace BL
         /// </summary>
         /// <param name="hotingUnitNumber"></param>
         void RemoveCollectionClearance(int hotingUnitNumber);
-
-        /// <summary>
-        /// Adds new hosts to the hosts in the system.
-        /// </summary>
-        /// <param name="user">New host to be added.</param>
-        void AddHost(Host host);
         #endregion
 
         #region Order Methods
@@ -125,15 +113,21 @@ namespace BL
         /// <returns></returns>
         IEnumerable<BankBranch> GetAllBankBranches();
         /// <summary>
-        /// Get list of Hosts.
+        /// returns a list of all the hosts in the dataSystem
         /// </summary>
-        /// <returns>List of host.</returns>
-        IEnumerable<Host> GetAllHosts();
-        /// <summary>
-        /// Get list of guests.
-        /// </summary>
-        /// <returns>List of guest.</returns>
-        IEnumerable<Guest> GetAllGuests();
+        /// <returns></returns>
+        /// 
+        //List<Host> GetAllHosts();
+        ///// <summary>
+        ///// returns a list of all the admins in the dataSystem
+        ///// </summary>
+        ///// <returns></returns>
+        //List<Admin> GetAllAdmins();
+        ///// <summary>
+        ///// returns a list of all the guests in the dataSystem
+        ///// </summary>
+        ///// <returns></returns>
+        //List<Guest> GetAllGuests();
         #endregion
 
         #region Miscellaneous Methods
@@ -216,11 +210,40 @@ namespace BL
         IEnumerable<IGrouping<AreaOfTheCountry, HostingUnit>> GroupUnitsByArea();
         #endregion
 
-
-        List<User> GetUsers();
+        #region user methods
+        /// <summary>
+        /// get a user from the dataSource by its userName
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         User GetUser(string username);
 
+        /// <summary>
+        /// Adds a new guest to the dataSource.
+        /// </summary>
+        /// <param name="guest">the new guest to be added.</param>
+        void AddGuest(User user);
 
+        /// <summary>
+        /// Adds a new host to the dataSource.
+        /// </summary>
+        /// <param name="user">the new host to be added.</param>
+        void AddHost(Host host);
 
+        /// <summary>
+        /// check if all the fields in the first register page are properly filled
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public bool AddHostCanMoveOn(User user);
+
+        /// <summary>
+        /// converts the User Details we collected in the first window and puts 
+        /// them into a host for us to continue the registration
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public Host UserFeildsToHost(User user);
+        #endregion
     }
 }

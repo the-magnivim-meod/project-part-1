@@ -22,7 +22,6 @@ namespace PLWPF_Updated
     public partial class LoginWindow : Window
     {
         IBL myIBL = FactoryBL.GetBL();
-        User user;
 
         public LoginWindow()
         {
@@ -111,86 +110,51 @@ namespace PLWPF_Updated
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            string username = this.UserName.Text;
+            User user;
+            string userName = this.UserName.Text;
             string password = this.UserPassword.Password;
-
-            if (username == "" || password == "")
-                MessageBox.Show("You must fill all fields!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-
-            if (username == "Admin" && password == "123456")
+            try
             {
-                Window adminWindow = new AdminMainWindow();
-                adminWindow.Show();
-                Close();
-            }
-            else
-            {
-                try
+                user = myIBL.GetUser(userName);
+                if (password == user.Password)
                 {
-                    user = myIBL.GetUser(username);
-
-                    if (password == user.Password)
+                    if (user.Type == UserType.Guest)
                     {
-                        if (user.Type == UserType.Guest)
-                        {
-                            Guest guest = GetGuest(user);
-                            Window guestWindow = new GuestMainWindow();
-                            guestWindow.Show();
-                        }
-                        else if (user.Type == UserType.Host)
-                        {
-                            if (!user.finish)
-                                CompleteHostRegistration(user);
-                            else
-                            {
-                                Host host = GetHost(user);
-                                Window hostMainWindow = new HostMainWindow();
-                                hostMainWindow.Show();
-                            }
-                        }
-                        Close();
+                        Window guestMainWindow = new GuestMainWindow();
+                        guestMainWindow.Show();
+                        this.Close();
                     }
-                    else throw new NotExsitingUserException();
+                    else if (user.Type == UserType.Host)
+                    {
+                        //if (!user.finish)
+                        //    CompleteHostRegistration(user);
+                        //else
+                        //{
+                        //Host host = GetHost(user);
+                        Window hostMainWindow = new HostMainWindow();
+                        hostMainWindow.Show();
+                        //}
+                    }
+                    else if (user.Type == UserType.Admin)
+                    {
+                        Window adminMainWindow = new AdminMainWindow();
+                        adminMainWindow.Show();
+                        this.Close();
+                    }
                 }
-                catch (NotExsitingUserException)
-                {
-                    this.UserName.Text = "";
-                    this.UserPassword.Password = "";
-                    MessageBox.Show("Username or Password is incorrect.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                catch (NotExistingKeyException)
-                {
-                    MessageBox.Show("not exist", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                else throw new NotExsitingUserException();
+            }
+            catch (NotExsitingUserException)
+            {
+                UserPassword.Focus();
+                MessageBox.Show("The Password you entered are incorrect.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (NotExistingKeyException)
+            {
+                UserName.Focus();
+                MessageBox.Show("The UserName you entered doesn't exist", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        private Guest GetGuest(User user)
-        {
-            return (from item in myIBL.GetAllGuests()
-                    where item.UserName == user.UserName
-                    select item).ToList().First();
-        }
-
-        private Host GetHost(User user)
-        {
-            return (from item in myIBL.GetAllHosts()
-                    where item.UserName == user.UserName
-                    select item).ToList().First();
-        }
-
-        private void CompleteHostRegistration(User user)
-        {
-            Host host = GetHost(user);
-            Window hostRegistrationWindow = new HostRegWindow();
-            hostRegistrationWindow.Show();
-            this.Close();
-        }
-
-
-
-
-
-
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             Window Register = new RegisterWindow();

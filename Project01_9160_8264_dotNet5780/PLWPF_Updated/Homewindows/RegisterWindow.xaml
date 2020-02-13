@@ -20,6 +20,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
@@ -43,13 +44,13 @@
         <TextBlock Text="please fill in the feilds and press Register:" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Margin="3" HorizontalAlignment="Center"/>
 
         <TextBlock Text="UserName:" Grid.Column="2" Grid.Row="4" Margin="3"/>
-        <TextBox x:Name="UserName" Grid.Row="4" Grid.Column="3" Width="150" TextChanged="ContentChangedForRegisterButton" Foreground="Gray" Margin="3" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="UserName" Grid.Row="4" Grid.Column="3" Width="150" TextChanged="ContentChangedForRegisterButton" Margin="3" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <TextBlock Text="password:" Grid.Column="2" Grid.Row="5" Margin="3"/>
-        <PasswordBox x:Name="UserPassword" Grid.Row="5" Grid.Column="3" Width="150" PasswordChanged="ContentChangedForRegisterButton" Foreground="Gray" Margin="3"/>
+        <PasswordBox x:Name="UserPassword" Grid.Row="5" Grid.Column="3" Width="150" PasswordChanged="ContentChangedForRegisterButton" Margin="3"/>
 
         <TextBlock Text="type your password again:" Grid.Column="2" Grid.Row="6" Margin="3"/>
-        <PasswordBox x:Name="UserPasswordEnsure" Grid.Row="6" Grid.Column="3" Width="150" PasswordChanged="ContentChangedForRegisterButton" Foreground="Gray" Margin="3"/>
+        <PasswordBox x:Name="UserPasswordEnsure" Grid.Row="6" Grid.Column="3" Width="150" PasswordChanged="ContentChangedForRegisterButton" Margin="3"/>
 
         <TextBlock Text="enter the your name:" Grid.Column="2" Grid.Row="7" Margin="3"/>
         <TextBox x:Name="Pname"  Grid.Row="7" Grid.Column="3" Width="150" Margin="3" Text="{Binding PrivateName, Mode=TwoWay}" TextChanged="ContentChangedForRegisterButton"/>
@@ -57,14 +58,56 @@
         <TextBlock Text="Family Name:" Grid.Column="2" Grid.Row="8" Margin="3"/>
         <TextBox x:Name="Fname" Grid.Row="8" Grid.Column="3" Width="150" Margin="3" Text="{Binding FamilyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="ContentChangedForRegisterButton"/>
 
-        <TextBlock Text="Type of user you want to be:" Grid.Column="2" Grid.Row="9" Margin="3"/>
-        <ComboBox x:Name="UserTypeComboBox" Grid.Row="9" Grid.Column="3" Width="150" Margin="3" Background="Beige" Text="{Binding FamilyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="ContentChangedForRegisterButton"/>
+        <TextBlock Text="MailAddress:" Grid.Column="2" Grid.Row="9" Margin="3"/>
+        <TextBox x:Name="MailTextBox" Grid.Row="9" Grid.Column="3" Width="150" Margin="3" Text="{Binding MailAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="ContentChangedForRegisterButton"/>
 
-        <Button x:Name="RegisterButton" Content="Register" Margin="3" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" Height="50" Click="RegisterButton_Click"/>
+        <TextBlock Text="Type of user you want to be:" Grid.Column="2" Grid.Row="10" Margin="3"/>
+        <ComboBox x:Name="UserTypeComboBox" Grid.Row="10" Grid.Column="3" Width="150" Margin="3" Background="Beige" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="ContentChangedForRegisterButton"/>
+
+        <Button x:Name="RegisterButton" Content="Register" Margin="3" Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="2" Height="50" Click="RegisterButton_Click">
+            <Button.Style>
+                <Style TargetType="Button" x:Name="ButtonAvailable">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=UserName, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=UserPassword, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=UserPasswordEnsure, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=Pname, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=Fname, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=MailTextBox, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                    <Setter Property="Foreground" Value="Maroon"/>
+                    <Setter Property="Background" Value="Beige"/>
+                    <Setter Property="IsEnabled" Value="True"/>
+                </Style>
+            </Button.Style>
+        </Button>
 
         <Image Source="/Images/ProjectLogoImage.jpg" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" MaxWidth="300" Margin="3"/>
 
-        <Grid Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="2">
+        <Grid Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

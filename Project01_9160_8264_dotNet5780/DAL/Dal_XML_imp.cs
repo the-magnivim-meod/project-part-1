@@ -123,7 +123,7 @@ namespace DAL
                     Password = "300000",
                     RegistrationDate = DateTime.Today,
                     Type = UserType.Admin,
-                    MailAddress = "MickyZohar@likud.com"
+                    MailAddress = "MickyZohar@likud.com",
                 }
             };
             SaveToXML(admins, adminPath);
@@ -141,7 +141,7 @@ namespace DAL
                     Password = "White",
                     RegistrationDate = DateTime.Today,
                     Type = UserType.Guest,
-                    MailAddress = "YoazHandle@CaholLavan.com"
+                    MailAddress = "YoazHandle@CaholLavan.com",
                 }
             };
             SaveToXML(guests, guestPath);
@@ -153,17 +153,16 @@ namespace DAL
             {
                 new Host()
                 {
-                    UserName = "RackBibi",
-                    PrivateName = "Micky",
-                    FamilyName = "Zohar",
-                    Password = "300000",
+                    UserName = "Yamin",
+                    PrivateName = "Naftali",
+                    FamilyName = "Bennet",
+                    Password = "DayCvar",
                     RegistrationDate = DateTime.Today,
                     Type = UserType.Host,
-                    MailAddress = "",
+                    MailAddress = "hoot@f.close",
                     BankAccountNumber = 1,
                     CollectionClearance = Y_N.No,
                     BankBranchDetails = null,
-                    finish = false,
                     PhoneNumber = "054-3232-421"
                 }
             };
@@ -328,6 +327,13 @@ namespace DAL
             return from guest in GuestList
                    select guest.Clone();
         }
+
+        public IEnumerable<Admin> GetAllAdmins()
+        {
+            List<Admin> AdminList = LoadFromXML<List<Admin>>(adminPath);
+            return from admin in AdminList
+                   select admin.Clone();
+        }
         #endregion
 
         #region get item by id 
@@ -428,7 +434,7 @@ namespace DAL
         //    return true;
         //}
         #endregion
-
+        
         #region serialize functions
         public static void SaveToXML<T>(T source, string path)
         {
@@ -449,12 +455,16 @@ namespace DAL
         #region User stuff
         public void AddGuest(Guest guest)
         {
-            throw new NotImplementedException();
+            List<Guest> guestList = LoadFromXML<List<Guest>>(guestPath);
+            guestList.Add(guest);
+            SaveToXML<List<Guest>>(guestList, guestPath);
         }
 
         public void AddHost(Host host)
         {
-            throw new NotImplementedException();
+            List<Host> hostList = LoadFromXML<List<Host>>(hostPath);
+            hostList.Add(host);
+            SaveToXML<List<Host>>(hostList, hostingUnitPath);
         }
         #endregion
     }

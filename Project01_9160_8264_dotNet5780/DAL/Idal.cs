@@ -109,16 +109,22 @@ namespace DAL
         IEnumerable<BankBranch> GetAllBankBranches();
 
         /// <summary>
-        /// Get list of guests.
+        /// return all of the guests in the dataSource
         /// </summary>
         /// <returns>List of guest.</returns>
         IEnumerable<Guest> GetAllGuests();
 
         /// <summary>
-        /// Get list of Hosts.
+        /// return all of the hosts in the dataSource
         /// </summary>
         /// <returns>List of host.</returns>
         IEnumerable<Host> GetAllHosts();
+
+        /// <summary>
+        /// return all of the bankBranches in the dataSource
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<Admin> GetAllAdmins();
         #endregion
 
         #region Get Specific Item By Key Methods

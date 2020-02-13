@@ -6,10 +6,16 @@
         xmlns:local="clr-namespace:PLWPF_Updated"
         mc:Ignorable="d" FontSize="18" FontFamily="Bookman Old Style"
         Title="HostRegWindow" Height="550" Width="1000">
+    <Window.Resources>
+        <Style x:Name="ButtonColors" TargetType="Button">
+            <Setter Property="Background" Value="Beige"/>
+            <Setter Property="Foreground" Value="Maroon"/>
+        </Style>
+        <local:BoolianToY_NConverter x:Key="Y_NBoolianConverter"/>
+    </Window.Resources>
     <Grid x:Name="HostRegGrid" Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -33,6 +39,7 @@
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
 
+        <Image Source="/Images/ProjectLogoImage.jpg" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" MaxWidth="300" Margin="3"/>
 
         <TextBlock Text="Host" FontSize="35" Grid.Column="2"  Grid.Row="2" Grid.ColumnSpan="2" Margin="3" FontWeight="Bold" >
             <TextBlock.TextDecorations>
@@ -42,38 +49,48 @@
 
         <TextBlock Text="please fill in the feilds and press Register:" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Margin="3" HorizontalAlignment="Center"/>
 
-        <TextBlock Text="UserName:" Grid.Column="2" Grid.Row="4" Margin="3"/>
-        <TextBox x:Name="UserName" Grid.Row="4" Grid.Column="3" Width="150"  Foreground="Gray" Margin="3" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <!--TextChanged="ContentChangedForRegisterButton"-->
+        <TextBlock Text="BankAccountNumber" Grid.Column="2" Grid.Row="4" Margin="3"/>
+        <TextBox x:Name="BankNumber" Text="{Binding BankAccountNumber, Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=False}" Grid.Row="4" Grid.Column="3" Width="150" Margin="3" TextChanged="ContentChangedForRegisterButton"/>
 
+        <TextBlock Text="Please select your bank" Grid.Column="2" Grid.Row="5" Margin="3"/>
+        <Button x:Name="BankSelectorButton"  Grid.Row="5" Grid.Column="3" Width="150" Margin="3" Content="SelectBanks" Click="BankSelectorButton_Click"/>
 
+        <TextBlock Text="Enter the your PhoneNumber:" Grid.Column="2" Grid.Row="6" Margin="3"/>
+        <TextBox x:Name="PhoneNumber" Grid.Row="6" Grid.Column="3" Width="150" Margin="3" Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="ContentChangedForRegisterButton"/>
 
-        <TextBlock Text="BankAccountNumber" Grid.Column="2" Grid.Row="5" Margin="3"/>
-        <TextBox x:Name="Pnam"  Grid.Row="5" Grid.Column="3" Width="150" Margin="3"  />
-        <!--TextChanged="ContentChangedForRegisterButton"-->
-        <!--Text="{Binding BankAccountNumber, Mode=TwoWay}"-->
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2">
+            <TextBlock Text="CollectionClearance" Margin="3"/>
+            <CheckBox x:Name="checkBox" Margin="3,4,3,3" IsChecked="{Binding CollectionClearance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource Y_NBoolianConverter}}"/>
+        </StackPanel>
+        
 
-        <TextBlock Text="enter the your PhoneNumber:" Grid.Column="2" Grid.Row="7" Margin="3"/>
-        <TextBox x:Name="Pname"  Grid.Row="7" Grid.Column="3" Width="150" Margin="3"  />
-        <!--TextChanged="ContentChangedForRegisterButton"-->
-        <!--Text="{Binding PhoneNumber, Mode=TwoWay}"-->
+        <Button x:Name="RegisterButton" Content="Register" Margin="3" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2" Height="50" Click="RegisterButton_Click">
+            <Button.Style>
+                <Style TargetType="Button" x:Name="ButtonAvailable">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=BankNumber, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
 
-        <TextBlock Text="Mail Address:" Grid.Column="2" Grid.Row="8" Margin="3"/>
-        <TextBox x:Name="Fname" Grid.Row="8" Grid.Column="3" Width="150" Margin="3" Text="{Binding MailAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-        <!--TextChanged="ContentChangedForRegisterButton"-->
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=PhoneNumber, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
 
-        <TextBlock Grid.Column="2" Grid.Row="9" Margin="3"><Run Text="CollectionClearance"/><InlineUIContainer>
-                
-            </InlineUIContainer></TextBlock>
-        <CheckBox x:Name="checkBox" Content="CollectionClearance" Width="150" Margin="264,10,10,3" Background="Beige" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="9" />
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=bankWasSelected, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                    <Setter Property="Foreground" Value="Maroon"/>
+                    <Setter Property="Background" Value="Beige"/>
+                    <Setter Property="IsEnabled" Value="True"/>
+                </Style>
+            </Button.Style>
+        </Button>
 
-
-        <Button x:Name="RegisterButton" Content="Register" Margin="3" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" Height="50"/>
-        <!--Click="RegisterButton_Click"-->
-
-        <Image Source="/Images/ProjectLogoImage.jpg" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" MaxWidth="300" Margin="3"/>
-
-        <Grid Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="2">
+        <Grid Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -83,6 +100,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="Back" Content="Return" Click="Back_Click"  Margin="3,0,3,3" Background="Black" Foreground="Green" Grid.Column="4"/>
+
+
         </Grid>
     </Grid>
 </Window>

@@ -133,7 +133,7 @@ namespace BL
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>
-        bool CheckOrderInOpenStatus(Order order)
+        private bool CheckOrderInOpenStatus(Order order)
         {
             if (order.Status == OrderStatus.YetToBeAttendedTo || order.Status == OrderStatus.MailWasSent)
             {
@@ -214,6 +214,22 @@ namespace BL
                 return false;
             }
         }
+
+        public static bool IsValidPhoneNumber(string number)
+        {
+            return Regex.Match(number, @"^(\+[0-9]{9})$").Success;
+        }
+
+        private bool UserNameAlreadyExists(string name)
+        {
+            if ((from user in GetAllUsers()//if any of the other users have already taken that userName
+                 where user.UserName == name
+                 select user).Count() > 0)
+            {
+                return true;
+            }
+            return false;
+        }
         #endregion
 
         #region GuestRequest Methods
@@ -258,27 +274,6 @@ namespace BL
 
                 throw cought;
             }
-        }
-        public IEnumerable<GuestRequest> GetGuestRequests()
-        {
-            return myDal.GetAllGuestReuests();
-        }
-
-
-        public void AddGuest(Guest guest)
-        {
-            //if (guest == null)
-            //    throw new BlArgumentNullException();
-            //if (IsUserExist(guest.UserName))
-            //    throw new BlNickAlreadyExistException();
-            //if (IsMailExist(guest.MailAddress))
-            //    throw new BlMailAlreadyExistException();
-           
-            if (!(MailAddressIsValid(guest.MailAddress)))
-                throw new NotValidEmailAddressException();
-            
-            myDal.AddGuest(guest);
-            
         }
 
         #endregion
@@ -384,30 +379,8 @@ namespace BL
             {
                 throw new NotExistingKeyException();
             }
-            
-        }
-        public IEnumerable<HostingUnit> GetHostingUnits()
-        {
-            return myDal.GetAllHostingUnits();
-        }
 
-        public void AddHost(Host host)
-        {
-            //if (host == null)
-            //    throw new BlArgumentNullException();
-            //if (IsUserExist(host.Username))
-            //    throw new BlNickAlreadyExistException();
-            //if (IsMailExist(host.MailAddress))
-            //    throw new BlMailAlreadyExistException();
-            
-            if (!(MailAddressIsValid(host.MailAddress)))
-                throw new NotValidEmailAddressException();
-
-
-            myDal.AddHost(host);
-            
-        }
-
+        }     
         #endregion
 
         #region Order Methods
@@ -556,16 +529,6 @@ namespace BL
         {
             return myDal.GetAllOrders();
         }
-
-        public IEnumerable<Host> GetAllHosts()
-        {
-            return myDal.GetAllHosts();
-        }
-
-        public IEnumerable<Guest> GetAllGuests()
-        {
-            return myDal.GetAllGuests();
-        }
         #endregion
 
         #region Miscellaneous Methods
@@ -654,29 +617,84 @@ namespace BL
         #endregion
 
         #region User methods
-        public List<User> GetUsers()
+        private List<User> GetAllUsers()
         {
             List<User> users = new List<User>();
-            var guests = GetAllGuests();
-            if (guests != null)
-                foreach (var item in guests)
-                    users.Add(item);
-            var hosts = GetAllHosts();
-            if (hosts != null)
-                foreach (var item in hosts)
-                    users.Add(item);
-
+            foreach (var guest in myDal.GetAllGuests())
+                users.Add(guest);
+            foreach (var host in myDal.GetAllHosts())
+                users.Add(host);
+            foreach (var admin in myDal.GetAllAdmins())
+                users.Add(admin);
             return users;
         }
 
         public User GetUser(string username)
         {
-            User user = GetUsers().Find(item => item.UserName == username);
+            User user = GetAllUsers().Find(item => item.UserName == username);
             if (user == null)
                 throw new NotExistingKeyException();
             return user;
         }
 
+        public void AddGuest(User newUser)
+        {
+            if (newUser == null)
+                throw new ArgumentNullException();
+            if (UserNameAlreadyExists(newUser.UserName))
+                throw new UserAlreadyExistsException();
+            if (!(MailAddressIsValid(newUser.MailAddress)))
+                throw new NotValidEmailAddressException();
+            Guest guest = new Guest()
+            {
+                UserName = newUser.UserName,
+                Password = newUser.Password,
+                PrivateName = newUser.PrivateName,
+                FamilyName = newUser.FamilyName,
+                Type = newUser.Type,
+                MailAddress = newUser.MailAddress,
+                RegistrationDate = DateTime.Today
+            };
+
+            myDal.AddGuest(guest);
+        }
+
+
+        public bool AddHostCanMoveOn(User newUser)
+        {
+            if (newUser == null)
+                throw new ArgumentNullException();
+            if (UserNameAlreadyExists(newUser.UserName))
+                throw new UserAlreadyExistsException();
+            if (!(MailAddressIsValid(newUser.MailAddress)))
+                throw new NotValidEmailAddressException();
+            return true;
+        }
+
+        public void AddHost(Host host)
+        {
+            if (host == null)
+                throw new ArgumentNullException();
+            //if (!(IsValidPhoneNumber(host.PhoneNumber)))
+            //    throw new NotValidPhoneNumberException();
+            
+            myDal.AddHost(null);
+        }
+
+        public Host UserFeildsToHost(User user)
+        {
+            return new Host()
+            {
+                UserName = user.UserName,
+                Password = user.Password,
+                PrivateName = user.PrivateName,
+                FamilyName = user.FamilyName,
+                Type = user.Type,
+                MailAddress = user.MailAddress,
+                RegistrationDate = user.RegistrationDate
+            };
+        }
+      
         #endregion
 
     }

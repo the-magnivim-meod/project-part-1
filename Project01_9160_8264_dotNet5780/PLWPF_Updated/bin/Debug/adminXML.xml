@@ -6,8 +6,7 @@
     <UserName>RackBibi</UserName>
     <Password>300000</Password>
     <Type>Admin</Type>
-    <RegistrationDate>2020-02-12T00:00:00+02:00</RegistrationDate>
-    <finish>false</finish>
+    <RegistrationDate>2020-02-13T00:00:00+02:00</RegistrationDate>
     <MailAddress>MickyZohar@likud.com</MailAddress>
   </Admin>
 </ArrayOfAdmin>
