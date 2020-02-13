@@ -41,7 +41,7 @@
         </TextBlock>
 
         <TextBlock Text="enter the unit's name:" Grid.Column="2" Grid.Row="2" Margin="3"/>
-        <TextBox x:Name="unitName" Grid.Row="2" Grid.Column="3" Margin="62,3,61,3" Text="{Binding HostingUnitName, Mode=TwoWay}"/>
+        <TextBox x:Name="unitName" Grid.Row="2" Grid.Column="3" Margin="62,3,61,3" Text="{Binding HostingUnitName, Mode=TwoWay}" TextChanged="unitName_TextChanged"/>
 
         <TextBlock Text="area of the country:" Grid.Column="2" Grid.Row="3" Margin="3"/>
         <ComboBox x:Name="unitArea" Grid.Row="3" Grid.Column="3" Margin="62,3,61,3" Background="Beige" SelectedItem="{Binding Area, Mode=TwoWay}"/>

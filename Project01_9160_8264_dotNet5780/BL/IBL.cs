@@ -41,13 +41,13 @@ namespace BL
         /// </summary>
         /// <param name="hotingUnitNumber">the unit to delete's number</param>
         void DeleteHostingUnit(int hotingUnitNumber);
-        
-        /*
+
+
         /// <summary>
         /// update a hosting unit
         /// </summary>
         /// <param name="hostingUnit">the hosting unit to update</param>
-        void UpdateHostingUnit(HostingUnit hostingUnit);*/
+        void UpdateHostingUnit(HostingUnit hostingUnit);
 
         /// <summary>
         /// sign collection clearance for hosting unit
@@ -66,6 +66,10 @@ namespace BL
         /// </summary>
         /// <param name="user">New host to be added.</param>
         void AddHost(Host host);
+
+
+        List<HostingUnit> GetHostingUnitsOfHost(Host host);
+
         #endregion
 
         #region Order Methods

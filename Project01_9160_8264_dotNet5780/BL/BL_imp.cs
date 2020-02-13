@@ -289,7 +289,7 @@ namespace BL
             myDal.AddHostingUnit(hostingUnit.Clone());
         }
 
-        /*public void UpdateHostingUnit(HostingUnit hostingUnit)
+        public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
             HostingUnit old = (from unit in myDal.GetAllHostingUnits()
                                where unit.HostingUnitKey == hostingUnit.HostingUnitKey
@@ -313,7 +313,7 @@ namespace BL
 
                 throw cought;
             }
-        }*/
+        }
 
         public void SignCollectionClearance(int hotingUnitNumber)
         {
@@ -406,6 +406,16 @@ namespace BL
 
             myDal.AddHost(host);
             
+        }
+
+
+
+
+        public List<HostingUnit> GetHostingUnitsOfHost(Host host)
+        {
+            return (from item in GetHostingUnits()
+                    where item.Owner.PhoneNumber == host.PhoneNumber
+                    select item).ToList();
         }
 
         #endregion

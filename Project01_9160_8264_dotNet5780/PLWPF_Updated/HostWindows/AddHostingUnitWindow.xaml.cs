@@ -59,5 +59,7 @@ namespace PLWPF_Updated
             Login.Show();
             this.Close();
         }
+
+        
     }
 }
