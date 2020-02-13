@@ -4,39 +4,138 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF_Updated"
-        mc:Ignorable="d"
-        Title="UpdateHostingUnit" Height="500" Width="500">
+        mc:Ignorable="d" FontSize="18" FontFamily="Bookman Old Style"
+        Title="ApdateHostingUnitWindow" Height="650" Width="800">
 
-    <Grid x:Name="HostingUnitDetails">
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Update Hosting Unit" VerticalAlignment="Top" FontWeight="Bold" FontSize="36" TextAlignment="Center" Margin="0,10,0,0"/>
-        <ComboBox x:Name="SelectHostingUnit" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="185,69,0,376" Width="120" Height="24"/>
-        <TextBox TextWrapping="Wrap" Text="select a hosting unit:" SpellCheck.IsEnabled="True" FontSize="16" Margin="20,69,311,377" FontWeight="Bold" OpacityMask="Black" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <TextBox.BorderBrush>
-                <ImageBrush/>
-            </TextBox.BorderBrush>
-        </TextBox>
-        <TextBlock Text="hosting unit name:" Margin="20,101,0,346" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Text="choose Area:" Margin="20,111.86,0,285.14" FontSize="16" HorizontalAlignment="Left" FontWeight="Bold" VerticalAlignment="Center"/>
-        <TextBlock Text="choose type:" Margin="20,148.86,0,248.14" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Text="capacity:" Margin="20,187.86,0,209.14" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
-        <TextBox x:Name="HostingUnitName" Margin="185,101,0,343" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding HostingUnitName ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="25" Width="120" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" BorderBrush="Black" CaretBrush="Black" Foreground="Black" SelectionBrush="Black" OpacityMask="Black"/>
-        <TextBox x:Name="Capacity" Margin="185,188,0,206" Width="120" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Capacity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" OpacityMask="Black" BorderBrush="Black" CaretBrush="Black" SelectionBrush="Black"/>
-        <ComboBox x:Name="Area" Margin="185,111,0,283" Width="120" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedItem="{Binding Area,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"/>
-        <ComboBox x:Name="Type" Margin="185,149,0,245" Width="120" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" SelectedItem="{Binding Type,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        <CheckBox x:Name="Pool" Content="pool" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,266,0,183" FontSize="16" IsChecked="{Binding Pool,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        <CheckBox x:Name="Jacuzzi" Content="Jacuzzi" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,316,0,133" FontSize="16" IsChecked="{Binding jacuzzi,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        <CheckBox x:Name="Garden" Content="Garden" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,291,0,158" FontSize="16" IsChecked="{Binding Garden,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        <CheckBox x:Name="ChildrensAttractions" Content="ChildrensAttractions" HorizontalAlignment="Left" Margin="20,341,0,108" FontSize="16" IsChecked="{Binding ChildrensAttractions,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
-        <Button x:Name="Update" Content="Update" VerticalAlignment="Bottom" FontSize="36" FontWeight="Bold" Foreground="#FF158AFF" HorizontalAlignment="Left" BorderBrush="Black" OpacityMask="Black" Height="92" Width="251" Margin="241,0,0,0">
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
+
+
+    <Grid x:Name="ApdateUnitGrid" Background="DarkCyan">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" MinHeight="81"/>
+            <RowDefinition/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Welcome to Apdate HostingUnit:" FontSize="35" Grid.Column="2"  Grid.Row="1" Grid.ColumnSpan="4" Margin="3" FontWeight="Bold">
+            <TextBlock.TextDecorations>
+                <TextDecoration/>
+            </TextBlock.TextDecorations>
+        </TextBlock>
+
+
+        <Label HorizontalAlignment="Center" Content="Please choose hosting unit:" VerticalAlignment="Center" FontSize="18" Height="36" Grid.Column="2" Grid.Row="2" Margin="3" FontFamily="Dubai Light" Width="226" />
+        <ComboBox x:Name="HostingUnitsComboBox"  Grid.Column="3" Grid.Row="2" Margin="50,9,49,9" SelectedIndex="0" DisplayMemberPath="HostingUnitName" HorizontalAlignment="Center" VerticalAlignment="Center" Width="174" Height="24" SelectionChanged="HostingUnitsComboBox_SelectionChanged"/>
+
+
+
+        <TextBlock Text="enter the unit's name:" Grid.Column="2" Grid.Row="3" Margin="3"/>
+        <TextBox x:Name="unitName" Grid.Row="3" Grid.Column="3" Margin="62,3,61,3" Text="{Binding HostingUnitName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+
+        <TextBlock Text="area of the country:" Grid.Column="2" Grid.Row="4" Margin="3"/>
+        <ComboBox x:Name="unitArea" Grid.Row="4" Grid.Column="3" Margin="62,3,61,3" Background="Beige" SelectedItem="{Binding VacationProperties.Area}"/>
+
+        <TextBlock Text="enter the unit's type:" Grid.Column="2" Grid.Row="5" Margin="3"/>
+        <ComboBox x:Name="unitType" Grid.Row="5" Grid.Column="3" Margin="62,3,61,3" SelectedItem="{Binding VacationProperties.Type}"/>
+
+        <CheckBox x:Name="Pool" Content="pool" Grid.Column="2" Grid.Row="6"  FontSize="16" IsChecked="{Binding HasPool ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <CheckBox x:Name="NearByGroceryStore" Content="NearByGroceryStore" Grid.Column="2" Grid.Row="7" FontSize="16" IsChecked="{Binding HasNearByGroceryStore ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <CheckBox x:Name="Garden" Content="Garden" Grid.Column="2" Grid.Row="8"  FontSize="16" IsChecked="{Binding HasGarden,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,8"/>
+        <CheckBox x:Name="ChildrensAttractions" Content="ChildrensAttractions" Grid.Column="2" Grid.Row="9" FontSize="16" IsChecked="{Binding HasChildrensAttractions,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,22"  />
+
+        <Button x:Name="ApdateHostingUnit" Content="Update Hostingunit" Margin="3,2,0,4" Grid.Column="2" Grid.Row="11" Click="Update_click">
+            <Button.Style>
+                <Style TargetType="Button" x:Name="ButtonAvailable">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=unitName, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=unitArea}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=unitType}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                    <Setter Property="Foreground" Value="Maroon"/>
+                    <Setter Property="Background" Value="Beige"/>
+                    <Setter Property="IsEnabled" Value="True"/>
+                </Style>
+            </Button.Style>
         </Button>
 
-        <Button x:Name="cancel" Content="Cancel" VerticalAlignment="Bottom" FontSize="36" FontWeight="Bold" Foreground="#FFFF1515" HorizontalAlignment="Left" BorderBrush="Black" OpacityMask="Black" Height="92" Width="241">
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
+
+
+
+        <Button x:Name="DeleteHostingUnit" Content="Delete Hosting Unit" Margin="3,2,0,4" Grid.Column="3" Grid.Row="11" Click="DeleteHostingUnit_Click">
+            <Button.Style>
+                <Style TargetType="Button" x:Name="ButtonAvailable">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=unitName, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=unitArea}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Path=SelectedItem, ElementName=unitType}" Value="{x:Null}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                    <Setter Property="Foreground" Value="Maroon"/>
+                    <Setter Property="Background" Value="Beige"/>
+                    <Setter Property="IsEnabled" Value="True"/>
+                </Style>
+            </Button.Style>
         </Button>
+
+
+
+
+        <Image Source="/Images/HotelRoomImage.jpg" Grid.Column="3" Grid.Row="6"  MaxHeight="200" Margin="3" Grid.RowSpan="4"/>
+
+
+
+
+        <Grid Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Back" Content="Return" Click="Back_Click"  Margin="3" Background="Black" Foreground="Green" Grid.Column="2" Height="30"/>
+            <Button x:Name="LogOff" Content="Log Off"  Margin="3" Background="Black" Foreground="Green" Grid.Column="3" Click="LogOff_Click" Height="30"/>
+        </Grid>
     </Grid>
 </Window>
+

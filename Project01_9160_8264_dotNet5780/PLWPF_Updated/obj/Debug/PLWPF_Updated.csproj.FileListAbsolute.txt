@@ -130,6 +130,6 @@ C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780
 C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\OrderDataWindow.baml
 C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\HostingUnitDataWindow.baml
 C:\Users\yitzhaka\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\AdminWindows\GuestRequestDataWindow.baml
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\BankSelectionWindow.g.cs
-C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\BankSelectionWindow.baml
 C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\HomeWindows\BankSelectionWindow.g.cs
+C:\Users\yezob\Documents\GitHub\project-part-1\Project01_9160_8264_dotNet5780\PLWPF_Updated\obj\Debug\HomeWindows\BankSelectionWindow.baml

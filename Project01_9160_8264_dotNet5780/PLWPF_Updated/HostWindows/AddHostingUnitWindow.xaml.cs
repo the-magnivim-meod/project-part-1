@@ -21,7 +21,8 @@ namespace PLWPF_Updated
     {
         HostingUnit unit;
         IBL myIbL = FactoryBL.GetBL();
-        public AddHostingUnitWindow()
+        Host host;
+        public AddHostingUnitWindow(Host hostIN)
         {
             InitializeComponent();
 
@@ -30,17 +31,19 @@ namespace PLWPF_Updated
 
             unit = new HostingUnit();
             AddUnitGrid.DataContext = unit;
+            host = hostIN;
         }
 
         private void AddHostingUnit_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                unit.Owner = host;
                 myIbL.AddHostingUnit(unit);
                 unit = new HostingUnit();
                 AddUnitGrid.DataContext = unit;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("There Was a problem. Please try again soon", "ERROR!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -48,7 +51,7 @@ namespace PLWPF_Updated
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Window HostWindow = new HostMainWindow();
+            Window HostWindow = new HostMainWindow(host);
             HostWindow.Show();
             this.Close();
         }

@@ -20,16 +20,18 @@ namespace PLWPF_Updated
     /// </summary>
     public partial class GuestMainWindow : Window
     {
-        public GuestMainWindow()
+        Guest guest;
+        public GuestMainWindow(Guest g)
         {
             InitializeComponent();
+            guest = g;
         }
 
 
 
-        private void AddGuestRquestButtonClick(object sender, RoutedEventArgs e)
+        private void AddGuestRequestButtonClick(object sender, RoutedEventArgs e)
         {
-            Window addGuestRequest = new AddGuestRequestWindow();
+            Window addGuestRequest = new AddGuestRequestWindow(guest);
             addGuestRequest.Show();
             this.Close();
         }

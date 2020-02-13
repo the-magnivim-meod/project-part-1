@@ -21,7 +21,7 @@ namespace PLWPF_Updated
     public partial class HostRegWindow : Window
     {
         IBL myIBL = FactoryBL.GetBL();
-        Host host;
+        public Host host;
         bool bankWasSelected = false;
 
         public HostRegWindow(User HalfFullUser)
@@ -62,7 +62,7 @@ namespace PLWPF_Updated
         {
             bankWasSelected = true;
             ContentChangedForRegisterButton(sender, e);
-            var SelectBank = new BankSelectionWindow();
+            var SelectBank = new BankSelectionWindow(this);
             if ((bool)SelectBank.ShowDialog() == true)
             {
                 host.BankBranchDetails = SelectBank.BankBranch;

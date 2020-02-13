@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BL;
+using BE;
 
 namespace PLWPF_Updated
 {
@@ -19,28 +21,31 @@ namespace PLWPF_Updated
     /// </summary>
     public partial class HostMainWindow : Window
     {
-        public HostMainWindow()
+        Host host;
+
+        public HostMainWindow(Host hostIN)
         {
             InitializeComponent();
+            host = hostIN;
         }
 
         private void AddHostingUnitButtonClick(object sender, RoutedEventArgs e)
         {
-            Window addHostingUnit = new AddHostingUnitWindow();
-            addHostingUnit.Show();
+            Window addOrder = new AddOrderWindow(host);
+            addOrder.Show();
             this.Close();
         }
 
         private void PrivateAreaButtonClick(object sender, RoutedEventArgs e)
         {
-            //Window privateArea = new PrivateAreaWindow();
-            //privateArea.Show();
-            //this.Close();
+            Window Update = new UpdateHostingUnitWindow(host);
+            Update.Show();
+            this.Close();
         }
 
         private void LogOff_Click(object sender, RoutedEventArgs e)
         {
-            Window Login = new LoginWindow();
+            Window Login = new MainWindow();
             Login.Show();
             this.Close();
         }

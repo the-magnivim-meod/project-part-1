@@ -230,6 +230,21 @@ namespace BL
             }
             return false;
         }
+
+        private bool IsVacationAvailable(HostingUnit item, DateTime entryDate, int vacationLength)
+        {
+            DateTime currentDate = new DateTime(entryDate.Year, entryDate.Month, entryDate.Day);
+
+            for (int i = 0; i < vacationLength; i++)
+            {
+                if (item.Diary[currentDate.Month - 1, currentDate.Day - 1])
+                    return false;
+                currentDate = currentDate.AddDays(1);
+            }
+
+            return true;
+        }
+
         #endregion
 
         #region GuestRequest Methods
@@ -275,7 +290,12 @@ namespace BL
                 throw cought;
             }
         }
-
+        public List<GuestRequest> GetSpecificGuestRequests(Func<GuestRequest, bool> conditionFunc)
+        {
+            return (from item in myDal.GetAllGuestReuests()
+                    where conditionFunc(item)
+                    select item).ToList();
+        }
         #endregion
 
         #region hostingUnit Methods
@@ -284,7 +304,14 @@ namespace BL
             myDal.AddHostingUnit(hostingUnit.Clone());
         }
 
-        /*public void UpdateHostingUnit(HostingUnit hostingUnit)
+        public List<HostingUnit> GetHostingUnitsOfHost(Host host)
+        {
+            return (from item in GetAllHostingUnits()
+                    where item.Owner.PhoneNumber == host.PhoneNumber
+                    select item).ToList();
+        }
+
+        public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
             HostingUnit old = (from unit in myDal.GetAllHostingUnits()
                                where unit.HostingUnitKey == hostingUnit.HostingUnitKey
@@ -308,7 +335,7 @@ namespace BL
 
                 throw cought;
             }
-        }*/
+        }
 
         public void SignCollectionClearance(int hotingUnitNumber)
         {
@@ -380,7 +407,7 @@ namespace BL
                 throw new NotExistingKeyException();
             }
 
-        }     
+        }
         #endregion
 
         #region Order Methods
@@ -528,6 +555,46 @@ namespace BL
         public IEnumerable<Order> GetAllOrders()
         {
             return myDal.GetAllOrders();
+        }
+
+        public IEnumerable<GuestRequest> GetSuitableRequests(HostingUnit unit)
+        {
+            return GetSpecificGuestRequests(item => IsRequestSuitable(unit, item));
+        }
+
+        public List<Host> GetSpecificHosts(Func<Host, bool> conditionFunc)
+        {
+            return (from item in myDal.GetAllHosts()
+                    where conditionFunc(item)
+                    select item).ToList();
+        }
+
+        private bool IsRequestSuitable(HostingUnit hostingUnit, GuestRequest request)
+        {
+            if (request.Status != GuestRequestStatus.YetToBeAttendedTo)
+                return false;
+            if (!IsVacationAvailable(hostingUnit, request.EntryDate, Math.Abs(request.EntryDate.Subtract(request.ReleaseDate).Days)))
+                return false;
+            if (!DoPropertiesFit(hostingUnit, request))
+                return false;
+            return true;
+        }
+
+        private bool DoPropertiesFit(HostingUnit unit, GuestRequest request)
+        {
+            if (unit.Area != request.Area)
+                return false;
+            if (request.ChildrensAttractions == AmountOfIntrenst.Neccecery && unit.HasChildrensAttractions == false)
+                return false;
+            if (request.Garden == AmountOfIntrenst.Neccecery && unit.HasGarden == false)
+                return false;
+            if (request.CloseByGroceryStore == AmountOfIntrenst.Neccecery && unit.HasNearByGroceryStore == false)
+                return false;
+            if (request.Pool == AmountOfIntrenst.Neccecery && unit.HasPool == false)
+                return false;
+            if (request.Type != unit.Type)
+                    return false;
+            return true;
         }
         #endregion
 
@@ -677,7 +744,7 @@ namespace BL
                 throw new ArgumentNullException();
             //if (!(IsValidPhoneNumber(host.PhoneNumber)))
             //    throw new NotValidPhoneNumberException();
-            
+
             myDal.AddHost(null);
         }
 
@@ -694,7 +761,22 @@ namespace BL
                 RegistrationDate = user.RegistrationDate
             };
         }
-      
+
+        public Guest GetGuestByUserName(string UserName)
+        {
+            Guest g = (from guest in myDal.GetAllGuests()
+                       where guest.UserName == UserName
+                       select guest).FirstOrDefault();
+            return (g == null ? null : g);
+        }
+
+        public Host GetHostByUserName(string UserName)
+        {
+            Host g = (from host in myDal.GetAllHosts()
+                      where host.UserName == UserName
+                      select host).FirstOrDefault();
+            return (g == null ? null : g);
+        }
         #endregion
 
     }

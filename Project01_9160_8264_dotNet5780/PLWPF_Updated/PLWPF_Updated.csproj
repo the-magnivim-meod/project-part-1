@@ -76,7 +76,7 @@
     <Compile Include="AdminWindows\OrderDataWindow.xaml.cs">
       <DependentUpon>OrderDataWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BankSelectionWindow.xaml.cs">
+    <Compile Include="HomeWindows\BankSelectionWindow.xaml.cs">
       <DependentUpon>BankSelectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="BoolianToY_NConverter.cs" />
@@ -106,7 +106,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BankSelectionWindow.xaml">
+    <Page Include="HomeWindows\BankSelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

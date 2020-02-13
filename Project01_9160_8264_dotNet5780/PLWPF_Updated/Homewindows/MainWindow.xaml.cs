@@ -30,14 +30,14 @@ namespace PLWPF_Updated
 
         private void GuestRequestButtonClick(object sender, RoutedEventArgs e)
         {
-            Window guestRequestWindow = new GuestMainWindow();
+            Window guestRequestWindow = new GuestMainWindow(null);
             guestRequestWindow.Show();
             this.Close();
         }
 
         private void HostingUnitButtonClick(object sender, RoutedEventArgs e)
         {
-            Window hostingUnitWindow = new HostMainWindow();
+            Window hostingUnitWindow = new HostMainWindow(null);
             hostingUnitWindow.Show();
             this.Close();
         }

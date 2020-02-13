@@ -120,18 +120,13 @@ namespace PLWPF_Updated
                 {
                     if (user.Type == UserType.Guest)
                     {
-                        Window guestMainWindow = new GuestMainWindow();
+                        Window guestMainWindow = new GuestMainWindow(myIBL.GetGuestByUserName(user.UserName));
                         guestMainWindow.Show();
                         this.Close();
                     }
                     else if (user.Type == UserType.Host)
                     {
-                        //if (!user.finish)
-                        //    CompleteHostRegistration(user);
-                        //else
-                        //{
-                        //Host host = GetHost(user);
-                        Window hostMainWindow = new HostMainWindow();
+                        Window hostMainWindow = new HostMainWindow(myIBL.GetHostByUserName(user.UserName));
                         hostMainWindow.Show();
                         //}
                     }

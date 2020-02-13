@@ -23,7 +23,8 @@ namespace PLWPF_Updated
     {
         IBL myIBL = FactoryBL.GetBL();
         GuestRequest NewGuestRequest;
-        public AddGuestRequestWindow()
+        Guest guest;
+        public AddGuestRequestWindow(Guest guestIN)
         {
             InitializeComponent();
 
@@ -44,6 +45,7 @@ namespace PLWPF_Updated
             NewGuestRequest.EntryDate = DateTime.Today;
             NewGuestRequest.ReleaseDate = DateTime.Today.AddDays(1);
             NewGuestRequest.Adults = 1;
+            guest = guestIN;
         }
 
         private void AddRequest_Click(object sender, RoutedEventArgs e)
@@ -64,7 +66,7 @@ namespace PLWPF_Updated
                 //    ReleaseDate = DateTime.Today.AddDays(1),
                 //};
                 //AddRequestGrid.DataContext = NewGuestRequest;
-                Window mainGuest = new GuestMainWindow();
+                Window mainGuest = new GuestMainWindow(guest);
                 mainGuest.Show();
                 this.Close();
             }
@@ -100,7 +102,7 @@ namespace PLWPF_Updated
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Window MainGuestWindow = new GuestMainWindow();
+            Window MainGuestWindow = new GuestMainWindow(guest);
             MainGuestWindow.Show();
             this.Close();
         }

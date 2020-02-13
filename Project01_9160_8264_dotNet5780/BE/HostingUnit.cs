@@ -8,7 +8,7 @@ namespace BE
     public class HostingUnit
     {
         public int HostingUnitKey { get; set; }
-        public Host Owner { get; set; }
+        public Host Owner { get; set; }       
         public string HostingUnitName { get; set; }
         [XmlIgnore]
         public bool[,] Diary = new bool[12, 31];

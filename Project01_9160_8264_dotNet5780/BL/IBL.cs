@@ -35,13 +35,12 @@ namespace BL
         /// </summary>
         /// <param name="hotingUnitNumber">the unit to delete's number</param>
         void DeleteHostingUnit(int hotingUnitNumber);
-        
-        /*
+                
         /// <summary>
         /// update a hosting unit
         /// </summary>
         /// <param name="hostingUnit">the hosting unit to update</param>
-        void UpdateHostingUnit(HostingUnit hostingUnit);*/
+        void UpdateHostingUnit(HostingUnit hostingUnit);
 
         /// <summary>
         /// sign collection clearance for hosting unit
@@ -54,6 +53,13 @@ namespace BL
         /// </summary>
         /// <param name="hotingUnitNumber"></param>
         void RemoveCollectionClearance(int hotingUnitNumber);
+
+        /// <summary>
+        /// returns a list of all the units that belong to that host
+        /// </summary>
+        /// <param name="host"></param>
+        /// <returns></returns>
+        List<HostingUnit> GetHostingUnitsOfHost(Host host);
         #endregion
 
         #region Order Methods
@@ -128,6 +134,8 @@ namespace BL
         ///// </summary>
         ///// <returns></returns>
         //List<Guest> GetAllGuests();
+
+        public IEnumerable<GuestRequest> GetSuitableRequests(HostingUnit unit);
         #endregion
 
         #region Miscellaneous Methods
@@ -244,6 +252,12 @@ namespace BL
         /// <param name="user"></param>
         /// <returns></returns>
         public Host UserFeildsToHost(User user);
+
+        public Guest GetGuestByUserName(string UserName);
+
+        public Host GetHostByUserName(string UserName);
+
+        List<Host> GetSpecificHosts(Func<Host, bool> conditionFunc);
         #endregion
     }
 }
