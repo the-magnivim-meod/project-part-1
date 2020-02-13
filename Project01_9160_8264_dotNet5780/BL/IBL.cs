@@ -55,11 +55,18 @@ namespace BL
         void RemoveCollectionClearance(int hotingUnitNumber);
 
         /// <summary>
-        /// returns a list of all the units that belong to that host
+        /// returns a list of all the keys of units that belong to that host
         /// </summary>
         /// <param name="host"></param>
         /// <returns></returns>
-        List<HostingUnit> GetHostingUnitsOfHost(Host host);
+        IEnumerable<int> GetHostingUnitsOfHost(Host host);
+
+        /// <summary>
+        /// returns a hosting unit by its key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public HostingUnit GetHostingUnitByKey(int key);
         #endregion
 
         #region Order Methods
@@ -113,11 +120,7 @@ namespace BL
         /// </summary>
         /// <returns></returns>
         IEnumerable<Order> GetAllOrders();
-        /// <summary>
-        /// return all of the bankBranches in the dataSource
-        /// </summary>
-        /// <returns></returns>
-        IEnumerable<BankBranch> GetAllBankBranches();
+
         /// <summary>
         /// returns a list of all the hosts in the dataSystem
         /// </summary>
@@ -258,6 +261,13 @@ namespace BL
         public Host GetHostByUserName(string UserName);
 
         List<Host> GetSpecificHosts(Func<Host, bool> conditionFunc);
+        #endregion
+
+        #region thread
+        /// <summary>
+        /// run the thread that expires 
+        /// </summary>
+        public void ActivateExpiredOrdersThread();
         #endregion
     }
 }

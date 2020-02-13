@@ -26,7 +26,7 @@ namespace PLWPF_Updated
         public GuestRequestDataWindow()
         {
             InitializeComponent();
-            ObservableCollection<GuestRequest> GuestRequests = new ObservableCollection<GuestRequest>(myIBL.GetAllGuestReuests());
+            ObservableCollection<GuestRequest> GuestRequests = (ObservableCollection<GuestRequest>)(myIBL.GetAllGuestReuests());
             GuestRequestDataGrid.ItemsSource = GuestRequests;
         }
 

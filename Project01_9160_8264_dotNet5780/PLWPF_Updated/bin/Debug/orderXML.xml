@@ -1,2 +1,11 @@
 <?xml version="1.0"?>
-<ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+<ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Order>
+    <HostingUnitKey>5</HostingUnitKey>
+    <GuestRequestKey>2</GuestRequestKey>
+    <OrderKey>3</OrderKey>
+    <Status>YetToBeAttendedTo</Status>
+    <CreateDate>2020-02-13T00:00:00+02:00</CreateDate>
+    <OrderDate>0001-01-01T00:00:00</OrderDate>
+  </Order>
+</ArrayOfOrder>

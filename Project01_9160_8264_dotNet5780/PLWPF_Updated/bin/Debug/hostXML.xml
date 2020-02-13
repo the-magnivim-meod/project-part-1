@@ -12,4 +12,24 @@
     <BankAccountNumber>1</BankAccountNumber>
     <CollectionClearance>No</CollectionClearance>
   </Host>
+  <Host>
+    <PrivateName>v</PrivateName>
+    <FamilyName>v</FamilyName>
+    <UserName>v</UserName>
+    <Password>v</Password>
+    <Type>Host</Type>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <MailAddress>v@v.vv</MailAddress>
+    <PhoneNumber>0970987</PhoneNumber>
+    <BankBranchDetails>
+      <BankNumber>13</BankNumber>
+      <BankName>Union Bank of Israel Ltd</BankName>
+      <BranchNumber>64</BranchNumber>
+      <BranchAddress>8 Aharon Beker st., North Tel Baruch. Te 8</BranchAddress>
+      <BranchCity>TEL AVIV - YAFO</BranchCity>
+      <BankAccountNumber>0</BankAccountNumber>
+    </BankBranchDetails>
+    <BankAccountNumber>78</BankAccountNumber>
+    <CollectionClearance>No</CollectionClearance>
+  </Host>
 </ArrayOfHost>

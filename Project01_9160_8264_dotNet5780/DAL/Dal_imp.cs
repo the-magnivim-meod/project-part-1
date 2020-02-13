@@ -19,7 +19,7 @@
 //        {
 //            return DataSource.GuestRequests.Any(stud => stud.GuestRequestKey == key);//if the key exists will return true
 //        }
-        
+
 //        /// <summary>
 //        /// check if the key already exists
 //        /// </summary>
@@ -242,7 +242,7 @@
 //        {
 //            return DataSource.HostingUnits.FirstOrDefault(uni => uni.HostingUnitKey == id).Clone();
 //        }
-        
+
 //        public Order GetOrder(int id)
 //        {
 //            return DataSource.Orders.FirstOrDefault(ord => ord.OrderKey == id).Clone();

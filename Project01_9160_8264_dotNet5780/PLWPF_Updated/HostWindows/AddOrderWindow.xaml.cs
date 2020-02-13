@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BL;
 using BE;
+using System.Collections.ObjectModel;
 
 namespace PLWPF_Updated
 {
@@ -27,44 +28,47 @@ namespace PLWPF_Updated
         {
             InitializeComponent();
             myIBL = FactoryBL.GetBL();
-
-            System.Windows.Data.CollectionViewSource guestRequestViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("guestRequestViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // guestRequestViewSource.Source = [generic data source]
             host = hostIN;
             HostingUnits.ItemsSource = myIBL.GetHostingUnitsOfHost(host);
-            guestRequestDataGrid.ItemsSource = GetRequestsSuitableHostingUnit();
         }
 
-
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private IEnumerable<GuestRequest> GetSuitableGuestRequestsForTheUnit()
         {
-            System.Windows.Data.CollectionViewSource guestRequestViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("guestRequestViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // guestRequestViewSource.Source = [generic data source]
-        }
-
-        private IEnumerable<GuestRequest> GetRequestsSuitableHostingUnit()
-        {
-            var hU = HostingUnits.SelectedItem as HostingUnit;
-            return myIBL.GetSuitableRequests(hU);
+            try
+            {
+                var unit = myIBL.GetHostingUnitByKey(int.Parse(HostingUnits.SelectedItem.ToString())) as HostingUnit;
+                var guestRequests = myIBL.GetSuitableRequests(unit);
+                return (guestRequests.Count() == 0 ? null : guestRequests);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         private void HostingUnits_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            guestRequestDataGrid.ItemsSource = GetRequestsSuitableHostingUnit();
+            IEnumerable<GuestRequest> guestRequestsList = GetSuitableGuestRequestsForTheUnit();
+            if (guestRequestsList != null)
+            {
+                ObservableCollection<GuestRequest> guestRequests = new ObservableCollection<GuestRequest>(guestRequestsList);
+                guestRequestDataGrid.ItemsSource = guestRequests;
+            }
+            else
+            {
+                guestRequestDataGrid.ItemsSource = null;
+            }
         }
 
         private void guestRequestDataGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var guestRequest = guestRequestDataGrid.SelectedItem as GuestRequest;
-            var hostingUnit = HostingUnits.SelectedItem as HostingUnit;
-            if (guestRequest == null) { }//do nothing}
-            else
+            var hostingUnit = myIBL.GetHostingUnitByKey(int.Parse(HostingUnits.SelectedItem.ToString()));
+            if(!(guestRequest == null) && !(guestRequest == null))
             {
-                string TextToShow = "Are you sure that you want to order " + guestRequest.PrivateName + " " + guestRequest.FamilyName + " to " + hostingUnit.HostingUnitName + " from " + guestRequest.EntryDate.ToString("dd/MM/yy") + " to " + guestRequest.ReleaseDate.ToString("dd/MM/yy") + "?";
-                MessageBoxResult messageBoxResult = MessageBox.Show(TextToShow, "Please Choose:", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                string orderDetails = "Are you sure that you would like to order guest " + guestRequest.PrivateName + " " + guestRequest.FamilyName + " to the " + hostingUnit.HostingUnitName + " unit, from " 
+                    + guestRequest.EntryDate.ToString("MM/dd/yyyy") + " until " + guestRequest.ReleaseDate.ToString("MM/dd/yyyy") + "?";
+                MessageBoxResult messageBoxResult = MessageBox.Show(orderDetails, "select your option", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
@@ -83,7 +87,7 @@ namespace PLWPF_Updated
                     }
                     catch (LackOfSigningPermissionException)
                     {
-                        MessageBox.Show("You didn't signed a clearance. Sign and then try again.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBoxResult SignCleatanceResult = MessageBox.Show("You did not sign collection clearance. Would you like To sign?", "Error!", MessageBoxButton.YesNo, MessageBoxImage.Error);
                     }
 
                     catch (Exception)
@@ -91,6 +95,10 @@ namespace PLWPF_Updated
                         MessageBox.Show("There was a problem. Please try again later.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("There was a problem. Please try again later.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -108,9 +116,5 @@ namespace PLWPF_Updated
             Login.Show();
             this.Close();
         }
-
-
     }
-
-
 }

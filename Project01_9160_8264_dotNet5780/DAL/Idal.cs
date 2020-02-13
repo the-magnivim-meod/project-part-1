@@ -102,11 +102,6 @@ namespace DAL
         /// </summary>
         /// <returns></returns>
         IEnumerable<Order> GetAllOrders();
-        /// <summary>
-        /// return all of the bankBranches in the dataSource
-        /// </summary>
-        /// <returns></returns>
-        IEnumerable<BankBranch> GetAllBankBranches();
 
         /// <summary>
         /// return all of the guests in the dataSource
@@ -127,28 +122,13 @@ namespace DAL
         IEnumerable<Admin> GetAllAdmins();
         #endregion
 
-        #region Get Specific Item By Key Methods
-        /// <summary>
-        /// get a spedcific order by id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        Order GetOrder(int id);
+        #region get by key
+        public HostingUnit GetHostingUnit(int key);
 
-        /// <summary>
-        /// get a specific unit by id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        HostingUnit GetHostingUnit(int id);
+        public GuestRequest GetGuestRequest(int key);
 
-        /// <summary>
-        /// get a specific guestRequest by id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        GuestRequest GetGuestRequest(int id);
+        public Order GetOrder(int key); 
+
         #endregion
-
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF_Updated"
         mc:Ignorable="d" FontSize="18" FontFamily="Bookman Old Style"
-      d:DesignHeight="700" d:DesignWidth="500"
+      d:DesignHeight="700" d:DesignWidth="400"
       Title="HostingUnitWindow">
 
     <Grid Background="DarkCyan">
@@ -14,12 +14,13 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto" MinHeight="57"/>
-            <RowDefinition Height="57"/>
-            <RowDefinition Height="1"/>
-            <RowDefinition Height="auto" MinHeight="59"/>
-            <RowDefinition/>
-            <RowDefinition Height="9"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -39,13 +40,13 @@
         <Image Source="/Images/HotelBuildingImage.jpg" Grid.Row="3" Grid.Column="2" Margin="3" MaxHeight="200"/>
 
         <Button x:Name="SelectAddHostingUnit" Grid.Row="4" Grid.Column="2" Content="Add Hosting Unit"
-                Margin="3" Foreground="Maroon" Background="Beige" Click="AddHostingUnitButtonClick"/>
+                Margin="3" Foreground="Maroon" Background="Beige" Click="AddHostingUnitButtonClick" Height="50"/>
 
-        <Button x:Name="SelectApdateHostingUnit" Grid.Row="5" Grid.Column="2" Content="Apdate HostingUnit" Click="PrivateAreaButtonClick"
-                Foreground="Maroon" Margin="3,3,3,2" Background="Beige"/>
+        <Button x:Name="SelectApdateHostingUnit" Grid.Row="5" Grid.Column="2" Content="Update HostingUnit" Click="PrivateAreaButtonClick"
+                Foreground="Maroon" Margin="3,3,3,2" Background="Beige" Height="50"/>
 
         <Button x:Name="AddOrder" Grid.Row="7" Grid.Column="2" Content="Add Order"
-                Margin="3,3,3,5" Foreground="Maroon" Background="Beige" Click="AddHostingUnitButtonClick"/>
+                Margin="3,3,3,5" Foreground="Maroon" Background="Beige" Click="AddOrder_Click" Height="50"/>
 
         <Grid Grid.Column="2" Grid.Row="8">
             <Grid.ColumnDefinitions>
@@ -54,7 +55,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="LogOff" Content="Log Off"  Margin="3,3,3,0" Background="Black" Foreground="Green" Grid.Row="7" Grid.Column="3" Click="LogOff_Click" Height="25" VerticalAlignment="Top"/>
+            <Button x:Name="LogOff" Content="Log Off"  Margin="3" Background="Black" Foreground="Green" Grid.Column="3" Click="LogOff_Click" Height="25"/>
         </Grid>
     </Grid>
 </Window>

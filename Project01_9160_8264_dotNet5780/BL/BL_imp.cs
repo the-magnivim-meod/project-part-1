@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using System.Threading;
+using System.Net.Mail;
 
 namespace BL
 {
@@ -231,13 +233,13 @@ namespace BL
             return false;
         }
 
-        private bool IsVacationAvailable(HostingUnit item, DateTime entryDate, int vacationLength)
+        private bool IsVacationAvailable(HostingUnit unit, DateTime entryDate, int vacationLength)
         {
             DateTime currentDate = new DateTime(entryDate.Year, entryDate.Month, entryDate.Day);
 
             for (int i = 0; i < vacationLength; i++)
             {
-                if (item.Diary[currentDate.Month - 1, currentDate.Day - 1])
+                if (unit.Diary[currentDate.Month - 1, currentDate.Day - 1])
                     return false;
                 currentDate = currentDate.AddDays(1);
             }
@@ -290,7 +292,7 @@ namespace BL
                 throw cought;
             }
         }
-        public List<GuestRequest> GetSpecificGuestRequests(Func<GuestRequest, bool> conditionFunc)
+        public List<GuestRequest> GetGuestRequestsOnCondition(Func<GuestRequest, bool> conditionFunc)
         {
             return (from item in myDal.GetAllGuestReuests()
                     where conditionFunc(item)
@@ -304,11 +306,11 @@ namespace BL
             myDal.AddHostingUnit(hostingUnit.Clone());
         }
 
-        public List<HostingUnit> GetHostingUnitsOfHost(Host host)
+        public IEnumerable<int> GetHostingUnitsOfHost(Host host)
         {
             return (from item in GetAllHostingUnits()
                     where item.Owner.PhoneNumber == host.PhoneNumber
-                    select item).ToList();
+                    select item.HostingUnitKey).ToList();
         }
 
         public void UpdateHostingUnit(HostingUnit hostingUnit)
@@ -407,6 +409,18 @@ namespace BL
                 throw new NotExistingKeyException();
             }
 
+        }
+
+        public HostingUnit GetHostingUnitByKey(int key)
+        {
+            HostingUnit HostingUnit = (from unit in GetAllHostingUnits()
+                                where unit.HostingUnitKey == key
+                                select unit).FirstOrDefault();
+            if (HostingUnit == null)
+            {
+                throw new KeyNotFoundException();
+            }
+            return HostingUnit;
         }
         #endregion
 
@@ -537,10 +551,6 @@ namespace BL
         #endregion
 
         #region Get all Methods
-        public IEnumerable<BankBranch> GetAllBankBranches()
-        {
-            return myDal.GetAllBankBranches();
-        }
 
         public IEnumerable<GuestRequest> GetAllGuestReuests()
         {
@@ -559,7 +569,7 @@ namespace BL
 
         public IEnumerable<GuestRequest> GetSuitableRequests(HostingUnit unit)
         {
-            return GetSpecificGuestRequests(item => IsRequestSuitable(unit, item));
+            return GetGuestRequestsOnCondition(item => IsRequestSuitable(unit, item));
         }
 
         public List<Host> GetSpecificHosts(Func<Host, bool> conditionFunc)
@@ -584,13 +594,21 @@ namespace BL
         {
             if (unit.Area != request.Area)
                 return false;
+            if (request.Pool == AmountOfIntrenst.Neccecery && unit.HasPool == false)
+                return false;
             if (request.ChildrensAttractions == AmountOfIntrenst.Neccecery && unit.HasChildrensAttractions == false)
                 return false;
             if (request.Garden == AmountOfIntrenst.Neccecery && unit.HasGarden == false)
                 return false;
             if (request.CloseByGroceryStore == AmountOfIntrenst.Neccecery && unit.HasNearByGroceryStore == false)
                 return false;
-            if (request.Pool == AmountOfIntrenst.Neccecery && unit.HasPool == false)
+            if (request.Pool == AmountOfIntrenst.NotInterested && unit.HasPool == true)
+                return false;
+            if (request.ChildrensAttractions == AmountOfIntrenst.NotInterested && unit.HasChildrensAttractions == true)
+                return false;
+            if (request.Garden == AmountOfIntrenst.NotInterested && unit.HasGarden == false)
+                return false;
+            if (request.CloseByGroceryStore == AmountOfIntrenst.NotInterested && unit.HasNearByGroceryStore == true)
                 return false;
             if (request.Type != unit.Type)
                     return false;
@@ -645,6 +663,16 @@ namespace BL
             return (from order in GetAllOrders()
                     where order.HostingUnitKey == hostingUnit.HostingUnitKey
                     select order).Count();
+        }
+
+        public List<Order> GetExpiredOrders(int daysToExpire)
+        {
+            var orders = GetAllOrders();
+            if (orders == null)
+                return null;
+            return (from order in orders
+                    where (order.Status == OrderStatus.MailWasSent) && (NumOfDaysPast(order.OrderDate) >= daysToExpire)
+                    select order).ToList();
         }
         #endregion
 
@@ -745,7 +773,7 @@ namespace BL
             //if (!(IsValidPhoneNumber(host.PhoneNumber)))
             //    throw new NotValidPhoneNumberException();
 
-            myDal.AddHost(null);
+            myDal.AddHost(host);
         }
 
         public Host UserFeildsToHost(User user)
@@ -779,5 +807,33 @@ namespace BL
         }
         #endregion
 
+        #region Threads
+        public void ActivateExpiredOrdersThread()
+        {
+            new Thread(() => UpdateExpiredOrders()).Start();
+        }
+
+        private void UpdateExpiredOrders()
+        {
+            while (true)
+            {
+                List<Order> expiredOrders = GetExpiredOrders(30);
+                if (expiredOrders != null)
+                {
+                    foreach (Order order in expiredOrders)
+                        myDal.UpdateOrder(order.OrderKey, OrderStatus.ClosedByExpiration);
+
+                    IEnumerable<HostingUnit> HostingUnits = GetAllHostingUnits();
+                    DateTime lastMonthDate = DateTime.Today.AddDays(-31);
+                    foreach (HostingUnit hostingUnit in HostingUnits)
+                    {
+                        hostingUnit.Diary[lastMonthDate.Month - 1, lastMonthDate.Day - 1] = false;
+                        UpdateHostingUnit(hostingUnit);
+                    }
+                }
+                Thread.Sleep(1000 * 60 * 60 * 24); // milliseconds*seconds*minutes*hours
+            }
+        }
+        #endregion
     }
 }

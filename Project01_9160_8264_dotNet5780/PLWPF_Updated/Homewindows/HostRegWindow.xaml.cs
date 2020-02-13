@@ -29,6 +29,7 @@ namespace PLWPF_Updated
             InitializeComponent();
             host = myIBL.UserFeildsToHost(HalfFullUser);
             HostRegGrid.DataContext = host;
+            host.BankBranchDetails = new BankBranch();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

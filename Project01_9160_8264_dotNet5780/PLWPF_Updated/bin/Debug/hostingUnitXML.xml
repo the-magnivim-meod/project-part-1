@@ -1,2 +1,65 @@
 <?xml version="1.0"?>
-<ArrayOfHostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+<ArrayOfHostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <HostingUnit>
+    <HostingUnitKey>12</HostingUnitKey>
+    <Owner>
+      <PrivateName>v</PrivateName>
+      <FamilyName>v</FamilyName>
+      <UserName>v</UserName>
+      <Password>v</Password>
+      <Type>Host</Type>
+      <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+      <MailAddress>v@v.vv</MailAddress>
+      <PhoneNumber>0970987</PhoneNumber>
+      <BankBranchDetails>
+        <BankNumber>13</BankNumber>
+        <BankName>Union Bank of Israel Ltd</BankName>
+        <BranchNumber>64</BranchNumber>
+        <BranchAddress>8 Aharon Beker st., North Tel Baruch. Te 8</BranchAddress>
+        <BranchCity>TEL AVIV - YAFO</BranchCity>
+        <BankAccountNumber>0</BankAccountNumber>
+      </BankBranchDetails>
+      <BankAccountNumber>78</BankAccountNumber>
+      <CollectionClearance>No</CollectionClearance>
+    </Owner>
+    <HostingUnitName>mkm</HostingUnitName>
+    <TempDiary>12,31,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</TempDiary>
+    <Type>Zimmer</Type>
+    <Area>North</Area>
+    <HasPool>false</HasPool>
+    <HasGarden>true</HasGarden>
+    <HasNearByGroceryStore>false</HasNearByGroceryStore>
+    <HasChildrensAttractions>true</HasChildrensAttractions>
+  </HostingUnit>
+  <HostingUnit>
+    <HostingUnitKey>5</HostingUnitKey>
+    <Owner>
+      <PrivateName>v</PrivateName>
+      <FamilyName>v</FamilyName>
+      <UserName>v</UserName>
+      <Password>v</Password>
+      <Type>Host</Type>
+      <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+      <MailAddress>v@v.vv</MailAddress>
+      <PhoneNumber>0970987</PhoneNumber>
+      <BankBranchDetails>
+        <BankNumber>13</BankNumber>
+        <BankName>Union Bank of Israel Ltd</BankName>
+        <BranchNumber>64</BranchNumber>
+        <BranchAddress>8 Aharon Beker st., North Tel Baruch. Te 8</BranchAddress>
+        <BranchCity>TEL AVIV - YAFO</BranchCity>
+        <BankAccountNumber>0</BankAccountNumber>
+      </BankBranchDetails>
+      <BankAccountNumber>78</BankAccountNumber>
+      <CollectionClearance>No</CollectionClearance>
+    </Owner>
+    <HostingUnitName>adsf</HostingUnitName>
+    <TempDiary>12,31,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False</TempDiary>
+    <Type>Zimmer</Type>
+    <Area>North</Area>
+    <HasPool>false</HasPool>
+    <HasGarden>false</HasGarden>
+    <HasNearByGroceryStore>true</HasNearByGroceryStore>
+    <HasChildrensAttractions>true</HasChildrensAttractions>
+  </HostingUnit>
+</ArrayOfHostingUnit>

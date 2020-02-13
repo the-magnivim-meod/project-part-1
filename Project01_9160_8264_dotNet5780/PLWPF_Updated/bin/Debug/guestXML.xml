@@ -9,4 +9,13 @@
     <RegistrationDate>2020-02-13T00:00:00+02:00</RegistrationDate>
     <MailAddress>YoazHandle@CaholLavan.com</MailAddress>
   </Guest>
+  <Guest>
+    <PrivateName>w</PrivateName>
+    <FamilyName>w</FamilyName>
+    <UserName>w</UserName>
+    <Password>w</Password>
+    <Type>Guest</Type>
+    <RegistrationDate>2020-02-13T00:00:00+02:00</RegistrationDate>
+    <MailAddress>ww@ww.wwwwww</MailAddress>
+  </Guest>
 </ArrayOfGuest>

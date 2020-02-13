@@ -38,6 +38,8 @@ namespace PLWPF_Updated
             AreaOfCountry.ItemsSource = Enum.GetValues(typeof(AreaOfTheCountry));
             TypeOfHostingUnit.ItemsSource = Enum.GetValues(typeof(HostingUnitType));
 
+            guest = guestIN;
+
             NewGuestRequest.ChildrensAttractions = AmountOfIntrenst.Optional;
             NewGuestRequest.Garden = AmountOfIntrenst.Optional;
             NewGuestRequest.CloseByGroceryStore = AmountOfIntrenst.Optional;
@@ -45,7 +47,7 @@ namespace PLWPF_Updated
             NewGuestRequest.EntryDate = DateTime.Today;
             NewGuestRequest.ReleaseDate = DateTime.Today.AddDays(1);
             NewGuestRequest.Adults = 1;
-            guest = guestIN;
+            NewGuestRequest.MailAddress = guest.MailAddress;
         }
 
         private void AddRequest_Click(object sender, RoutedEventArgs e)
@@ -54,18 +56,6 @@ namespace PLWPF_Updated
             try
             {
                 myIBL.AddGuestRequest(NewGuestRequest);
-                //i think it is better to go back to the menu
-                //--------------------------------
-                //NewGuestRequest = new GuestRequest()
-                //{
-                //    ChildrensAttractions = AmountOfIntrenst.Optional,
-                //    Garden = AmountOfIntrenst.Optional,
-                //    CloseByGroceryStore = AmountOfIntrenst.Optional,
-                //    Pool = AmountOfIntrenst.Optional,
-                //    EntryDate = DateTime.Today,
-                //    ReleaseDate = DateTime.Today.AddDays(1),
-                //};
-                //AddRequestGrid.DataContext = NewGuestRequest;
                 Window mainGuest = new GuestMainWindow(guest);
                 mainGuest.Show();
                 this.Close();

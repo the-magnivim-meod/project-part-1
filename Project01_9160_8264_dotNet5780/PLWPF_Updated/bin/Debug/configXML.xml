@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <config>
-  <guestRequestCounter>1</guestRequestCounter>
-  <hostingUnitCounter>1</hostingUnitCounter>
-  <orderCounter>1</orderCounter>
+  <guestRequestCounter>5</guestRequestCounter>
+  <hostingUnitCounter>13</hostingUnitCounter>
+  <orderCounter>4</orderCounter>
   <hostingUnitCounter>1</hostingUnitCounter>
   <totalEarnings>0</totalEarnings>
 </config>

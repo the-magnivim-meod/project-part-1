@@ -128,6 +128,7 @@ namespace PLWPF_Updated
                     {
                         Window hostMainWindow = new HostMainWindow(myIBL.GetHostByUserName(user.UserName));
                         hostMainWindow.Show();
+                        this.Close();
                         //}
                     }
                     else if (user.Type == UserType.Admin)

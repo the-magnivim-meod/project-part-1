@@ -31,7 +31,7 @@ namespace PLWPF_Updated
 
         private void AddHostingUnitButtonClick(object sender, RoutedEventArgs e)
         {
-            Window addOrder = new AddOrderWindow(host);
+            Window addOrder = new AddHostingUnitWindow(host);
             addOrder.Show();
             this.Close();
         }
@@ -45,8 +45,15 @@ namespace PLWPF_Updated
 
         private void LogOff_Click(object sender, RoutedEventArgs e)
         {
-            Window Login = new MainWindow();
+            Window Login = new LoginWindow();
             Login.Show();
+            this.Close();
+        }
+
+        private void AddOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Window addOrder = new AddOrderWindow(host);
+            addOrder.Show();
             this.Close();
         }
     }

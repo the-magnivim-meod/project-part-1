@@ -9,7 +9,7 @@
 
 
 
-    <Grid x:Name="ApdateUnitGrid" Background="DarkCyan">
+    <Grid x:Name="UpdateUnitGrid" Background="DarkCyan">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
@@ -37,35 +37,35 @@
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Welcome to Apdate HostingUnit:" FontSize="35" Grid.Column="2"  Grid.Row="1" Grid.ColumnSpan="4" Margin="3" FontWeight="Bold">
+        <TextBlock Text="Welcome to Update HostingUnit:" FontSize="35" Grid.Column="2"  Grid.Row="1" Grid.ColumnSpan="4" Margin="3" FontWeight="Bold">
             <TextBlock.TextDecorations>
                 <TextDecoration/>
             </TextBlock.TextDecorations>
         </TextBlock>
 
 
-        <Label HorizontalAlignment="Center" Content="Please choose hosting unit:" VerticalAlignment="Center" FontSize="18" Height="36" Grid.Column="2" Grid.Row="2" Margin="3" FontFamily="Dubai Light" Width="226" />
-        <ComboBox x:Name="HostingUnitsComboBox"  Grid.Column="3" Grid.Row="2" Margin="50,9,49,9" SelectedIndex="0" DisplayMemberPath="HostingUnitName" HorizontalAlignment="Center" VerticalAlignment="Center" Width="174" Height="24" SelectionChanged="HostingUnitsComboBox_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Center" Text="Please select a hosting unit:" VerticalAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="2" Margin="3"/>
+        <ComboBox x:Name="HostingUnitsComboBox"  Grid.Column="3" Grid.Row="2" Margin="50,9,49,9" SelectedIndex="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="24" SelectionChanged="HostingUnitsComboBox_SelectionChanged"/>
 
 
 
         <TextBlock Text="enter the unit's name:" Grid.Column="2" Grid.Row="3" Margin="3"/>
-        <TextBox x:Name="unitName" Grid.Row="3" Grid.Column="3" Margin="62,3,61,3" Text="{Binding HostingUnitName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+        <TextBox x:Name="unitName" Grid.Row="3" Grid.Column="3" Margin="3" Text="{Binding HostingUnitName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Width="150"/>
 
         <TextBlock Text="area of the country:" Grid.Column="2" Grid.Row="4" Margin="3"/>
-        <ComboBox x:Name="unitArea" Grid.Row="4" Grid.Column="3" Margin="62,3,61,3" Background="Beige" SelectedItem="{Binding VacationProperties.Area}"/>
+        <ComboBox x:Name="unitArea" Grid.Row="4" Grid.Column="3" Margin="3" Background="Beige" SelectedItem="{Binding Area}" Width="150"/>
 
         <TextBlock Text="enter the unit's type:" Grid.Column="2" Grid.Row="5" Margin="3"/>
-        <ComboBox x:Name="unitType" Grid.Row="5" Grid.Column="3" Margin="62,3,61,3" SelectedItem="{Binding VacationProperties.Type}"/>
+        <ComboBox x:Name="unitType" Grid.Row="5" Grid.Column="3" Margin="3" SelectedItem="{Binding Type}" Width="150"/>
 
-        <CheckBox x:Name="Pool" Content="pool" Grid.Column="2" Grid.Row="6"  FontSize="16" IsChecked="{Binding HasPool ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        <CheckBox x:Name="NearByGroceryStore" Content="NearByGroceryStore" Grid.Column="2" Grid.Row="7" FontSize="16" IsChecked="{Binding HasNearByGroceryStore ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        <CheckBox x:Name="Garden" Content="Garden" Grid.Column="2" Grid.Row="8"  FontSize="16" IsChecked="{Binding HasGarden,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,8"/>
-        <CheckBox x:Name="ChildrensAttractions" Content="ChildrensAttractions" Grid.Column="2" Grid.Row="9" FontSize="16" IsChecked="{Binding HasChildrensAttractions,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,22"  />
+        <CheckBox x:Name="Pool" Content="pool" Grid.Column="2" Grid.Row="6"  IsChecked="{Binding HasPool ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <CheckBox x:Name="NearByGroceryStore" Content="NearByGroceryStore" Grid.Column="2" Grid.Row="7"  IsChecked="{Binding HasNearByGroceryStore ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <CheckBox x:Name="Garden" Content="Garden" Grid.Column="2" Grid.Row="8"  IsChecked="{Binding HasGarden,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,8"/>
+        <CheckBox x:Name="ChildrensAttractions" Content="ChildrensAttractions" Grid.Column="2" Grid.Row="9"  IsChecked="{Binding HasChildrensAttractions,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button x:Name="ApdateHostingUnit" Content="Update Hostingunit" Margin="3,2,0,4" Grid.Column="2" Grid.Row="11" Click="Update_click">
+        <Button x:Name="UpdateHostingUnit" Content="Update Hosting Unit" Margin="3,2,0,4" Grid.Column="2" Grid.Row="11" Click="Update_click">
             <Button.Style>
-                <Style TargetType="Button" x:Name="ButtonAvailable">
+                <Style TargetType="Button" x:Name="UpdateButtonAvailable">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Text.Length, ElementName=unitName, UpdateSourceTrigger=PropertyChanged}" Value="0">
                             <Setter Property="IsEnabled" Value="False"/>
@@ -94,7 +94,7 @@
 
         <Button x:Name="DeleteHostingUnit" Content="Delete Hosting Unit" Margin="3,2,0,4" Grid.Column="3" Grid.Row="11" Click="DeleteHostingUnit_Click">
             <Button.Style>
-                <Style TargetType="Button" x:Name="ButtonAvailable">
+                <Style TargetType="Button" x:Name="DeleteButtonAvailable">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Text.Length, ElementName=unitName, UpdateSourceTrigger=PropertyChanged}" Value="0">
                             <Setter Property="IsEnabled" Value="False"/>

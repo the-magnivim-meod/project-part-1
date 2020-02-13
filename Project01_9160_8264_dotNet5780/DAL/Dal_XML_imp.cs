@@ -237,7 +237,7 @@ namespace DAL
             List<Order> orderList = LoadFromXML<List<Order>>(orderPath);
             order.OrderKey = GetOrderKey();
             orderList.Add(order);
-            SaveToXML<List<Order>>(orderList, hostingUnitPath);
+            SaveToXML<List<Order>>(orderList, orderPath);
         }
 
         public void deleteOrder(int orderKey)
@@ -265,11 +265,6 @@ namespace DAL
         #endregion
 
         #region getAll methods
-        public IEnumerable<BankBranch> GetAllBankBranches()
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<GuestRequest> GetAllGuestReuests()
         {
             return from req in guestRequestRoot.Elements()
@@ -307,7 +302,7 @@ namespace DAL
                    select ord.Clone();
         }
 
-        public IEnumerable<Admin> getAllAdmins()
+        public IEnumerable<Admin> GetAllAdmins()
         {
             List<Admin> AdminList = LoadFromXML<List<Admin>>(adminPath);
             return from ad in AdminList
@@ -327,36 +322,6 @@ namespace DAL
             return from guest in GuestList
                    select guest.Clone();
         }
-
-        public IEnumerable<Admin> GetAllAdmins()
-        {
-            List<Admin> AdminList = LoadFromXML<List<Admin>>(adminPath);
-            return from admin in AdminList
-                   select admin.Clone();
-        }
-        #endregion
-
-        #region get item by id 
-        public GuestRequest GetGuestRequest(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public HostingUnit GetHostingUnit(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Order GetOrder(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetTotalEarnings()
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         #region site owner methods
@@ -464,8 +429,37 @@ namespace DAL
         {
             List<Host> hostList = LoadFromXML<List<Host>>(hostPath);
             hostList.Add(host);
-            SaveToXML<List<Host>>(hostList, hostingUnitPath);
+            SaveToXML<List<Host>>(hostList, hostPath);
         }
+        #endregion
+
+        #region get by key
+        public HostingUnit GetHostingUnit(int key)
+        {
+            return (from unit in GetAllHostingUnits()
+                    where unit.HostingUnitKey == key
+                    select unit).FirstOrDefault();
+        }
+
+        public GuestRequest GetGuestRequest(int key)
+        {
+            return (from req in GetAllGuestReuests()
+                    where req.GuestRequestKey == key
+                    select req).FirstOrDefault();
+        }
+
+        public Order GetOrder(int key)
+        {
+            return (from order in GetAllOrders()
+                    where order.OrderKey == key
+                    select order).FirstOrDefault();
+        }
+
+        public int GetTotalEarnings()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

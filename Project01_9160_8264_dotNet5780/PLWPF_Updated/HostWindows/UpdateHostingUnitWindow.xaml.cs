@@ -26,20 +26,19 @@ namespace PLWPF_Updated
         Host host;
         HostingUnit HostingUnit;
 
-        public UpdateHostingUnitWindow(Host host)
+        public UpdateHostingUnitWindow(Host hostIN)
         {
             InitializeComponent();
 
             myIBL = BL.FactoryBL.GetBL();
-            this.host = host;
+            host = hostIN;
 
             unitArea.ItemsSource = Enum.GetValues(typeof(AreaOfTheCountry));
             unitType.ItemsSource = Enum.GetValues(typeof(HostingUnitType));
             HostingUnitsComboBox.ItemsSource = myIBL.GetHostingUnitsOfHost(host);
 
-            HostingUnit = HostingUnitsComboBox.SelectedItem as HostingUnit;
-            ApdateUnitGrid.DataContext = HostingUnit;
-
+            HostingUnit = myIBL.GetHostingUnitByKey(int.Parse(HostingUnitsComboBox.SelectedItem.ToString()));
+            UpdateUnitGrid.DataContext = HostingUnit;
         }
 
 
@@ -49,7 +48,7 @@ namespace PLWPF_Updated
             try
             {
                 myIBL.UpdateHostingUnit(HostingUnit);
-                MessageBox.Show("The hosting unit was updated.", "Success", MessageBoxButton.OK);
+                MessageBox.Show("Well Done!! hosting unit was updated.", "Complete", MessageBoxButton.OK,MessageBoxImage.Information);
             }
 
             catch (NotExistingKeyException)
@@ -67,14 +66,21 @@ namespace PLWPF_Updated
         {
             try
             {
-                myIBL.DeleteHostingUnit(HostingUnit.HostingUnitKey);
-                MessageBox.Show("The hosting unit was deleted.", "Success", MessageBoxButton.OK);
-                HostingUnitsComboBox.ItemsSource = myIBL.GetHostingUnitsOfHost(host);
+                MessageBoxResult result= MessageBox.Show($"Are you SURE you would like to delete hosting unit number {HostingUnit.HostingUnitKey}?", "Make sure", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    myIBL.DeleteHostingUnit(HostingUnit.HostingUnitKey);
+                    IEnumerable<int> hostingUnitsList = myIBL.GetHostingUnitsOfHost(host);
+                    HostingUnitsComboBox.ItemsSource = hostingUnitsList;
+                }
             }
-
-            catch (NotExistingKeyException)
+            catch(HostingUnitConnectedToOrderException)
             {
-                MessageBox.Show("There was a problem. Please try again later.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"You can't delete unit number {HostingUnit.HostingUnitKey} because it is connected to an order", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch(NullReferenceException)
+            {
+                MessageBox.Show($"unit number {HostingUnit.HostingUnitKey} was deleted succefully", "Complete", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception)
             {
@@ -84,11 +90,10 @@ namespace PLWPF_Updated
 
         private void HostingUnitsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            HostingUnit = HostingUnitsComboBox.SelectedItem as HostingUnit;
-            ApdateUnitGrid.DataContext = HostingUnit;
+            HostingUnit = myIBL.GetHostingUnitByKey(int.Parse(HostingUnitsComboBox.SelectedItem.ToString()));
+            UpdateUnitGrid.DataContext = HostingUnit;
         }
-
-        private void Back_Click(object sender, RoutedEventArgs e)
+            private void Back_Click(object sender, RoutedEventArgs e)
         {
             Window HostWindow = new HostMainWindow(host);
             HostWindow.Show();
@@ -97,7 +102,7 @@ namespace PLWPF_Updated
 
         private void LogOff_Click(object sender, RoutedEventArgs e)
         {
-            Window Login = new MainWindow();
+            Window Login = new LoginWindow();
             Login.Show();
             this.Close();
         }
